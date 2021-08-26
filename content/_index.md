@@ -3,7 +3,7 @@ title: Welcome
 type: docs
 ---
 
-# Welcome
+# Welcome to CS61A!
 
 Welcome to my CS61A Notes! This website will simply be a collection of notes/examples that I have found useful during UC Berkeley's CS61A course, and I hope that some information here can be helpful to somebody.
 
