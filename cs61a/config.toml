@@ -1,0 +1,6 @@
+baseURL = 'http://rouxles.github.io/cs61a-notes'
+languageCode = 'en-us'
+title = 'CS61A-Notes'
+theme = "book"
+buildDir = "docs"
+
