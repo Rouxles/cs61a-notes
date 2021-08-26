@@ -1,4 +1,4 @@
-baseURL = 'http://rouxles.github.io/cs61a-notes'
+baseURL = 'https://cs61a.rouxl.es/'
 languageCode = 'en-us'
 title = 'CS61A-Notes'
 theme = "book"

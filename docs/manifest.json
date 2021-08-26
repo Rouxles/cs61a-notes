@@ -1,14 +1,14 @@
 {
   "name": "CS61A-Notes",
   "short_name": "CS61A-Notes",
-  "start_url": "/cs61a-notes/",
-  "scope": "/cs61a-notes/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "/cs61a-notes/favicon.svg",
+      "src": "/favicon.svg",
       "sizes": "512x512"
     }
   ]
