@@ -4,21 +4,23 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="The first week of CS61A is pretty simple - get used to your coding environment and a few of the basics of Python.
-Lab 0#While this is optional, it&rsquo;s probably best to do it just to get used to the very basics of Python as well as ok.py, the autograder used in CS61A.">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Introduction" />
+Lab 0#While this is optional, it&rsquo;s probably best to do it just to get used to the very basics of Python as well as ok.py, the autograder used in CS61A.
+You can (and should!) visualize how Python programs works with PyTutor or execute programs with code.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Introduction to the Basics of Python" />
 <meta property="og:description" content="The first week of CS61A is pretty simple - get used to your coding environment and a few of the basics of Python.
-Lab 0#While this is optional, it&rsquo;s probably best to do it just to get used to the very basics of Python as well as ok.py, the autograder used in CS61A." />
+Lab 0#While this is optional, it&rsquo;s probably best to do it just to get used to the very basics of Python as well as ok.py, the autograder used in CS61A.
+You can (and should!) visualize how Python programs works with PyTutor or execute programs with code." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cs61a.rouxl.es/docs/week-1/content/introduction/" /><meta property="article:section" content="docs" />
 
 
 
-<title>Introduction | CS61A-Notes</title>
+<title>Introduction to the Basics of Python | CS61A-Notes</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/book.min.8599444fcc48ee6b435b5b62c955ab7d914fa1e2a453df90c4b97cc9769665d1.css" integrity="sha256-hZlET8xI7mtDW1tiyVWrfZFPoeKkU9&#43;QxLl8yXaWZdE=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.7b6913f6d500cfec71b5bd9d7a7ccf89d4020865159b8ca840f3bebf1cd342da.js" integrity="sha256-e2kT9tUAz&#43;xxtb2denzPidQCCGUVm4yoQPO&#43;vxzTQto=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.03f7dedaad00aca69da70eab789c1d7e16563c4975924238e949b906b864d06a.js" integrity="sha256-A/fe2q0ArKadpw6reJwdfhZWPEl1kkI46Um5Brhk0Go=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -86,7 +88,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cs61a.rouxl.es/docs/week-1/content/introduction/" class=" active">Introduction</a>
+    <a href="https://cs61a.rouxl.es/docs/week-1/content/introduction/" class=" active">Introduction to the Basics of Python</a>
   
 
         </li>
@@ -133,7 +135,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Introduction</strong>
+  <strong>Introduction to the Basics of Python</strong>
 
   <label for="toc-control">
     
@@ -150,6 +152,17 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#lab-0">Lab 0</a></li>
+    <li><a href="#basics-of-python">Basics of Python</a>
+      <ul>
+        <li><a href="#expressions--values">Expressions + Values</a></li>
+        <li><a href="#operators">Operators</a></li>
+        <li><a href="#call-expressions">Call Expressions</a></li>
+        <li><a href="#names">Names</a></li>
+        <li><a href="#environment-diagrams">Environment Diagrams</a></li>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#ending-notes">Ending Notes</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -168,6 +181,246 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#lab-0">#</a>
 </h2>
 <p>While this is optional, it&rsquo;s probably best to do it just to get used to the very basics of Python as well as <code>ok.py</code>, the autograder used in CS61A.</p>
+<p>You can (and should!) visualize how Python programs works with <a href="https://pythontutor.com/composingprograms.html#mode=edit">PyTutor</a> or execute programs with <a href="https://code.cs61a.org/">code.cs61a.org</a>, but it&rsquo;s probably better to use something like <a href="https://code.visualstudio.com/">VSCode</a> instead.</p>
+<p>Alternatively, if you have a bit of experience with other coding languages, you could look at <a href="https://learnxinyminutes.com/docs/python/">learn X in Y&rsquo;s page</a> which will quickly get you up to speed with the syntax of Python.</p>
+<hr>
+<h2 id="basics-of-python">
+  Basics of Python
+  <a class="anchor" href="#basics-of-python">#</a>
+</h2>
+<h3 id="expressions--values">
+  Expressions + Values
+  <a class="anchor" href="#expressions--values">#</a>
+</h3>
+<ul>
+<li>Programs work to manipulate <strong>values</strong></li>
+<li><strong>Expressions</strong> in programs evaluate to values</li>
+<li>Values can have different <strong>data types</strong> (string, float, boolean, integer, etc.)</li>
+</ul>
+<p>Python evaluates these <strong>expressions</strong>, and then (potentially) displays its <strong>values</strong></p>
+<h4 id="data-types">
+  Data Types
+  <a class="anchor" href="#data-types">#</a>
+</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Data Type</th>
+<th style="text-align:left">Example Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Integers</td>
+<td style="text-align:left"><code>2</code>, <code>44</code>, <code>25</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Floats</td>
+<td style="text-align:left"><code>3.14</code>, <code>2.73</code>, <code>69.69</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Booleans</td>
+<td style="text-align:left"><code>True</code>, <code>False</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Strings</td>
+<td style="text-align:left"><code>Hi</code>, <code>ben</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="operators">
+  Operators
+  <a class="anchor" href="#operators">#</a>
+</h3>
+<p>These are pretty self-explanatory</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Operator</th>
+<th style="text-align:left">Example Expression</th>
+<th style="text-align:left">What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>+</code></td>
+<td style="text-align:left"><code>10 + 2</code></td>
+<td style="text-align:left">Adds two values together</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>-</code></td>
+<td style="text-align:left"><code>10 - 2</code></td>
+<td style="text-align:left">Subtracts values</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>*</code></td>
+<td style="text-align:left"><code>10*2</code></td>
+<td style="text-align:left">Multiplies values</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/</code></td>
+<td style="text-align:left"><code>10/2</code></td>
+<td style="text-align:left">Divides values</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>//</code></td>
+<td style="text-align:left"><code>9//2</code></td>
+<td style="text-align:left">Takes the floor of the divided value (result on the left would evaluate to 4)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%</code></td>
+<td style="text-align:left"><code>9%2</code></td>
+<td style="text-align:left">Takes the remainder of the expression (result on the left would evaluate to 1)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>**</code></td>
+<td style="text-align:left"><code>2**2</code></td>
+<td style="text-align:left">Finds the value of the left value to the power of the right value</td>
+</tr>
+</tbody>
+</table>
+<h3 id="call-expressions">
+  Call Expressions
+  <a class="anchor" href="#call-expressions">#</a>
+</h3>
+<p>Oftentimes, however, expressions use function calls rather than operators (and the operators above have call function equivalents!)</p>
+<p>For example, running <code>add(10, 2)</code> does the same thing as <code>10 + 2</code> as shown in the example above, but with different form.</p>
+<p>So the question is: <strong>Why use call functions?</strong></p>
+<p>One possible reason is that call functions are sometimes a lot easier to understand, especially when you have multiple nested call functions (as opposed to multiple mathematical operators)</p>
+<p>A call function <strong>always executes the same way</strong> with the same procedure, which goes as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">add(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">69</span>)
+</code></pre></div><p><code>add</code> is the <strong>operator</strong>, <code>10</code> and <code>69</code> are the <strong>operands</strong> in this instance.</p>
+<p>Python will first evaluate the <strong>operator</strong> (<code>and</code>), then will evaluate the <strong>operands</strong> (<code>10</code>, then <code>69</code>), then apply the operator (function) to the operands (arguments), in that order, which can be summarized as follows:</p>
+<ol>
+<li>Evaluate the operator</li>
+<li>Evaluate the operand(s)</li>
+<li>Apply the operator to the operand(s)</li>
+</ol>
+<p>Operators and more commonly, operands can also be written as expressions, so these must be evaluated <strong>before</strong> step 3 can occur (meaning that if you have any sort of errors in that code block, Python will throw an error!)</p>
+<h4 id="example-of-nested-expressions">
+  Example of nested expressions
+  <a class="anchor" href="#example-of-nested-expressions">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> operator <span style="color:#f92672">import</span> add
+add(add(<span style="color:#ae81ff">3</span>,add(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>)),add(add(<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">4</span>),add(<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">6</span>)))
+</code></pre></div><p>While the above example above is very impractical and will not appear in any sort of serious coding, it is a pretty good example of how Python evaluates nested expressions.</p>
+<p>Let&rsquo;s unpack how Python deals with the above expression!</p>
+<ol>
+<li>Python reads from left to right in this expression, so first the <code>add</code> operator will be evaluated</li>
+<li>Next, the leftmost argument for <code>add</code> will be read, which in this case is the large block <code>add(3,add(3,2))</code></li>
+<li>As this is still another call function, the <code>add</code> will be evaluated, with the operands <code>3</code> and <code>add(3,2)</code></li>
+<li><code>3</code> is a &lsquo;base case&rsquo;, so that does not need to be further evaluated, but <code>add(3,2)</code> goes through the same procedure, which will then evaluate to 5.</li>
+<li>Now because the inner <code>add</code> function has been fully evaluated, the value is calculated in reverse order
+<ol>
+<li><code>3 + 5</code> is calculated, which will return <code>8</code> for the first argument.</li>
+</ol>
+</li>
+<li>Same thing happens for the other operand, which will then evaluate to <code>22</code></li>
+<li><code>22</code> and <code>8</code> get summed, which will then result in <code>30</code></li>
+</ol>
+<p>A visual representation (in the form of an <strong>expression tree</strong>) of what was said above can be seen below.</p>
+<p><img src="https://i.imgur.com/KJJNKel.png" alt="Visual representation of nested call function" /></p>
+<hr>
+<h3 id="names">
+  Names
+  <a class="anchor" href="#names">#</a>
+</h3>
+<p>A <strong>name</strong> can be bound to a <strong>value</strong>. This does not necessarily need to be a variable - it could also be a function or an expression for instance.</p>
+<p>Names are often used because they can be <strong>reused</strong> in different parts of the code. A name that&rsquo;s bound to a value is known as a variable.</p>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+y <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+
+print(x <span style="color:#f92672">+</span> y) <span style="color:#75715e"># Returns 5</span>
+print(x <span style="color:#f92672">-</span> y) <span style="color:#75715e"># Returns -1</span>
+</code></pre></div><p>These values can also change:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+print(x) 
+<span style="color:#75715e"># &gt;&gt;&gt; 2</span>
+x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span>
+print(x) 
+<span style="color:#75715e"># &gt;&gt;&gt; 7</span>
+</code></pre></div><p>The equals sign used above is not similar to the one used in mathematics; it is used for assignment rather than equality, which means that you set a value to the variable.</p>
+<p>This <strong>assignment statement</strong> works by</p>
+<ol>
+<li>Evaluating the expression on the right of the <code>=</code></li>
+<li>Binding the value of the expression to the name on the left side of the <code>=</code></li>
+</ol>
+<h3 id="environment-diagrams">
+  Environment Diagrams
+  <a class="anchor" href="#environment-diagrams">#</a>
+</h3>
+<p>These are very useful to visualize how the Python interpreter thinks (and also appear somewhat often in exam questions). <a href="https://pythontutor.com/composingprograms.html#mode=edit">PyTutor</a> is a very good resource to generate these environment diagrams if you ever get confused about how assignment works.</p>
+<h3 id="functions">
+  Functions
+  <a class="anchor" href="#functions">#</a>
+</h3>
+<p>Functions are very useful in programming languages in general because they allow <em>lines of code</em> to be easily reused. Functions, however, are slightly more complicated than variables due to the local and global <strong>frames</strong> (more on that later).</p>
+<h4 id="what-is-a-function">
+  What is a function?
+  <a class="anchor" href="#what-is-a-function">#</a>
+</h4>
+<p>A function is a sequence of code that can be called on at any point in the program.</p>
+<p>While there are built in functions (like the <code>add(a, b)</code> function used earlier), sometimes, they need to be built by hand.</p>
+<p>A function has two portions: an input (the arguments <code>a</code> and <code>b</code>) and an output (a return value). These are not required, but depending on the use case of the function, they are very useful.</p>
+<h4 id="how-do-we-write-a-function">
+  How do we write a function?
+  <a class="anchor" href="#how-do-we-write-a-function">#</a>
+</h4>
+<p>There are two common methods to write a function in Python, with the most common one being the <code>def</code> statement, which can be written in the format below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#f92672">&lt;</span>name<span style="color:#f92672">&gt;</span>(<span style="color:#f92672">&lt;</span>parameters<span style="color:#f92672">&gt;</span>):
+    <span style="color:#66d9ef">return</span> <span style="color:#f92672">&lt;</span>expression<span style="color:#f92672">&gt;</span>
+</code></pre></div><p>For example, instead of using the built-in <code>add()</code> function from Python, we can create our own by doing the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">add</span>(a, b):
+    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b
+</code></pre></div><p>After the code is defined (e.g. below the function definition), you can then call it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">add(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>)
+<span style="color:#75715e"># &gt;&gt;&gt; 11</span>
+</code></pre></div><p>In CS61A, the first line is the <strong>function signature</strong>, and all lines thereafter (there can be more than 1) are considered the <strong>function body</strong>.</p>
+<h4 id="the-return-keyword">
+  The return keyword
+  <a class="anchor" href="#the-return-keyword">#</a>
+</h4>
+<p>In a Python function statement, the <code>return</code> keyword is vital. What it does is return a value to the place where the function was called, and then exits the function <strong>(both properties are very important to remember!)</strong></p>
+<p>The <code>return</code> keyword acts very differently to <code>print</code>, even if they are in the same function. <code>print</code> does not do any assignment, while <code>return</code> does. The example below may help illustrate my point:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">example</span>(x):
+    print(x)
+    <span style="color:#66d9ef">return</span> x<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>
+
+value <span style="color:#f92672">=</span> example(<span style="color:#ae81ff">3</span>)
+<span style="color:#75715e"># Running the above line will print 3 first, then assign 3*2 to value</span>
+print(value)
+<span style="color:#75715e"># &gt;&gt;&gt; 6</span>
+</code></pre></div><h4 id="frames">
+  Frames
+  <a class="anchor" href="#frames">#</a>
+</h4>
+<p>There are different frames, which you can think of as different rooms in the same house.</p>
+<p>The <em>global</em> frame is an environment that contains all the variables and functions that were created in the main body of the program.</p>
+<p>A function&rsquo;s <em>local</em> frame is a <em>child</em> of the global frame, where it has its own set of variables that can&rsquo;t be accessed outside the function. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">unhelpful_name <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span> <span style="color:#75715e"># variable in the global frame</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">unhelpful_function</span>(unhelpful_name): <span style="color:#75715e"># variable in the local frame (even though it has the same name it isn&#39;t the same variable)</span>
+    <span style="color:#66d9ef">return</span> unhelpful_name <span style="color:#75715e"># &gt;&gt;&gt; 2</span>
+    <span style="color:#75715e"># The above will return 2 as opposed to 0 because the unhelpful_name variable called in the function is the one passed into the function.</span>
+
+unhelpful_function(<span style="color:#ae81ff">2</span>)
+</code></pre></div><h4 id="name-lookup-rules">
+  Name Lookup Rules
+  <a class="anchor" href="#name-lookup-rules">#</a>
+</h4>
+<p>Python looks up names in a user-defined function using the following logic:</p>
+<ol>
+<li>Look it up in the local frame</li>
+<li>If the name is not in the local frame, look for the name in the parent frame</li>
+<li>If the name is not in any searched frame, throw a NameError.</li>
+</ol>
+<hr>
+<h3 id="ending-notes">
+  Ending Notes
+  <a class="anchor" href="#ending-notes">#</a>
+</h3>
+<p>If you don&rsquo;t understand any of this, it is very important to ask for more help, whether that be from your peers or from your TAs, or even searching on the internet. Another very useful resource (especially for understanding how frames work) is <a href="https://pythontutor.com/composingprograms.html#mode=edit">PyTutor</a>. Please use it.</p>
 </article>
  
       
@@ -210,6 +463,17 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#lab-0">Lab 0</a></li>
+    <li><a href="#basics-of-python">Basics of Python</a>
+      <ul>
+        <li><a href="#expressions--values">Expressions + Values</a></li>
+        <li><a href="#operators">Operators</a></li>
+        <li><a href="#call-expressions">Call Expressions</a></li>
+        <li><a href="#names">Names</a></li>
+        <li><a href="#environment-diagrams">Environment Diagrams</a></li>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#ending-notes">Ending Notes</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
