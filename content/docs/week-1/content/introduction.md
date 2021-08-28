@@ -226,6 +226,6 @@ Python looks up names in a user-defined function using the following logic:
 
 ---
 
-### Ending Notes
+## Ending Notes
 
 If you don't understand any of this, it is very important to ask for more help, whether that be from your peers or from your TAs, or even searching on the internet. Another very useful resource (especially for understanding how frames work) is [PyTutor](https://pythontutor.com/composingprograms.html#mode=edit). Please use it.
