@@ -16,7 +16,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.dcf0ea9f1f19a9beaf51cbf3b26b965ebc2a8ba320e5eb46e31aa80186db17db.js" integrity="sha256-3PDqnx8Zqb6vUcvzsmuWXrwqi6Mg5etG4xqoAYbbF9s=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.80b815e1d3deaa5a33e54104ed9403b2407b969ade03d49515fa0ac36f06a750.js" integrity="sha256-gLgV4dPeqloz5UEE7ZQDskB7lpreA9SVFfoKw28Gp1A=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -444,14 +444,14 @@ It is a common mistake to use <code>=</code> instead of <code>==</code> to check
 <p>The statements are evaluated from left to right, but sometimes, these statements do not all need to be evaluated.</p>
 <p><code>and</code> statement procedure:</p>
 <ol>
-<li>Evaluate the left statement</li>
-<li>If it evaluates to a <code>False</code> value <code>x</code>, the expression evaluates to <code>x</code></li>
+<li>Evaluate the left statement.</li>
+<li>If it evaluates to a <code>False</code> value <code>x</code>, the expression evaluates to <code>x</code>.</li>
 <li>Else, the expression evaluates to the value of the expression on the right.</li>
 </ol>
 <p><code>or</code> statement procedure:</p>
 <ol>
-<li>Evaluate the left statement</li>
-<li>If it evaluates to a <code>True</code> value <code>x</code> the expression evaluates to <code>x</code></li>
+<li>Evaluate the left statement.</li>
+<li>If it evaluates to a <code>True</code> value <code>x</code> the expression evaluates to <code>x</code>.</li>
 <li>Else, the expression evaluates to the value of the expression on the right.</li>
 </ol>
 <p>This procedure functions using just Booleans, but strange things occur when you use other values instead.</p>
@@ -460,6 +460,7 @@ It is a common mistake to use <code>=</code> instead of <code>==</code> to check
 <span style="color:#ae81ff">5</span> <span style="color:#f92672">or</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e"># &gt;&gt;&gt; 5</span>
 <span style="color:#f92672">not</span> <span style="color:#ae81ff">5</span> <span style="color:#75715e"># &gt;&gt;&gt; False</span>
 <span style="color:#f92672">not</span> <span style="color:#ae81ff">0</span> <span style="color:#75715e"># &gt;&gt;&gt; True</span>
+<span style="color:#ae81ff">0</span> <span style="color:#f92672">and</span> <span style="color:#66d9ef">False</span> <span style="color:#75715e"># &gt;&gt;&gt; 0</span>
 </code></pre></div><p>For the <code>and</code> and <code>or</code> operators, numbers were returned rather than Booleans due to the procedure of evaluating these logical statements.</p>
 <p>There is an order of operations for Booleans (<code>not</code> → <code>and</code> → <code>or</code>), but generally, use brackets to make your statements clearer.</p>
 <p>You can use these expressions in functions as the return value. For example:</p>

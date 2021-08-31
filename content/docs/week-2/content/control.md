@@ -232,14 +232,14 @@ The statements are evaluated from left to right, but sometimes, these statements
 
 `and` statement procedure:
 
-1. Evaluate the left statement
-2. If it evaluates to a `False` value `x`, the expression evaluates to `x`
+1. Evaluate the left statement.
+2. If it evaluates to a `False` value `x`, the expression evaluates to `x`.
 3. Else, the expression evaluates to the value of the expression on the right.
 
 `or` statement procedure:
 
-1. Evaluate the left statement
-2. If it evaluates to a `True` value `x` the expression evaluates to `x`
+1. Evaluate the left statement.
+2. If it evaluates to a `True` value `x` the expression evaluates to `x`.
 3. Else, the expression evaluates to the value of the expression on the right.
 
 This procedure functions using just Booleans, but strange things occur when you use other values instead.
@@ -251,6 +251,7 @@ For example:
 5 or 2 # >>> 5
 not 5 # >>> False
 not 0 # >>> True
+0 and False # >>> 0
 ```
 
 For the `and` and `or` operators, numbers were returned rather than Booleans due to the procedure of evaluating these logical statements.
