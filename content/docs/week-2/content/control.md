@@ -348,3 +348,47 @@ The above code would usually give an infinite loop, but the break statement prev
 
 ---
 
+## For Loop
+
+A `for` loop in Python executes a block of code for a set number of times. This is more complicated to understand than the `while` loop, but is more useful in some situations.
+
+### The range() function
+
+The `range()` function is used quite often in conjunction with the `for` loop. There are 3 arguments that `range()` takes, each of which will be demonstrated below:
+
+```python
+for n in range(5): # equivalent to range(0, 5)
+    print(n)
+'''
+> 0
+> 1
+> 2
+> 3
+> 4
+'''
+
+for n in range(1, 5):
+    print(n)
+'''
+> 1
+> 2
+> 3
+> 4
+'''
+
+for n in range(5, 0, -1):
+    print(n)
+'''
+> 5
+> 4
+> 3
+> 2
+> 1
+'''
+```
+
+As can be seen in the 3 examples above, the `range()` function works well with the `for` loop.
+
+When `range()` is passed only 1 parameter in a `for` loop, it starts off at `0`, then ends off at the integer before `n`. With 2 parameters, the for loop's value starts off at the first parameter's value, then ends off at the integer before the second parameter's value. The last parameter specifies the amount `n` should be changed by each loop, whether it be negative or a value other than `1`.
+
+
