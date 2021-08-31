@@ -337,9 +337,9 @@ A `while` loop is very useful if you do not know how many repeats of the code yo
 If you ever want to prematurely leave a code block, you can use the `break` keyword.
 
 ```python
-    while True:
-        print(1)
-        break
+while True:
+    print(1)
+    break
 # >>> 1
 ```
 
