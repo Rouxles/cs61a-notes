@@ -7,6 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://cs61a.rouxl.es/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Control</title>
+      <link>https://cs61a.rouxl.es/docs/week-2/content/control/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-2/content/control/</guid>
+      <description>Control# Side Effects#Side effects occur in functions when the function alters the global environment in some form. This could be in the form of altering a variable in the global scope, or using a print statement inside a function. One easy way to tell if a function contains side effects is that if a function acts like a mathematical function, it has no side effects.</description>
+    </item>
+    
+    <item>
       <title>Introduction to the Basics of Python</title>
       <link>https://cs61a.rouxl.es/docs/week-1/content/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

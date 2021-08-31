@@ -2,15 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://cs61a.rouxl.es/docs/week-2/content/control/</loc>
+  </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-1/content/introduction/</loc>
+  </url><url>
+    <loc>https://cs61a.rouxl.es/docs/week-1/</loc>
+  </url><url>
+    <loc>https://cs61a.rouxl.es/docs/week-2/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/categories/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/tags/</loc>
-  </url><url>
-    <loc>https://cs61a.rouxl.es/docs/week-1/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/</loc>
   </url>
