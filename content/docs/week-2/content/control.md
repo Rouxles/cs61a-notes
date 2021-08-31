@@ -127,21 +127,223 @@ print(None, None)
 
 ## Default Arguments
 
+In the function signature, one of the inputs can have a **default value**. This is useful in situations where there is a most likely case for a function, but where it still makes sense for users to have some control.
+
+For example, the default `round()` function in Python takes in 1 required parameter, with 1 optional parameter (which defaults to 0).
+
+```python
+round(2.5342) # >>> 3
+round(2.5342, 2) # >>> 2.53
+```
+
+You can build your own function with default arguments by simply specifying it in the header.
+
+For example:
+
+```python
+def ben(baron, box="tao"):
+    return baron + box
+
+ben("baron") # >>> 'barontao'
+ben("baron", "hej") # >>> 'baronhej'
+```
+
+Without the second optional parameter `hej`, the function defaulted to the value `tao`.
+
+If you have multiple default arguments, you can also override them in this way:
+
+```python
+def ben(baron, box="tao", foo="baz"):
+    return baron + box + foo
+
+ben("baron", foo="yu") # >>> barontaoyu
+
+ben("baron", box="yu") # >>> baronyubaz
+```
+
+---
+
+## Multiple Return Values
+
+One aspect of Python uncommon in other languages is the allowed use of multiple return values in functions. This can be done in a function by using multiple return values separated by a comma.
+
+Any code that calls the function can either store it in a variable as a *tuple* (more on this later) or can be *unpacked*. For example:
+
+```python
+def return_two_values():
+    return 1, 2
+
+return_two_values() # >>> (1, 2) in tuple form
+
+a, b = return_two_values() 
+a # >>> 1
+b # >>> 2
+```
+
+### Multiple Variable Assignment
+
+The values on the right side are evaluated first before being assigned, so you can swap the values of two variables in one line by simply doing the following:
+
+```python
+x, y = y, x
+``` 
+
 ---
 
 ## Boolean
 
-A Boolean is a value that is either `True` or `False`
+A Boolean is a value that is either `True` or `False`, and is used frequently in many applications. For example, your mobile device would likely have a Boolean variable that stores whether your WiFi, flashlight, bluetooth etc. is turned on.
+
+An expression can evaluate to a Boolean. For example:
+
+```python
+passed_class = grade >= 70 # Will evaluate either true or false depending on the condition
+
+take_shower = (not eecs_major) or did_sports
+```
+
+### Comparison Operators
+
+Operator|Meaning
+:--|:--
+`==`|Equality
+`!=`|Inequality
+`>`|Greater Than
+`<`|Less Than
+`>=`|Greater Than or Equals
+`<=`|Less Than or Equals
+
+{{< hint danger >}}
+**Checking for Equality**
+It is a common mistake to use `=` instead of `==` to check for equality. Please remember that `=` is for assigning a variable and cannot be used for checking for equality in a conditional statement. Python will throw a syntax error, but other languages may not, so not mixing these up is a good habit to get used to.  
+{{< /hint >}}
+
+### Logical Operators
+
+Operator|Meaning
+:--|:--
+`and`|Evaluates to `True` if both values are `True`
+`or`|Evaluates to `True` if any of the values are `True`
+`not`|Evaluates to `True` if the value is `False`, else evaluates to `True`
+
+#### Execution rules of logical operators
+
+The statements are evaluated from left to right, but sometimes, these statements do not all need to be evaluated. 
+
+`and` statement procedure:
+
+1. Evaluate the left statement
+2. If it evaluates to a `False` value `x`, the expression evaluates to `x`
+3. Else, the expression evaluates to the value of the expression on the right.
+
+`or` statement procedure:
+
+1. Evaluate the left statement
+2. If it evaluates to a `True` value `x` the expression evaluates to `x`
+3. Else, the expression evaluates to the value of the expression on the right.
+
+This procedure functions using just Booleans, but strange things occur when you use other values instead.
+
+For example:
+
+```python
+5 and 2 # >>> 2
+5 or 2 # >>> 5
+not 5 # >>> False
+not 0 # >>> True
+```
+
+For the `and` and `or` operators, numbers were returned rather than Booleans due to the procedure of evaluating these logical statements.
+
+There is an order of operations for Booleans (`not` → `and` → `or`), but generally, use brackets to make your statements clearer.
+
+You can use these expressions in functions as the return value. For example:
+
+```python
+def boolean_example():
+    return is_ben or is_tao # This will return either True or False depending on the Boolean expression.
+```
 
 ---
 
-## Compound Statement
+## Statements
+
+A statement is executed to perform an action
+
+### Compound Statements
+
+A compound statement is a statement that contains groups of other statements.
+
+One example of which are **conditional statements**, which give your code a way to execute a different suite of statements based on whether conditions are met
+
+```python
+if <condition>:
+    this_may_be_executed(1)
+elif <condition_2>:
+    this_may_be_executed(2)
+else:
+    this_may_be_executed(3)
+```
+
+An `if` statement looks like the code above. The block indented after the `if`, `elif`, and `else` statements only get executed if the code directs it to. 
+
+For instance, if `<condition>` were `True`, then `this_may_be_executed(1)` is the only statement that gets evaluated, and the ones in the other blocks are skipped over. 
+
+If `<condition_2>` were `True`, then `this_may_be_executed(2)` is the only statement that gets evaluated. 
+
+If both `<condition>` and `<condition_2>` are `False`, then `this_may_be_executed(3)` is evaluated.
+
+This means that the code does not get executed unless certain conditions are met, which is **different from call expressions** where every operand gets evaluated. (This property is important for some questions)
+
+Additionally, this also allows for multiple return statements in functions because only that specific block gets executed, rather than every block.
+
+```python
+def returning_conditional(x):
+    if x > 0:
+        return "positive"
+    if x < 0:
+        return "negative"
+    if x == 0:
+        return "neutral"
+```
 
 ---
 
 ## While Loop
 
-### Using a Counter Variable
+A `while` loop in Python executes a block of code as long as a condition is true. This loop keeps on getting checked after each iteration.
+
+One problem of a `while` loop is that an **infinite loop** can easily occur if you aren't careful.
+
+```python
+counter = 1
+while counter < 5:
+    print(counter)
+    counter += 1
+    '''
+    > 1
+    > 2
+    > 3
+    > 4
+    '''
+```
+
+In the example above, `5` does not get printed because during that iteration, the `counter` variable is already `5`, and the conditional `5` < `5` returns `False`.
+
+A `while` loop is very useful if you do not know how many repeats of the code you need to do, while a `for` loop (explained on another page) is better if you know how many loops to do.
+
+### Break Statement
+
+If you ever want to prematurely leave a code block, you can use the `break` keyword.
+
+```python
+    while True:
+        print(1)
+        break
+# >>> 1
+```
+
+The above code would usually give an infinite loop, but the break statement prevents that from happening.
 
 ---
 

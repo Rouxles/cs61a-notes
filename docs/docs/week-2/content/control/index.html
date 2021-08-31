@@ -16,7 +16,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.b611cc65edf4b2d0e1b09d5a20a3a0b52b6f869bbbf8c262bf367768cd6bfb79.js" integrity="sha256-thHMZe30stDhsJ1aIKOgtStvhpu7&#43;MJivzZ3aM1r&#43;3k=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.dcf0ea9f1f19a9beaf51cbf3b26b965ebc2a8ba320e5eb46e31aa80186db17db.js" integrity="sha256-3PDqnx8Zqb6vUcvzsmuWXrwqi6Mg5etG4xqoAYbbF9s=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -190,11 +190,25 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#the-none-value">The &lsquo;None&rsquo; Value</a></li>
     <li><a href="#nested-print-statements">Nested Print Statements</a></li>
     <li><a href="#default-arguments">Default Arguments</a></li>
-    <li><a href="#boolean">Boolean</a></li>
-    <li><a href="#compound-statement">Compound Statement</a></li>
+    <li><a href="#multiple-return-values">Multiple Return Values</a>
+      <ul>
+        <li><a href="#multiple-variable-assignment">Multiple Variable Assignment</a></li>
+      </ul>
+    </li>
+    <li><a href="#boolean">Boolean</a>
+      <ul>
+        <li><a href="#comparison-operators">Comparison Operators</a></li>
+        <li><a href="#logical-operators">Logical Operators</a></li>
+      </ul>
+    </li>
+    <li><a href="#statements">Statements</a>
+      <ul>
+        <li><a href="#compound-statements">Compound Statements</a></li>
+      </ul>
+    </li>
     <li><a href="#while-loop">While Loop</a>
       <ul>
-        <li><a href="#using-a-counter-variable">Using a Counter Variable</a></li>
+        <li><a href="#break-statement">Break Statement</a></li>
       </ul>
     </li>
   </ul>
@@ -304,26 +318,213 @@ print(<span style="color:#66d9ef">None</span>, <span style="color:#66d9ef">None<
   Default Arguments
   <a class="anchor" href="#default-arguments">#</a>
 </h2>
-<hr>
+<p>In the function signature, one of the inputs can have a <strong>default value</strong>. This is useful in situations where there is a most likely case for a function, but where it still makes sense for users to have some control.</p>
+<p>For example, the default <code>round()</code> function in Python takes in 1 required parameter, with 1 optional parameter (which defaults to 0).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">round(<span style="color:#ae81ff">2.5342</span>) <span style="color:#75715e"># &gt;&gt;&gt; 3</span>
+round(<span style="color:#ae81ff">2.5342</span>, <span style="color:#ae81ff">2</span>) <span style="color:#75715e"># &gt;&gt;&gt; 2.53</span>
+</code></pre></div><p>You can build your own function with default arguments by simply specifying it in the header.</p>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ben</span>(baron, box<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tao&#34;</span>):
+    <span style="color:#66d9ef">return</span> baron <span style="color:#f92672">+</span> box
+
+ben(<span style="color:#e6db74">&#34;baron&#34;</span>) <span style="color:#75715e"># &gt;&gt;&gt; &#39;barontao&#39;</span>
+ben(<span style="color:#e6db74">&#34;baron&#34;</span>, <span style="color:#e6db74">&#34;hej&#34;</span>) <span style="color:#75715e"># &gt;&gt;&gt; &#39;baronhej&#39;</span>
+</code></pre></div><p>Without the second optional parameter <code>hej</code>, the function defaulted to the value <code>tao</code>.</p>
+<p>If you have multiple default arguments, you can also override them in this way:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ben</span>(baron, box<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;tao&#34;</span>, foo<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;baz&#34;</span>):
+    <span style="color:#66d9ef">return</span> baron <span style="color:#f92672">+</span> box <span style="color:#f92672">+</span> foo
+
+ben(<span style="color:#e6db74">&#34;baron&#34;</span>, foo<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yu&#34;</span>) <span style="color:#75715e"># &gt;&gt;&gt; barontaoyu</span>
+
+ben(<span style="color:#e6db74">&#34;baron&#34;</span>, box<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;yu&#34;</span>) <span style="color:#75715e"># &gt;&gt;&gt; baronyubaz</span>
+</code></pre></div><hr>
+<h2 id="multiple-return-values">
+  Multiple Return Values
+  <a class="anchor" href="#multiple-return-values">#</a>
+</h2>
+<p>One aspect of Python uncommon in other languages is the allowed use of multiple return values in functions. This can be done in a function by using multiple return values separated by a comma.</p>
+<p>Any code that calls the function can either store it in a variable as a <em>tuple</em> (more on this later) or can be <em>unpacked</em>. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">return_two_values</span>():
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>
+
+return_two_values() <span style="color:#75715e"># &gt;&gt;&gt; (1, 2) in tuple form</span>
+
+a, b <span style="color:#f92672">=</span> return_two_values() 
+a <span style="color:#75715e"># &gt;&gt;&gt; 1</span>
+b <span style="color:#75715e"># &gt;&gt;&gt; 2</span>
+</code></pre></div><h3 id="multiple-variable-assignment">
+  Multiple Variable Assignment
+  <a class="anchor" href="#multiple-variable-assignment">#</a>
+</h3>
+<p>The values on the right side are evaluated first before being assigned, so you can swap the values of two variables in one line by simply doing the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x, y <span style="color:#f92672">=</span> y, x
+</code></pre></div><hr>
 <h2 id="boolean">
   Boolean
   <a class="anchor" href="#boolean">#</a>
 </h2>
-<p>A Boolean is a value that is either <code>True</code> or <code>False</code></p>
-<hr>
-<h2 id="compound-statement">
-  Compound Statement
-  <a class="anchor" href="#compound-statement">#</a>
+<p>A Boolean is a value that is either <code>True</code> or <code>False</code>, and is used frequently in many applications. For example, your mobile device would likely have a Boolean variable that stores whether your WiFi, flashlight, bluetooth etc. is turned on.</p>
+<p>An expression can evaluate to a Boolean. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">passed_class <span style="color:#f92672">=</span> grade <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">70</span> <span style="color:#75715e"># Will evaluate either true or false depending on the condition</span>
+
+take_shower <span style="color:#f92672">=</span> (<span style="color:#f92672">not</span> eecs_major) <span style="color:#f92672">or</span> did_sports
+</code></pre></div><h3 id="comparison-operators">
+  Comparison Operators
+  <a class="anchor" href="#comparison-operators">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Operator</th>
+<th style="text-align:left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>==</code></td>
+<td style="text-align:left">Equality</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>!=</code></td>
+<td style="text-align:left">Inequality</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&gt;</code></td>
+<td style="text-align:left">Greater Than</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;</code></td>
+<td style="text-align:left">Less Than</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&gt;=</code></td>
+<td style="text-align:left">Greater Than or Equals</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;=</code></td>
+<td style="text-align:left">Less Than or Equals</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="book-hint danger">
+  <strong>Checking for Equality</strong>
+It is a common mistake to use <code>=</code> instead of <code>==</code> to check for equality. Please remember that <code>=</code> is for assigning a variable and cannot be used for checking for equality in a conditional statement. Python will throw a syntax error, but other languages may not, so not mixing these up is a good habit to get used to.
+</blockquote>
+
+<h3 id="logical-operators">
+  Logical Operators
+  <a class="anchor" href="#logical-operators">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Operator</th>
+<th style="text-align:left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>and</code></td>
+<td style="text-align:left">Evaluates to <code>True</code> if both values are <code>True</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>or</code></td>
+<td style="text-align:left">Evaluates to <code>True</code> if any of the values are <code>True</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>not</code></td>
+<td style="text-align:left">Evaluates to <code>True</code> if the value is <code>False</code>, else evaluates to <code>True</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="execution-rules-of-logical-operators">
+  Execution rules of logical operators
+  <a class="anchor" href="#execution-rules-of-logical-operators">#</a>
+</h4>
+<p>The statements are evaluated from left to right, but sometimes, these statements do not all need to be evaluated.</p>
+<p><code>and</code> statement procedure:</p>
+<ol>
+<li>Evaluate the left statement</li>
+<li>If it evaluates to a <code>False</code> value <code>x</code>, the expression evaluates to <code>x</code></li>
+<li>Else, the expression evaluates to the value of the expression on the right.</li>
+</ol>
+<p><code>or</code> statement procedure:</p>
+<ol>
+<li>Evaluate the left statement</li>
+<li>If it evaluates to a <code>True</code> value <code>x</code> the expression evaluates to <code>x</code></li>
+<li>Else, the expression evaluates to the value of the expression on the right.</li>
+</ol>
+<p>This procedure functions using just Booleans, but strange things occur when you use other values instead.</p>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#ae81ff">5</span> <span style="color:#f92672">and</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e"># &gt;&gt;&gt; 2</span>
+<span style="color:#ae81ff">5</span> <span style="color:#f92672">or</span> <span style="color:#ae81ff">2</span> <span style="color:#75715e"># &gt;&gt;&gt; 5</span>
+<span style="color:#f92672">not</span> <span style="color:#ae81ff">5</span> <span style="color:#75715e"># &gt;&gt;&gt; False</span>
+<span style="color:#f92672">not</span> <span style="color:#ae81ff">0</span> <span style="color:#75715e"># &gt;&gt;&gt; True</span>
+</code></pre></div><p>For the <code>and</code> and <code>or</code> operators, numbers were returned rather than Booleans due to the procedure of evaluating these logical statements.</p>
+<p>There is an order of operations for Booleans (<code>not</code> → <code>and</code> → <code>or</code>), but generally, use brackets to make your statements clearer.</p>
+<p>You can use these expressions in functions as the return value. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">boolean_example</span>():
+    <span style="color:#66d9ef">return</span> is_ben <span style="color:#f92672">or</span> is_tao <span style="color:#75715e"># This will return either True or False depending on the Boolean expression.</span>
+</code></pre></div><hr>
+<h2 id="statements">
+  Statements
+  <a class="anchor" href="#statements">#</a>
 </h2>
-<hr>
+<p>A statement is executed to perform an action</p>
+<h3 id="compound-statements">
+  Compound Statements
+  <a class="anchor" href="#compound-statements">#</a>
+</h3>
+<p>A compound statement is a statement that contains groups of other statements.</p>
+<p>One example of which are <strong>conditional statements</strong>, which give your code a way to execute a different suite of statements based on whether conditions are met</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">if</span> <span style="color:#f92672">&lt;</span>condition<span style="color:#f92672">&gt;</span>:
+    this_may_be_executed(<span style="color:#ae81ff">1</span>)
+<span style="color:#66d9ef">elif</span> <span style="color:#f92672">&lt;</span>condition_2<span style="color:#f92672">&gt;</span>:
+    this_may_be_executed(<span style="color:#ae81ff">2</span>)
+<span style="color:#66d9ef">else</span>:
+    this_may_be_executed(<span style="color:#ae81ff">3</span>)
+</code></pre></div><p>An <code>if</code> statement looks like the code above. The block indented after the <code>if</code>, <code>elif</code>, and <code>else</code> statements only get executed if the code directs it to.</p>
+<p>For instance, if <code>&lt;condition&gt;</code> were <code>True</code>, then <code>this_may_be_executed(1)</code> is the only statement that gets evaluated, and the ones in the other blocks are skipped over.</p>
+<p>If <code>&lt;condition_2&gt;</code> were <code>True</code>, then <code>this_may_be_executed(2)</code> is the only statement that gets evaluated.</p>
+<p>If both <code>&lt;condition&gt;</code> and <code>&lt;condition_2&gt;</code> are <code>False</code>, then <code>this_may_be_executed(3)</code> is evaluated.</p>
+<p>This means that the code does not get executed unless certain conditions are met, which is <strong>different from call expressions</strong> where every operand gets evaluated. (This property is important for some questions)</p>
+<p>Additionally, this also allows for multiple return statements in functions because only that specific block gets executed, rather than every block.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">returning_conditional</span>(x):
+    <span style="color:#66d9ef">if</span> x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;positive&#34;</span>
+    <span style="color:#66d9ef">if</span> x <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;negative&#34;</span>
+    <span style="color:#66d9ef">if</span> x <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;neutral&#34;</span>
+</code></pre></div><hr>
 <h2 id="while-loop">
   While Loop
   <a class="anchor" href="#while-loop">#</a>
 </h2>
-<h3 id="using-a-counter-variable">
-  Using a Counter Variable
-  <a class="anchor" href="#using-a-counter-variable">#</a>
+<p>A <code>while</code> loop in Python executes a block of code as long as a condition is true. This loop keeps on getting checked after each iteration.</p>
+<p>One problem of a <code>while</code> loop is that an <strong>infinite loop</strong> can easily occur if you aren&rsquo;t careful.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">counter <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">while</span> counter <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>:
+    print(counter)
+    counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    &gt; 1
+</span><span style="color:#e6db74">    &gt; 2
+</span><span style="color:#e6db74">    &gt; 3
+</span><span style="color:#e6db74">    &gt; 4
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+</code></pre></div><p>In the example above, <code>5</code> does not get printed because during that iteration, the <code>counter</code> variable is already <code>5</code>, and the conditional <code>5</code> &lt; <code>5</code> returns <code>False</code>.</p>
+<p>A <code>while</code> loop is very useful if you do not know how many repeats of the code you need to do, while a <code>for</code> loop (explained on another page) is better if you know how many loops to do.</p>
+<h3 id="break-statement">
+  Break Statement
+  <a class="anchor" href="#break-statement">#</a>
 </h3>
+<p>If you ever want to prematurely leave a code block, you can use the <code>break</code> keyword.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+        print(<span style="color:#ae81ff">1</span>)
+        <span style="color:#66d9ef">break</span>
+<span style="color:#75715e"># &gt;&gt;&gt; 1</span>
+</code></pre></div><p>The above code would usually give an infinite loop, but the break statement prevents that from happening.</p>
 <hr>
 </article>
  
@@ -375,11 +576,25 @@ print(<span style="color:#66d9ef">None</span>, <span style="color:#66d9ef">None<
     <li><a href="#the-none-value">The &lsquo;None&rsquo; Value</a></li>
     <li><a href="#nested-print-statements">Nested Print Statements</a></li>
     <li><a href="#default-arguments">Default Arguments</a></li>
-    <li><a href="#boolean">Boolean</a></li>
-    <li><a href="#compound-statement">Compound Statement</a></li>
+    <li><a href="#multiple-return-values">Multiple Return Values</a>
+      <ul>
+        <li><a href="#multiple-variable-assignment">Multiple Variable Assignment</a></li>
+      </ul>
+    </li>
+    <li><a href="#boolean">Boolean</a>
+      <ul>
+        <li><a href="#comparison-operators">Comparison Operators</a></li>
+        <li><a href="#logical-operators">Logical Operators</a></li>
+      </ul>
+    </li>
+    <li><a href="#statements">Statements</a>
+      <ul>
+        <li><a href="#compound-statements">Compound Statements</a></li>
+      </ul>
+    </li>
     <li><a href="#while-loop">While Loop</a>
       <ul>
-        <li><a href="#using-a-counter-variable">Using a Counter Variable</a></li>
+        <li><a href="#break-statement">Break Statement</a></li>
       </ul>
     </li>
   </ul>
