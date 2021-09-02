@@ -16,6 +16,15 @@
     </item>
     
     <item>
+      <title>Higher Order Functions</title>
+      <link>https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/</guid>
+      <description>Higher Order Functions#Designing Functions#Describing Functions#   Aspect Example     The domain of a function is the expected range of inputs (similarly to a domain in mathematics) x is a string.   The range of a function is the set of output values that could be returned Function square returns a non-negative number.   The behavior of a (pure) function is the relationship between the input and the output Function square returns the square of an input x.</description>
+    </item>
+    
+    <item>
       <title>Introduction to the Basics of Python</title>
       <link>https://cs61a.rouxl.es/docs/week-1/content/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
