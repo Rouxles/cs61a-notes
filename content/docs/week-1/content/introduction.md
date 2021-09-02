@@ -75,6 +75,7 @@ add(10, 69)
 Python will first evaluate the **operator** (`and`), then will evaluate the **operands** (`10`, then `69`), then apply the operator (function) to the operands (arguments), in that order, which can be summarized as follows:
 
 1. Evaluate the operator
+   1. Usually this means check to see if it exists, but the operator itself may be a function in some situations.
 2. Evaluate the operand(s)
 3. Apply the operator to the operand(s)
 
