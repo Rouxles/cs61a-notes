@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Environment Diagrams#Environment Diagrams are a good way to visualize how Python deals with its execution, and can also help you to visualize how more complicated pieces of code (e.g. Higher Order Functions) work.
+PyTutor has a way of converting from code to environment diagrams, so please use that as a resource! The diagrams below are not going to match those from PyTutor exactly due to Markdown constraints, but I will try to emulate them as well as possible.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Environment Diagrams" />
+<meta property="og:description" content="Environment Diagrams#Environment Diagrams are a good way to visualize how Python deals with its execution, and can also help you to visualize how more complicated pieces of code (e.g. Higher Order Functions) work.
+PyTutor has a way of converting from code to environment diagrams, so please use that as a resource! The diagrams below are not going to match those from PyTutor exactly due to Markdown constraints, but I will try to emulate them as well as possible." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cs61a.rouxl.es/docs/week-2/content/environment/" /><meta property="article:section" content="docs" />
+
+
+
+<title>Environment Diagrams | CS61A-Notes</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.9ec2112a00fb93a1f4eaa222fea6bfcb540bd1419d6d391316f19101aabad31c.js" integrity="sha256-nsIRKgD7k6H06qIi/qa/y1QL0UGdbTkTFvGRAaq60xw=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>CS61A-Notes</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Week 1</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cs61a.rouxl.es/docs/week-1/content/introduction/" class="">Introduction to the Basics of Python</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Week 2</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cs61a.rouxl.es/docs/week-2/content/control/" class="">Control</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/" class="">Higher Order Functions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cs61a.rouxl.es/docs/week-2/content/environment/" class=" active">Environment Diagrams</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Environment Diagrams</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#variable-assignment">Variable Assignment</a></li>
+    <li><a href="#function-assignment">Function Assignment</a>
+      <ul>
+        <li><a href="#confusing-function-assignment-example">Confusing Function Assignment Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#call-expressions">Call Expressions</a>
+      <ul>
+        <li><a href="#nested-call-expression">Nested Call Expression</a></li>
+      </ul>
+    </li>
+    <li><a href="#names-in-environments">Names in Environments</a></li>
+    <li><a href="#environment-diagrams-for-higher-order-functions">Environment Diagrams for Higher-order Functions</a>
+      <ul>
+        <li><a href="#hof-takes-a-function-as-an-argument">HOF: Takes a function as an argument</a></li>
+        <li><a href="#hof-nested-environment-diagrams">HOF: Nested Environment Diagrams</a></li>
+      </ul>
+    </li>
+    <li><a href="#self-referencing-functions">Self-Referencing Functions</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="environment-diagrams">
+  Environment Diagrams
+  <a class="anchor" href="#environment-diagrams">#</a>
+</h1>
+<p>Environment Diagrams are a good way to visualize how Python deals with its execution, and can also help you to visualize how more complicated pieces of code (e.g. Higher Order Functions) work.</p>
+<p><a href="https://pythontutor.com/composingprograms.html#mode=edit">PyTutor</a> has a way of converting from code to environment diagrams, so please use that as a resource! The diagrams below are not going to match those from PyTutor exactly due to <code>Markdown</code> constraints, but I will try to emulate them as well as possible.</p>
+<h2 id="variable-assignment">
+  Variable Assignment
+  <a class="anchor" href="#variable-assignment">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+y <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</code></pre></div><p>When the code block above is run, the value <code>2</code> will be assigned to the name <code>x</code>, and afterwards, the value <code>5</code> will be assigned to the name <code>y</code>, which can be seen in an environment diagram like the one below:</p>
+
+
+<script src="/mermaid.min.js"></script>
+
+  <script>mermaid.initialize({
+  "flowchart": {
+    "useMaxWidth":true
+  },
+  "theme": "dark"
+}
+)</script>
+
+
+
+
+<p class="mermaid">
+    graph LR;
+    subgraph Global Frame
+    x --- 2
+    y --- 5
+    end
+</p>
+
+<p>In each <code>frame</code>, there can only be one name bound to one value - it is not possible to have one name point to two different values.</p>
+<h2 id="function-assignment">
+  Function Assignment
+  <a class="anchor" href="#function-assignment">#</a>
+</h2>
+<p>Functions are notated differently to variables due to the potential need to overwrite a binding without losing the value of a function somewhere else (will make sense later).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">square</span>(n):
+    <span style="color:#66d9ef">return</span> n<span style="color:#f92672">*</span>n
+
+square(<span style="color:#ae81ff">3</span>)
+</code></pre></div><p>This will be executed in two different steps: creating the function, then executing the function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">square</span>(n):
+    <span style="color:#66d9ef">return</span> n<span style="color:#f92672">*</span>n
+</code></pre></div>
+
+<p class="mermaid">
+    graph LR;
+    subgraph Global Frame
+    square --> id1["func square(x) [parent = Global]"]
+    end
+</p>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">square(<span style="color:#ae81ff">3</span>)
+</code></pre></div><p>When a function is called, a <strong>new frame is created</strong>, leading to another environment for Python to execute code from. Note that an environment variable only needs the <strong>function name, parameter(s), and parent frame</strong> in the environment diagram.</p>
+
+
+<p class="mermaid">
+    graph LR;
+    subgraph Global Frame
+    square --> id1["func square(x) [parent = Global]"]
+    end
+    subgraph "f1: square [parent = Global]"
+    n --- 3
+    id2[Return Value] --- 9
+    end   
+</p>
+
+<p>As can be seen in the environment diagram above, a new unique frame <code>f1</code> is created, which has all the passed in parameters (in this case, just <code>n = 3</code>) stored. Then, when the return statement is reached, it simply evaluates the right side of the return statement (in this case <code>n*n</code>), then returns that value (<code>9</code>)</p>
+<h3 id="confusing-function-assignment-example">
+  Confusing Function Assignment Example
+  <a class="anchor" href="#confusing-function-assignment-example">#</a>
+</h3>
+<p>(Taken from Fall 2021 Discussion 1)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double</span>(x):
+    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">triple</span>(x):
+    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>
+
+hat <span style="color:#f92672">=</span> double
+double <span style="color:#f92672">=</span> triple
+</code></pre></div><p>The functions <code>double</code> and <code>triple</code>&rsquo;s environment diagrams are pretty self-explanatory, but the next two statements <code>hat = double</code> and <code>double = triple</code> are slightly more confusing. Let&rsquo;s break it down:</p>
+
+
+<p class="mermaid">
+    graph LR;
+    subgraph Global Frame
+    double --> double_function["func double(x) [parent = Global]"]
+    triple --> triple_function["func triple(x) [parent = Global]"]
+    end
+</p>
+
+<p>What would happen with <code>hat</code>? In this case, it points to the function <code>double(x)</code> rather than the name <code>double</code> itself. This means that <code>hat</code> becomes a <strong>copy of</strong> <code>double</code> rather than acting as <code>double</code>. Take a look at the environment diagram below:</p>
+
+
+<p class="mermaid">
+    graph LR;
+    subgraph Global Frame
+    double --> double_function["func double(x) [parent = Global]"]
+    triple --> triple_function["func triple(x) [parent = Global]"]
+    hat --> double_function
+    end
+</p>
+
+<p>Both <code>double</code> and <code>hat</code> point to the same function <code>double(x)</code>!</p>
+<p>Now, what would happen with <code>double = triple</code>? You can simply extrapolate the actions above, but quite simply, the pointers change.</p>
+
+
+<p class="mermaid">
+    graph LR;
+    subgraph Global Frame
+    double --> triple_function
+    triple --> triple_function["func triple(x) [parent = Global]"]
+    hat --> double_function["func double(x) [parent = Global]"]
+    end
+</p>
+
+<p>This means that you can still call the <code>double(x)</code> function through <code>hat</code>, but you can no longer call it through <code>double</code>. Additionally, even when <code>double</code> was overwritten, the function <code>double(x)</code> itself was not deleted!</p>
+<h2 id="call-expressions">
+  Call Expressions
+  <a class="anchor" href="#call-expressions">#</a>
+</h2>
+<p>The important thing to note is that when executing call expressions, a new frame is created to keep track of local variables. The order of operations is as follows:</p>
+<ol>
+<li>Evaluate the operator - this should evaluate to a function.</li>
+<li>Evaluate the operands from left to right.</li>
+<li>Make a new frame with:
+<ol>
+<li>A <strong>unique</strong> index</li>
+<li>The real name of the function (not the name of the variable pointing to it) (for example, for <code>double(n)</code>)</li>
+<li>The parent frame</li>
+</ol>
+</li>
+<li>Bind values to names in this new frame.</li>
+<li>Evaluate the function in this new frame until a return value is obtained.</li>
+</ol>
+<p>Example from Fall 2021 Discussion 1:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double</span>(x):
+    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>
+
+hmmm <span style="color:#f92672">=</span> double
+wow <span style="color:#f92672">=</span> double(<span style="color:#ae81ff">3</span>)
+hmmm(wow)
+</code></pre></div>
+
+<p class="mermaid">
+    graph LR;
+    subgraph Global Frame
+    double --> double_function["func double(x) [parent = Global]"]
+    hmm --> double_function
+    end
+</p>
+
+<p>After the function <code>double(x)</code> is bound to a name, and <code>hmm</code> is bound to that function, we create a new frame to evaluate <code>wow = double(3)</code>.</p>
+<p>When evaluating that statement, the right side is evaluated before being assigned to the name on the left side. As a result, <code>wow</code> will not appear in the environment diagram until <strong>after</strong> the return value is created.</p>
+
+
+<p class="mermaid">
+    graph LR;
+    subgraph Global Frame
+    double --> double_function["func double(x) [parent = Global]"]
+    hmm --> double_function
+    wow -- "(After the return value below is evaluated)" --- outer[6]
+    end
+    subgraph "f1: double(x) [parent = Global]"
+    x --- 3
+    return[Return Value] --- 6
+    end
+</p>
+
+<p>Afterwards, <code>hmmm(wow)</code> is called, which is essentially the same thing as doing <code>hmmm(6)</code>. As <code>hmmm</code> is pointing to <code>func double(x) [parent = Global]</code>, it will run that function, passing in the parameter <code>6</code>. However, because this is a new function, a new frame will be created.</p>
+
+
+<p class="mermaid">
+    graph LR;
+    subgraph Global Frame
+    double --> double_function["func double(x) [parent = Global]"]
+    hmm --> double_function
+    wow -- "(After the return value below is evaluated)" --- outer[6]
+    end
+    subgraph "f1: double(x) [parent = Global]"
+    x --- 3
+    return[Return Value] --- 6
+    end
+    subgraph "f2: double(x) [parent = Global]"
+    f2-x[x] --- f2-6[6]
+    f2-return[Return Value] --- f2-return-value[12]
+    end
+</p>
+
+<h3 id="nested-call-expression">
+  Nested Call Expression
+  <a class="anchor" href="#nested-call-expression">#</a>
+</h3>
+<p>Environment diagrams can also help visualize how to deal with nested call expressions.</p>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double</span>(x):
+    <span style="color:#66d9ef">return</span> x<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>
+
+result <span style="color:#f92672">=</span> double(double(<span style="color:#ae81ff">2</span>))
+</code></pre></div><p>How would this look in an environment diagram?</p>
+<p>First, the inner <code>double(2)</code> gets evaluated, so a frame is created for that, then the return value from that is used in the outer function, so another frame is created for that.</p>
+
+
+<p class="mermaid">
+    graph LR;
+    subgraph Global Frame
+    double --> double_function["func double(x) [parent = Global]"]
+    end
+    subgraph "f1: double(x) [parent = Global]"
+    f1-x[x] --- f1-2[2]
+    f1-rv[Return Value] --- f1-r[4]
+    end
+</p>
+
+<p>After the inner function is evaluated, the return value is then passed into the function to be run again in another frame:</p>
+
+
+<p class="mermaid">
+    graph LR;
+    subgraph Global Frame
+    double --> double_function["func double(x) [parent = Global]"]
+    end
+    subgraph "f1: double(x) [parent = Global]"
+    f1-x[x] --- f1-2[2]
+    f1-rv[Return Value] --- f1-r[4]
+    end
+    subgraph "f2: double(x) [parent = Global]"
+    f2-x[x] --- f2-4[4]
+    f2-rv[Return Value] --- f2-r[8]
+    end
+</p>
+
+<blockquote class="book-hint info">
+  <strong>Note:</strong> Both of the parents of the function are the global frame because the function itself is called, and that is located inside the parent frame.
+</blockquote>
+
+<h2 id="names-in-environments">
+  Names in Environments
+  <a class="anchor" href="#names-in-environments">#</a>
+</h2>
+<p>Names have different meanings in different environments!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double</span>(double):
+    <span style="color:#66d9ef">return</span> double <span style="color:#f92672">+</span> double
+
+double(<span style="color:#ae81ff">2</span>)
+</code></pre></div><p><strong>Please do not write code like this.</strong> It is merely a demonstration of how names and environments interact.</p>
+
+
+<p class="mermaid">
+graph LR;
+subgraph Global Frame
+global_double[double] --> glob_double_function["func double(double) [parent = Global]"]
+end
+subgraph "f1: double(double) [parent = Global]"
+f1_double[double] --- 2
+f1_r[Return Value] --- 4
+end
+</p>
+
+<p>Notice how the different environment frames allow for the name <code>double</code> to exist twice with different assignments.</p>
+<h2 id="environment-diagrams-for-higher-order-functions">
+  Environment Diagrams for Higher-order Functions
+  <a class="anchor" href="#environment-diagrams-for-higher-order-functions">#</a>
+</h2>
+<p>Note that functions are <strong>first class</strong> in Python - they act the same as values.</p>
+<h3 id="hof-takes-a-function-as-an-argument">
+  HOF: Takes a function as an argument
+  <a class="anchor" href="#hof-takes-a-function-as-an-argument">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_twice</span>(func, <span style="color:#f92672">*</span>args):
+    <span style="color:#66d9ef">return</span> func(func(<span style="color:#f92672">*</span>args))
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double</span>(x):
+    <span style="color:#66d9ef">return</span> x<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>
+
+double_double <span style="color:#f92672">=</span> run_twice(double(<span style="color:#ae81ff">2</span>))
+</code></pre></div><p>What <code>*args</code> does here is simply allow for a flexible number of arguments to be passed in rather than a set number - allows for more flexibility even though it doesn&rsquo;t do much here.</p>
+
+
+<p class="mermaid">
+graph LR;
+subgraph Global Frame
+global_run_twice[run_twice] --> global_run_twice_function["func run_twice(func, *args) [parent = Global]"]
+global_double[double] --> global_double_function["func double(x) [parent = Global]"]
+end
+</p>
+
+<p>After assigning the functions to the names, we get the environment diagram seen above. To evaluate <code>double_double = run_twice(double(2))</code>, you have to remember the order of operations for call functions. First, evaluate the operators (make sure it exists/is not a higher order function), then evaluate the operands, then apply the operator to the operands.</p>
+<p>In this context it means that <code>run_twice</code> is evaluated first with the proper pointers, then <code>double</code> is run after that is done.</p>
+
+
+<p class="mermaid">
+graph LR;
+subgraph Global Frame
+global_run_twice[run_twice] --> global_run_twice_function["func run_twice(func, *args) [parent = Global]"]
+global_double[double] --> global_double_function["func double(x) [parent = Global]"]
+end
+subgraph "f1: run_twice(func, *args) [parent = Global]"
+f1_func[func] --> global_double_function
+f1_args[args] --- 3
+end
+subgraph "f2: double(x) [parent = Global]"
+f2_x[x] --- f2_3[3]
+f2_r[Return Value] --- 6
+end
+</p>
+
+<p>Afterwards, we get the following:</p>
+
+
+<p class="mermaid">
+graph LR;
+subgraph Global Frame
+global_run_twice[run_twice] --> global_run_twice_function["func run_twice(func, *args) [parent = Global]"]
+global_double[double] --> global_double_function["func double(x) [parent = Global]"]
+global_double_double[double_double] --- global_12[12]
+end
+subgraph "f1: run_twice(func, *args) [parent = Global]"
+f1_func[func] --> global_double_function
+f1_args[args] --- 3
+f1_r[Return Value] -- "(Only after f3's return value is evaluated)" --- f1_rv[12]
+end
+subgraph "f2: double(x) [parent = Global]"
+f2_x[x] --- f2_3[3]
+f2_r[Return Value] --- 6
+end
+subgraph "f3: double(x) [parent = Global]"
+f3_x[x] --- f3-6[6]
+f3_r[Return Value] --- f3_rv[12]
+end
+</p>
+
+<p>These environment diagrams do get somewhat complicated.</p>
+<h3 id="hof-nested-environment-diagrams">
+  HOF: Nested Environment Diagrams
+  <a class="anchor" href="#hof-nested-environment-diagrams">#</a>
+</h3>
+<p>Notice how the parent for functions was always <code>Global</code>? Well with nested environment diagrams, you&rsquo;ll finally see a situation where the parent isn&rsquo;t always <code>Global</code>!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_adder</span>(n):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">adder</span>(x):
+        <span style="color:#66d9ef">return</span> x <span style="color:#f92672">+</span> n
+    <span style="color:#66d9ef">return</span> adder
+
+add_3 <span style="color:#f92672">=</span> make_adder(<span style="color:#ae81ff">3</span>)
+add_3(<span style="color:#ae81ff">2</span>)
+</code></pre></div>
+
+<p class="mermaid">
+graph LR;
+subgraph "f2: adder(x) [parent = f1]"
+f2_n[x] --- f2-5[5]
+f2_r[Return Value] --- f2-rv[5]
+end
+subgraph "f1: make_adder(n) [parent = Global]"
+f1_n[n] --- 3
+f1_adder[adder] --> f1_adder_f["func adder(x) [parent = f1]"]
+f1_r[Return Value] --- f1_adder_f
+end
+subgraph Global Frame
+g_make_adder[make_adder] --> g_made_adder_f["func make_adder(n) [parent = Global]"]
+g_add_3[add_3] --> f1_adder_f
+end
+</p>
+
+<p>After the code has finished executing, we can see that the environment diagram. There are some points to take note of.</p>
+<h4 id="variable-finding-procedure">
+  Variable Finding Procedure
+  <a class="anchor" href="#variable-finding-procedure">#</a>
+</h4>
+<p>This was briefly mentioned in an earlier post, but the order is as follows:</p>
+<ol>
+<li>Find name in local frame</li>
+<li>If that could not be found, search one parent up and see if they have the name in that frame.</li>
+<li>Repeat until there are no more parent frames. If nothing could be found, throw an error</li>
+</ol>
+<p>Why is this important?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_adder</span>(n):
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">adder</span>(x):
+        <span style="color:#66d9ef">return</span> x <span style="color:#f92672">+</span> n <span style="color:#75715e"># Important on this line</span>
+    <span style="color:#66d9ef">return</span> adder
+</code></pre></div><p>As you can see, the variable <code>n</code> is not located within the actual code body of <code>adder</code>, meaning that the program would not be able to execute the function if it were only allowed to search from its local frame. <code>adder</code>&rsquo;s parent is <code>make_adder</code> (and its parent frame is <code>Global</code>), meaning that when <code>adder</code> is run as a function, it can search for a specific variable in its own frame, its parent frame after that (<code>make_adder</code>), and the parent of its parent (<code>Global</code>)</p>
+<p>Here&rsquo;s a good exercise to test your understanding (Taken from lecture 5 of Fall 2021):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">thingy</span>(x, y):
+    <span style="color:#66d9ef">return</span> bobber(y)
+        
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">bobber</span>(a):
+    <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> y
+
+result <span style="color:#f92672">=</span> thingy(<span style="color:#e6db74">&#34;ma&#34;</span>, <span style="color:#e6db74">&#34;jig&#34;</span>)
+</code></pre></div><p>What would be returned here?</p>
+<p>Spoiler: It&rsquo;s an error. Why? Let&rsquo;s make an environment diagram.</p>
+
+
+<p class="mermaid">
+graph LR;
+subgraph Global Frame
+g_thingy[thingy] --> g_thingy_f["func thingy(x, y) [parent = Global]"]
+g_bobber[bobber] --> g_bobber_f["func bobber(a) [parent = Global]"]
+end
+subgraph "f1: thingy(x, y) [parent = Global]"
+f1_x[x] --- f1_ma["ma"]
+f1_y[y] --- f1_jig["jig"]
+end
+subgraph "f2: bobber(a) [parent = Global]"
+f2_a[a] --- f2["jig"]
+end
+</p>
+
+<p>Notice how <code>f2</code> only has the variable <code>a</code> that it can access in its environment, and the variable <code>y</code> cannot be found within its own environment, nor can it be found in any parent after that (which in this case would just be <code>Global Frame</code>). As a result, this throws an error because a name could not be found.</p>
+<h2 id="self-referencing-functions">
+  Self-Referencing Functions
+  <a class="anchor" href="#self-referencing-functions">#</a>
+</h2>
+<p>A higher order function could return a function that references its own name. Take this for example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print_sums</span>(n):
+    print(n)
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">next_sum</span>(k):
+        <span style="color:#66d9ef">return</span> print_sums(n <span style="color:#f92672">+</span> k)
+    <span style="color:#66d9ef">return</span> next_sum
+
+print_sums(<span style="color:#ae81ff">1</span>)(<span style="color:#ae81ff">3</span>)
+</code></pre></div><p>This is quite complicated to read but understanding it is well worth the cost.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#variable-assignment">Variable Assignment</a></li>
+    <li><a href="#function-assignment">Function Assignment</a>
+      <ul>
+        <li><a href="#confusing-function-assignment-example">Confusing Function Assignment Example</a></li>
+      </ul>
+    </li>
+    <li><a href="#call-expressions">Call Expressions</a>
+      <ul>
+        <li><a href="#nested-call-expression">Nested Call Expression</a></li>
+      </ul>
+    </li>
+    <li><a href="#names-in-environments">Names in Environments</a></li>
+    <li><a href="#environment-diagrams-for-higher-order-functions">Environment Diagrams for Higher-order Functions</a>
+      <ul>
+        <li><a href="#hof-takes-a-function-as-an-argument">HOF: Takes a function as an argument</a></li>
+        <li><a href="#hof-nested-environment-diagrams">HOF: Nested Environment Diagrams</a></li>
+      </ul>
+    </li>
+    <li><a href="#self-referencing-functions">Self-Referencing Functions</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
