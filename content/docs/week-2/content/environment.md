@@ -444,3 +444,101 @@ print_sums(1)(3)
 ```
 
 This is quite complicated to read but understanding it is well worth the cost.
+
+As you can see above, the `next_sum` function with parent `print_sums` returns `print_sums` itself, meaning that it's a function that references itself, hence being self-referential.
+
+Let's try to make an environment diagram for that:
+
+{{<mermaid>}}
+graph LR;
+subgraph Global Frame
+g_print_sums[print_sums] --> g_print_sums_f["func print_sums(n) [parent = Global]"]
+end
+subgraph "f1: print_sums(n) [parent = Global]"
+f1_n[n] --- 1
+f1_next_sum[next_sum] --> f1_next_sum_f["func next_sum(k) [parent = f1]"]
+f1_r[Return Value] --> f1_next_sum_f
+end
+{{</mermaid>}}
+
+After `f1` has been evaluated, we can see that the return value of `f1` returns a function. Now looking at the `print_sums(1)(3)` statement, we can see that `print_sums(1)` evaluated to a function, meaning that you now have something equivalent to `next_sum(3)`, and the value of `n` in that function can be found by looking at its parent frame.
+
+{{<mermaid>}}
+graph LR;
+subgraph Global Frame
+g_print_sums[print_sums] --> g_print_sums_f["func print_sums(n) [parent = Global]"]
+end
+subgraph "f1: print_sums(n) [parent = Global]"
+f1_n[n] --- 1
+f1_next_sum[next_sum] --> f1_next_sum_f["func next_sum(k) [parent = f1]"]
+f1_r[Return Value] --> f1_next_sum_f
+end
+subgraph "f2: next_sum(k) [parent = f1]"
+f2_n[k] --- 3
+end
+{{</mermaid>}}
+
+At that point, the function `print_sums` is called again, leading to this:
+
+{{<mermaid>}}
+graph LR;
+subgraph Global Frame
+g_print_sums[print_sums] --> g_print_sums_f["func print_sums(n) [parent = Global]"]
+end
+subgraph "f1: print_sums(n) [parent = Global]"
+f1_n[n] --- 1
+f1_next_sum[next_sum] --> f1_next_sum_f["func next_sum(k) [parent = f1]"]
+f1_r[Return Value] --> f1_next_sum_f
+end
+subgraph "."
+subgraph "f3: print_sums(n) [parent = Global]"
+f3_n[n] --- 4
+f3_next_sum[next_sum] --> f3_next_sum_f["func next_sum(k) [parent = f3]"]
+f3_r[Return Value] --> f3_next_sum_f
+end
+subgraph "f2: next_sum(k) [parent = f1]"
+f2_n[k] --- 3
+f2_r[Return Value] -- "(Only after f3 finishes evaluating)" --> f3_next_sum_f
+end
+end
+{{</mermaid>}}
+
+As there are print statements in the function, there will also be something output to the console, which in this case is the following:
+
+```python
+1
+4
+```
+
+Confusing? Sure, but it's important to be able to draw these environment diagrams to help visualize certain parts of code.
+
+## Currying
+
+Currying takes a single function that takes multiple arguments and turns it into a higher-order function with single arguments.
+
+Let's take a look at the differences between the following functions:
+
+```python
+from operator import add
+add(2, 3) # two arguments
+
+def make_adder(n):
+    return lambda x: n + x
+
+make_adder(2)(3) # higher order function with one argument in each
+```
+
+Above, `make_adder` is an example of `currying` `add(2, 3)`.
+
+A way to curry a function with any two arguments can be done like this:
+
+```python
+def curryer(f):
+    def g(x):
+        def h(y):
+            return f(x, y)
+        return h
+    return g
+```
+
+What this does allows only a single argument to be passed into the function each time (similarly to `make_adder`), but because of the rules of name lookup in Python, the variables `x`, `y`, and `f` can still be accessible from the innermost function. You can try inputting it into PyTutor, but for this one, it's a good exercise to try and draw it yourself before checking the answers.
