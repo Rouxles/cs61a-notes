@@ -512,6 +512,8 @@ As there are print statements in the function, there will also be something outp
 
 Confusing? Sure, but it's important to be able to draw these environment diagrams to help visualize certain parts of code.
 
+It's important to note that if another call were to be made after this function call, the parent of the next frame would be `f3` as there is updated information in the outer function.
+
 ## Currying
 
 Currying takes a single function that takes multiple arguments and turns it into a higher-order function with single arguments.
