@@ -16,6 +16,16 @@
     </item>
     
     <item>
+      <title>Design</title>
+      <link>https://cs61a.rouxl.es/docs/week-3/content/design/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-3/content/design/</guid>
+      <description>Design#Abstraction#Abstraction (in a CS context) is broadly understood as extracting relevant information from other sources in order to simplify the codebase.
+Abstraction by Parameterization#This is pretty much DRY (Don&amp;rsquo;t Repeat Yourself). Instead of hard-coding code that have similar structure, you could write a function that takes in parameters (arguments) which can be used to do the same thing. (Taken from CS61A Fall 2021 Design Slides)</description>
+    </item>
+    
+    <item>
       <title>Introduction to the Basics of Python</title>
       <link>https://cs61a.rouxl.es/docs/week-1/content/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
