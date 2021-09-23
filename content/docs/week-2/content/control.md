@@ -350,11 +350,28 @@ The above code would usually give an infinite loop, but the break statement prev
 
 ## For Loop
 
-A `for` loop in Python executes a block of code for a set number of times. This is more complicated to understand than the `while` loop, but is more useful in some situations.
+A `for` loop in Python executes a block of code for a set number of times. It provides a cleaner way to write `while` loops **as long as** they are iterating over some sort of sequence, for instance, the `range()` function.
+
+The `for` loop syntax is as follows:
+
+```python
+for <name> in <expression>:
+    <suite>
+```
+
+1. Evaluate `<expression>` — this must evaluate to an iterable value (strings, lists (more on this later), `range()`) etc
+2. For each element in that `<expression>` (in order), bind `<name>` to the element in the current frame
+   1. Execute the suite, with `<name>` bound to a new value.
+
+That might be slightly confusing for now, but just know that you can do everything a `for` loop can do with a `while` loop. So, if you see an example that uses a `for` loop, you can re-imagine it as a `while` loop, and it would still act the same.
 
 ### The range() function
 
-The `range()` function is used quite often in conjunction with the `for` loop. There are 3 arguments that `range()` takes, each of which will be demonstrated below:
+The `range()` function is used quite often in conjunction with the `for` loop. It represents a sequence of integers. There are 3 arguments that `range()` takes, each of which will be explained, then demonstrated below:
+
+1. If there is just one argument `x`, `range(x)` will start on `0`, then keep increasing the number by `1` until `x - 1` (`0 <= i < x` where `i` is the current value)
+2. If there are two arguments `x, y`, `range(x, y)` will start on `x`, then keep increasing the number by `1` until `y - 1`.
+3. If there are three arguments `x, y, z`, `range(x, y, z)` will start on `x`, then keep incrementing the number by `z` (this can be negative), and then end on `y - z`.
 
 ```python
 for n in range(5): # equivalent to range(0, 5)
@@ -390,5 +407,3 @@ for n in range(5, 0, -1):
 As can be seen in the 3 examples above, the `range()` function works well with the `for` loop.
 
 When `range()` is passed only 1 parameter in a `for` loop, it starts off at `0`, then ends off at the integer before `n`. With 2 parameters, the for loop's value starts off at the first parameter's value, then ends off at the integer before the second parameter's value. The last parameter specifies the amount `n` should be changed by each loop, whether it be negative or a value other than `1`.
-
-

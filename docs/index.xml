@@ -7,6 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://cs61a.rouxl.es/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Containers</title>
+      <link>https://cs61a.rouxl.es/docs/week-5/content/containers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-5/content/containers/</guid>
+      <description>Containers#Lists#A list is a container that can hold a sequence of information (usually related information).
+Lists can hold any Python values (not the same behaviour in every language), including other lists/objects etc.
+empty = [] # empty list B = [&amp;#34;Ben&amp;#34;, &amp;#34;Box&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;Bufy&amp;#34;] # Strings numbers = [2, 5, 7] # Integers floats = [2.0, 3.5, 7.5] # Floats nested = [[2, 3], 3, 4] # Storing a list inside a list mixed = [&amp;#34;Hi&amp;#34;, 2, 3.</description>
+    </item>
+    
+    <item>
       <title>Control</title>
       <link>https://cs61a.rouxl.es/docs/week-2/content/control/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -48,6 +59,17 @@ For example, a recursive function to sum the digits in a number can be written a
     </item>
     
     <item>
+      <title>Tree Recursion</title>
+      <link>https://cs61a.rouxl.es/docs/week-4/content/tree-recursion/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-4/content/tree-recursion/</guid>
+      <description>Tree Recursion#Order of Recursive Calls#If you know the behaviour of environment diagrams, you could derive the behaviour of recursive calls.
+Recaling how environment diagrams behave, a new frame is opened when a user-defined function call occurs, meaning that whenever a recursive function is called on a non-base case scenario, a new frame is opened, and that frame will be evaluated.
+As a result, in a tree recursive return value (more on that later), for example recursive(3) + recursive(4), the whole value of recursive(3) is evaluated first before recursive(4) is evaluated (due to the order of operations of Python).</description>
+    </item>
+    
+    <item>
       <title>Decorators</title>
       <link>https://cs61a.rouxl.es/docs/week-3/content/decorators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -65,6 +87,18 @@ It returns a function that takes a single argument which traces the inputs and o
       
       <guid>https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/</guid>
       <description>Higher Order Functions#Designing Functions#Describing Functions#   Aspect Example     The domain of a function is the expected range of inputs (similarly to a domain in mathematics) x is a string.   The range of a function is the set of output values that could be returned Function square returns a non-negative number.   The behavior of a (pure) function is the relationship between the input and the output Function square returns the square of an input x.</description>
+    </item>
+    
+    <item>
+      <title>Sequences</title>
+      <link>https://cs61a.rouxl.es/docs/week-5/content/sequences/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-5/content/sequences/</guid>
+      <description>Sequences#Lists in Environment Diagrams#List Slicing#Creates a new list
+works similar to range
+(also works with strings)
+Recursion in Lists#Reversing a String#Built-in functions for Iterables#</description>
     </item>
     
     <item>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 5 on CS61A-Notes</title>
+    <link>https://cs61a.rouxl.es/docs/week-5/</link>
+    <description>Recent content in Week 5 on CS61A-Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://cs61a.rouxl.es/docs/week-5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Containers</title>
+      <link>https://cs61a.rouxl.es/docs/week-5/content/containers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-5/content/containers/</guid>
+      <description>Containers#Lists#A list is a container that can hold a sequence of information (usually related information).
+Lists can hold any Python values (not the same behaviour in every language), including other lists/objects etc.
+empty = [] # empty list B = [&amp;#34;Ben&amp;#34;, &amp;#34;Box&amp;#34;, &amp;#34;&amp;#34;, &amp;#34;Bufy&amp;#34;] # Strings numbers = [2, 5, 7] # Integers floats = [2.0, 3.5, 7.5] # Floats nested = [[2, 3], 3, 4] # Storing a list inside a list mixed = [&amp;#34;Hi&amp;#34;, 2, 3.</description>
+    </item>
+    
+    <item>
+      <title>Sequences</title>
+      <link>https://cs61a.rouxl.es/docs/week-5/content/sequences/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-5/content/sequences/</guid>
+      <description>Sequences#Lists in Environment Diagrams#List Slicing#Creates a new list
+works similar to range
+(also works with strings)
+Recursion in Lists#Reversing a String#Built-in functions for Iterables#</description>
+    </item>
+    
+  </channel>
+</rss>
