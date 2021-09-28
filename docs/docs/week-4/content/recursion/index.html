@@ -20,7 +20,7 @@ For example, a recursive function to sum the digits in a number can be written a
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.2c706e1538150802f52ee80b490dba3d0e2991ba9c0ae291fa2517c224dcf3e2.js" integrity="sha256-LHBuFTgVCAL1LugLSQ26PQ4pkbqcCuKR&#43;iUXwiTc8&#43;I=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.2a25b8274c10cbd24ad9dd118645fc3c62b0cb8cb1c520c54ff7698eb70cc593.js" integrity="sha256-KiW4J0wQy9JK2d0RhkX8PGKwy4yxxSDFT/dpjrcMxZM=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -280,6 +280,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cs61a.rouxl.es/docs/week-5/content/data-abstraction/" class="">Data Abstraction &#43; Dictionaries</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -353,6 +366,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#converting-iteration-to-recursion">Converting Iteration to Recursion</a></li>
       </ul>
     </li>
+    <li><a href="#helper-functions">Helper Functions</a></li>
   </ul>
 </nav>
 
@@ -565,6 +579,29 @@ Mutually recursive functions can be written as a single recursive function by si
         <span style="color:#66d9ef">return</span> n
     <span style="color:#66d9ef">else</span>:
         <span style="color:#66d9ef">return</span>(n <span style="color:#f92672">//</span> <span style="color:#ae81ff">10</span>, total <span style="color:#f92672">+</span> n <span style="color:#f92672">%</span> <span style="color:#ae81ff">10</span>) <span style="color:#75715e"># Iterative variables passed as arguments for the recursive version</span>
+</code></pre></div><h2 id="helper-functions">
+  Helper Functions
+  <a class="anchor" href="#helper-functions">#</a>
+</h2>
+<p>If a recursive function ever needs to keep track of more variables than the original function provides, you probably need a helper function for that.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">is_prime</span>(n):
+    <span style="color:#e6db74">&#39;&#39;&#39;Returns True if n is a prime number, else returns False
+</span><span style="color:#e6db74">    &gt;&gt;&gt; is_prime(13)
+</span><span style="color:#e6db74">    True
+</span><span style="color:#e6db74">    &gt;&gt;&gt; is_prime(14)
+</span><span style="color:#e6db74">    False
+</span><span style="color:#e6db74">    &gt;&gt;&gt; is_prime(2)
+</span><span style="color:#e6db74">    True
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    <span style="color:#66d9ef">assert</span> n <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">2</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">helper</span>(i):
+        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> n:
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+        <span style="color:#66d9ef">elif</span> n <span style="color:#f92672">%</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">return</span> helper(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+    <span style="color:#66d9ef">return</span> helper(<span style="color:#ae81ff">2</span>)
 </code></pre></div></article>
  
       
@@ -622,6 +659,7 @@ Mutually recursive functions can be written as a single recursive function by si
         <li><a href="#converting-iteration-to-recursion">Converting Iteration to Recursion</a></li>
       </ul>
     </li>
+    <li><a href="#helper-functions">Helper Functions</a></li>
   </ul>
 </nav>
 

@@ -23,10 +23,20 @@ empty = [] # empty list B = [&amp;#34;Ben&amp;#34;, &amp;#34;Box&amp;#34;, &amp;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cs61a.rouxl.es/docs/week-5/content/sequences/</guid>
-      <description>Sequences#Lists in Environment Diagrams#List Slicing#Creates a new list
-works similar to range
-(also works with strings)
-Recursion in Lists#Reversing a String#Built-in functions for Iterables#</description>
+      <description>Sequences#Lists in Environment Diagrams#Lists can represented with box and pointer notation (similarly to functions); however, unlike functions, each element in the array has its own box, and is index labelled.
+What this implies is that assigning a variable to another list will not create a copy of that list, but rather point towards the same list — this ends up being a correct assumption to make.</description>
+    </item>
+    
+    <item>
+      <title>Data Abstraction &#43; Dictionaries</title>
+      <link>https://cs61a.rouxl.es/docs/week-5/content/data-abstraction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-5/content/data-abstraction/</guid>
+      <description>Data Abstraction#Many values in programs are compound values — a value composed of multiple values (for example coordinates, dates, or geographic positions)
+By using a data abstraction, you can manipulate compound values as units without needing to worry about the way that values are stored.
+Pair Abstraction#For data that is stored in pairs, we can manipulate these values using a pair data abstraction:
+couple = pair(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;) a = first(couple) b = second(couple) By implementing pair() (our constructor), first(), and second() (the selectors), you can access these elements without needing to worry about how the data is stored.</description>
     </item>
     
   </channel>

@@ -207,3 +207,28 @@ def recursive_sum_digits(n, total):
     else:
         return(n // 10, total + n % 10) # Iterative variables passed as arguments for the recursive version
 ```
+
+## Helper Functions
+
+If a recursive function ever needs to keep track of more variables than the original function provides, you probably need a helper function for that.
+
+```python
+def is_prime(n):
+    '''Returns True if n is a prime number, else returns False
+    >>> is_prime(13)
+    True
+    >>> is_prime(14)
+    False
+    >>> is_prime(2)
+    True
+    '''
+    assert n >= 2
+    def helper(i):
+        if i == n:
+            return True
+        elif n % i == 0:
+            return False
+        else:
+            return helper(i + 1)
+    return helper(2)
+```
