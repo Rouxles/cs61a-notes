@@ -22,7 +22,7 @@ couple = pair(&#34;a&#34;, &#34;b&#34;) a = first(couple) b = second(couple) By 
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.2a25b8274c10cbd24ad9dd118645fc3c62b0cb8cb1c520c54ff7698eb70cc593.js" integrity="sha256-KiW4J0wQy9JK2d0RhkX8PGKwy4yxxSDFT/dpjrcMxZM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.ca346238ddcf972090f4d2982384d63e68896aee45dc7bbc93e8fec33c05ad09.js" integrity="sha256-yjRiON3PlyCQ9NKYI4TWPmiJau5F3Hu8k&#43;j&#43;wzwFrQk=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -300,6 +300,50 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <span>Week 6</span>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cs61a.rouxl.es/docs/week-6/content/trees/" class="">Trees</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cs61a.rouxl.es/docs/week-6/content/mutability/" class="">Mutability</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
   </ul>
 
 
@@ -357,7 +401,18 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#rational-numbers">Rational Numbers</a></li>
       </ul>
     </li>
-    <li><a href="#layers-of-abstraction">Layers of Abstraction</a></li>
+    <li><a href="#layers-of-abstraction">Layers of Abstraction</a>
+      <ul>
+        <li><a href="#abstraction-barriers">Abstraction Barriers</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#queries">Queries</a></li>
+    <li><a href="#rules">Rules</a></li>
+    <li><a href="#iteration">Iteration</a></li>
+    <li><a href="#dictionary-comprehensions">Dictionary Comprehensions</a></li>
   </ul>
 </nav>
 
@@ -412,18 +467,113 @@ bottom <span style="color:#f92672">=</span> denominator(half) <span style="color
         dx <span style="color:#f92672">*</span> dy
     )
 </code></pre></div><p>Notice how at this point we <strong>still do not know how <code>rational()</code> is implemented</strong>.</p>
-<h2 id="layers-of-abstraction">
+<h4 id="implementation">
+  Implementation
+  <a class="anchor" href="#implementation">#</a>
+</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rational</span>(n, d):
+    <span style="color:#66d9ef">return</span> [n, d]
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">numerator</span>(rational):
+    <span style="color:#66d9ef">return</span> rational[<span style="color:#ae81ff">0</span>]
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">denominator</span>(rational):
+    <span style="color:#66d9ef">return</span> rational[<span style="color:#ae81ff">1</span>]
+</code></pre></div><p>However, <code>rational(n, d)</code> doesn&rsquo;t fully simplify the fractions, so to solve that, we can divide both <code>n</code> and <code>d</code> by the greatest common denominator:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rational</span>(n, d):
+    g <span style="color:#f92672">=</span> gcd(n, d)
+    <span style="color:#66d9ef">return</span> [n <span style="color:#f92672">//</span> g, d <span style="color:#f92672">//</span> g]
+</code></pre></div><h2 id="layers-of-abstraction">
   Layers of Abstraction
   <a class="anchor" href="#layers-of-abstraction">#</a>
 </h2>
-<p>why use data abstraction?</p>
-<p>(also makes programs to change easier cause implementations changing is easier)</p>
+<p>You might be wondering, what&rsquo;s the point of data abstraction?</p>
+<p>One reason is that some things are a lot harder to code/understand (in terms of legibility) without using data abstraction in Python (for example coding a tree), but the main reason is for simplicity and extensibility.</p>
+<p>What data abstraction does is allow changing the implementation of the function itself without actually needing to manually change all the instances of it. In addition, with a good data abstraction, the programmer will not need to know how the data is implemented, but just needs to use the constructors and selectors to do the job for them.</p>
+<h3 id="abstraction-barriers">
+  Abstraction Barriers
+  <a class="anchor" href="#abstraction-barriers">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Layer</th>
+<th style="text-align:left">Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Representation/Implementation</td>
+<td style="text-align:left"><code>[x, y]</code>, <code>[0]</code>, <code>[1]</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Data Abstraction 1</td>
+<td style="text-align:left"><code>make_rational</code>, <code>numerator</code>, <code>denominator</code></td>
+</tr>
+<tr>
+<td style="text-align:left">Data Abstraction 2</td>
+<td style="text-align:left"><code>mul_rational</code>, <code>add_rational</code></td>
+</tr>
+<tr>
+<td style="text-align:left">User Programs</td>
+<td style="text-align:left">Could be anything using the layer above</td>
+</tr>
+</tbody>
+</table>
+<p>Each layer would only need to use the layer above it, meaning that when users use the data abstractions, they do not need to care about how it&rsquo;s implemented.</p>
+<p>However, this requires that the abstraction barriers are not violated. For example, if you were to do:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">add_rational([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>])
+</code></pre></div><p>You would be violating the abstraction barrier. This would not work if the implementation of <code>rational</code> were changed for instance. As a result, make sure to use both the <strong>constructors</strong> and the <strong>selectors</strong> instead of assuming what the implementation is.</p>
 <h1 id="dictionaries">
   Dictionaries
   <a class="anchor" href="#dictionaries">#</a>
 </h1>
-<p>mapping of <code>key-value</code> pairs</p>
-</article>
+<p>A <strong>dictionary</strong> is another way to store multiple pieces of data, however, it is stored differently to that of lists, and is also accessed slightly differently.</p>
+<p>Each element in a dictionary stores a <code>key</code> and a <code>value</code> as a pair, with each element separated by a <code>,</code> (similarly to lists) which looks like the following below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">my_fruits <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;apples&#34;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;bananas&#34;</span>: <span style="color:#ae81ff">25</span>}
+</code></pre></div><p>If we had the following dictionary, we could call <code>my_fruits[&quot;apples]</code> to get the value of <code>apples</code>, which in this case would return <code>2</code>. If we wanted to edit the amount of apples we had, we would then assign a value to the index: <code>myfruits[&quot;apples&quot;] = 3</code> would <strong>mutate</strong> our dictionary that we have.</p>
+<h2 id="queries">
+  Queries
+  <a class="anchor" href="#queries">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#e6db74">&#34;apples&#34;</span> <span style="color:#f92672">in</span> my_fruits <span style="color:#75715e"># able to search for keys</span>
+<span style="color:#66d9ef">True</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">in</span> my_fruits <span style="color:#75715e"># not able to search for values</span>
+<span style="color:#66d9ef">False</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> len(my_fruits)
+<span style="color:#ae81ff">2</span>
+</code></pre></div><h2 id="rules">
+  Rules
+  <a class="anchor" href="#rules">#</a>
+</h2>
+<p><code>keys</code> cannot be a <code>list</code> or a <code>dictionary</code> (or any mutable type). However, <code>values</code> can be of any types (including dictionaries).</p>
+<p>There can only be one value mapped to every <code>key</code> (similarly to mathematical functions)</p>
+<h2 id="iteration">
+  Iteration
+  <a class="anchor" href="#iteration">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> fruit <span style="color:#f92672">in</span> my_fruits:
+    print(fruit, my_fruits[fruit])
+    <span style="color:#75715e"># apples 2</span>
+    <span style="color:#75715e"># bananas 25</span>
+</code></pre></div><blockquote class="book-hint info">
+  Notice that <code>fruit</code> iterates through the <code>keys</code> and not the <code>values</code>!
+</blockquote>
+
+<h2 id="dictionary-comprehensions">
+  Dictionary Comprehensions
+  <a class="anchor" href="#dictionary-comprehensions">#</a>
+</h2>
+<p>Very similar to list comprehensions, but it uses <code>{}</code> instead of <code>[]</code>; in the form of <code>{&lt;key&gt;: &lt;value&gt; for x in &lt;iter&gt;}</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">{x: x<span style="color:#f92672">*</span>x <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]}
+<span style="color:#75715e"># would return a dictionary of </span>
+{
+    <span style="color:#ae81ff">1</span>: <span style="color:#ae81ff">1</span>,
+    <span style="color:#ae81ff">2</span>: <span style="color:#ae81ff">4</span>,
+    <span style="color:#ae81ff">3</span>: <span style="color:#ae81ff">9</span>,
+    <span style="color:#ae81ff">4</span>: <span style="color:#ae81ff">16</span>
+}
+</code></pre></div></article>
  
       
 
@@ -469,7 +619,18 @@ bottom <span style="color:#f92672">=</span> denominator(half) <span style="color
         <li><a href="#rational-numbers">Rational Numbers</a></li>
       </ul>
     </li>
-    <li><a href="#layers-of-abstraction">Layers of Abstraction</a></li>
+    <li><a href="#layers-of-abstraction">Layers of Abstraction</a>
+      <ul>
+        <li><a href="#abstraction-barriers">Abstraction Barriers</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#queries">Queries</a></li>
+    <li><a href="#rules">Rules</a></li>
+    <li><a href="#iteration">Iteration</a></li>
+    <li><a href="#dictionary-comprehensions">Dictionary Comprehensions</a></li>
   </ul>
 </nav>
 

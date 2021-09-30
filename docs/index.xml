@@ -70,6 +70,17 @@ As a result, in a tree recursive return value (more on that later), for example 
     </item>
     
     <item>
+      <title>Trees</title>
+      <link>https://cs61a.rouxl.es/docs/week-6/content/trees/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-6/content/trees/</guid>
+      <description>Trees#A tree is an abstract data structure (basically not implemented by default in Python), which means we need to use data abstractions in order to implement this structure.
+What does a tree look like?#A tree has a root and a list of branches, where each branch is a tree itself.
+A tree with zero branches (the white circles in the drawing above) is called a leaf.</description>
+    </item>
+    
+    <item>
       <title>Decorators</title>
       <link>https://cs61a.rouxl.es/docs/week-3/content/decorators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -87,6 +98,15 @@ It returns a function that takes a single argument which traces the inputs and o
       
       <guid>https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/</guid>
       <description>Higher Order Functions#Designing Functions#Describing Functions#   Aspect Example     The domain of a function is the expected range of inputs (similarly to a domain in mathematics) x is a string.   The range of a function is the set of output values that could be returned Function square returns a non-negative number.   The behavior of a (pure) function is the relationship between the input and the output Function square returns the square of an input x.</description>
+    </item>
+    
+    <item>
+      <title>Mutability</title>
+      <link>https://cs61a.rouxl.es/docs/week-6/content/mutability/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-6/content/mutability/</guid>
+      <description>Mutability#</description>
     </item>
     
     <item>

@@ -65,12 +65,107 @@ def add_rational(x, y):
 
 Notice how at this point we **still do not know how `rational()` is implemented**.
 
+#### Implementation
+
+```python
+def rational(n, d):
+    return [n, d]
+
+def numerator(rational):
+    return rational[0]
+
+def denominator(rational):
+    return rational[1]
+```
+
+However, `rational(n, d)` doesn't fully simplify the fractions, so to solve that, we can divide both `n` and `d` by the greatest common denominator:
+
+```python
+def rational(n, d):
+    g = gcd(n, d)
+    return [n // g, d // g]
+```
+
 ## Layers of Abstraction
 
-why use data abstraction?
+You might be wondering, what's the point of data abstraction?
 
-(also makes programs to change easier cause implementations changing is easier)
+One reason is that some things are a lot harder to code/understand (in terms of legibility) without using data abstraction in Python (for example coding a tree), but the main reason is for simplicity and extensibility.
+
+What data abstraction does is allow changing the implementation of the function itself without actually needing to manually change all the instances of it. In addition, with a good data abstraction, the programmer will not need to know how the data is implemented, but just needs to use the constructors and selectors to do the job for them. 
+
+### Abstraction Barriers
+
+Layer|Examples
+:--|:--
+Representation/Implementation|`[x, y]`, `[0]`, `[1]`
+Data Abstraction 1|`make_rational`, `numerator`, `denominator`
+Data Abstraction 2|`mul_rational`, `add_rational`
+User Programs|Could be anything using the layer above
+
+Each layer would only need to use the layer above it, meaning that when users use the data abstractions, they do not need to care about how it's implemented.
+
+However, this requires that the abstraction barriers are not violated. For example, if you were to do:
+
+```python
+add_rational([1, 2], [3, 4])
+```
+
+You would be violating the abstraction barrier. This would not work if the implementation of `rational` were changed for instance. As a result, make sure to use both the **constructors** and the **selectors** instead of assuming what the implementation is.
 
 # Dictionaries
 
-mapping of `key-value` pairs
+A **dictionary** is another way to store multiple pieces of data, however, it is stored differently to that of lists, and is also accessed slightly differently.
+
+Each element in a dictionary stores a `key` and a `value` as a pair, with each element separated by a `,` (similarly to lists) which looks like the following below:
+
+```python
+my_fruits = {"apples": 2, "bananas": 25}
+```
+
+If we had the following dictionary, we could call `my_fruits["apples]` to get the value of `apples`, which in this case would return `2`. If we wanted to edit the amount of apples we had, we would then assign a value to the index: `myfruits["apples"] = 3` would **mutate** our dictionary that we have.
+
+## Queries
+
+```python
+>>> "apples" in my_fruits # able to search for keys
+True
+>>> 2 in my_fruits # not able to search for values
+False
+>>> len(my_fruits)
+2
+```
+
+## Rules
+
+`keys` cannot be a `list` or a `dictionary` (or any mutable type). However, `values` can be of any types (including dictionaries).
+
+There can only be one value mapped to every `key` (similarly to mathematical functions)
+
+## Iteration
+
+```python
+for fruit in my_fruits:
+    print(fruit, my_fruits[fruit])
+    # apples 2
+    # bananas 25
+```
+
+{{< hint info >}}
+Notice that `fruit` iterates through the `keys` and not the `values`!
+{{< /hint >}}
+
+## Dictionary Comprehensions
+
+Very similar to list comprehensions, but it uses `{}` instead of `[]`; in the form of `{<key>: <value> for x in <iter>}`.
+
+```python
+{x: x*x for x in [1, 2, 3, 4]}
+# would return a dictionary of 
+{
+    1: 1,
+    2: 4,
+    3: 9,
+    4: 16
+}
+```

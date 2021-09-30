@@ -29,6 +29,8 @@ Each box can either hold a value (for example a number or a string), or an objec
 
 Slicing a list creates a **new** list (as in it points to a separate list). The behaviour is very similar to the `range()` function — it starts on the first 'argument' provided, ends on the number right before the second 'argument', with step of the third 'argument'. In this case however, the separator is `:` rather than `,`. If there is no argument provided next to the `:`, it defaults to `0`.
 
+The syntax is `lst[<start>:<end>:<step_size>]`
+
 Below are some examples:
 
 ```python
@@ -105,3 +107,30 @@ def reverse_string(word):
 ```
 
 ## Built-in functions for Iterables
+
+Function|Description
+:--|:--
+`sum(iterable, start)`|Returns the sum of the values in `iterable`, with a starting sum of `start` (defaults to `0`)
+`all(iterable)`|Returns `True` if **all** the values of `iterable` are *Truthy* values (or if the `iterable` is empty), else returns `False`
+`any(iterable)`|Returns `True` if **any** of the values of `iterable` are *Truthy*, else returns `False` 
+`max(iterable, key=None)`|Returns the maximum value in `iterable`
+`min(iterable, key=None)`|Returns the minimum value in `iterable`
+
+### Examples of the built-in functions
+
+```python
+sum([3, 2, 1], 50) # 56
+
+any([True, False, False, False]) # True
+any([3, 2, 1, 0]) # True
+all([3, 2, 1]) # True
+all([True, False, False, False]) # False
+
+max([3, 2, 1]) # 3
+max(["a", "b", "c"]) # "c"
+max(range(10)) # 9
+
+# the 'key' parameter can be used to compare certain elements in an array:
+coords = [[1, 2], [4, 3], [3, 90]]
+max(coords, key = lambda x: x[0]) # [4, 3] (x iterates through coords and then checks the max value of the first element)
+```
