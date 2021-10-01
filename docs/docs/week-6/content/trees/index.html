@@ -20,7 +20,7 @@ A tree with zero branches (the white circles in the drawing above) is called a l
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.ca346238ddcf972090f4d2982384d63e68896aee45dc7bbc93e8fec33c05ad09.js" integrity="sha256-yjRiON3PlyCQ9NKYI4TWPmiJau5F3Hu8k&#43;j&#43;wzwFrQk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.ce3fed87b66fdda10e6e38e2b4bfab69dff6e62dd9d35a73ce7c29075539adc7.js" integrity="sha256-zj/th7Zv3aEObjjitL&#43;rad/25i3Z01pzznwpB1U5rcc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -396,6 +396,14 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#what-does-a-tree-look-like">What does a tree look like?</a></li>
     <li><a href="#tree-data-abstraction">Tree Data Abstraction</a></li>
+    <li><a href="#tree-processing">Tree Processing</a></li>
+    <li><a href="#example-questions">Example Questions</a>
+      <ul>
+        <li><a href="#counting-leaves">Counting Leaves</a></li>
+        <li><a href="#creating-trees">Creating Trees</a></li>
+        <li><a href="#printing-trees">Printing Trees</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -464,7 +472,83 @@ https://github.com/alex-shpak/hugo-book
             [tree(<span style="color:#ae81ff">2</span>, [tree(<span style="color:#ae81ff">1</span>)], <span style="color:#75715e"># Left Branch</span>
             tree(<span style="color:#ae81ff">4</span>))] <span style="color:#75715e"># Right Branch</span>
         )
-</code></pre></div><p>The actual implementation of the tree is information that you do not need to know in order to use this data structure, so I will not write the implementation here. The documentation for these data abstractions says that <code>branches(tree)</code> returns a <strong>list</strong>, meaning that calling <code>branches(tree)[0]</code> is not a violation of data abstraction here.</p>
+</code></pre></div><p>The actual implementation of the tree is information that you do not need to know in order to use this data structure, so I will not write the implementation here. The <strong>documentation</strong> for these data abstractions says that <code>branches(tree)</code> returns a <strong>list</strong>, meaning that calling <code>branches(tree)[0]</code> is not a violation of data abstraction here.</p>
+<h2 id="tree-processing">
+  Tree Processing
+  <a class="anchor" href="#tree-processing">#</a>
+</h2>
+<p>As mentioned earlier, tree problems are solved recursively. Let&rsquo;s figure out why:</p>
+<p>Each tree has the following:</p>
+<ul>
+<li>A label</li>
+<li>0 or more branches, with each branch containing a tree itself.</li>
+</ul>
+<p>Due to the fact that each branch contains a tree itself, this data type is recursive.</p>
+<h2 id="example-questions">
+  Example Questions
+  <a class="anchor" href="#example-questions">#</a>
+</h2>
+<h3 id="counting-leaves">
+  Counting Leaves
+  <a class="anchor" href="#counting-leaves">#</a>
+</h3>
+<p>If we wanted to count the number of leaves in a tree, how would we do that? Obviously, the solution has to be recursive, so we need to start with the recursive mindset:</p>
+<ol>
+<li>What is our base case?</li>
+<li>What is our recursive case?</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">count_leaves</span>(t):
+    <span style="color:#e6db74">&#39;&#39;&#39;Returns the number of leaf nodes in tree t&#39;&#39;&#39;</span>
+    <span style="color:#66d9ef">if</span> is_leaf(t):
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">else</span>:
+        total_leaves <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> branches(t)
+            total_leaves <span style="color:#f92672">+=</span> count_leaves(b)
+        <span style="color:#66d9ef">return</span> total_leaves
+</code></pre></div><p>In the code above, our base case happens when we hit a leaf, and the recursive call uses a <code>for</code> loop to go through all the branches in our tree, and then add the number of leaves to <code>total_leaves</code>, which is then returned.</p>
+<p>We could also use the <code>sum()</code> function alongside a list comprehension to condense our code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">count_leaves</span>(t):
+    <span style="color:#e6db74">&#39;&#39;&#39;Returns the number of leaf nodes in tree t&#39;&#39;&#39;</span>
+    <span style="color:#66d9ef">if</span> is_leaf(t):
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> sum([count_leaves(b) <span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> branches(t)])
+</code></pre></div><p>This works because the <code>sum</code> function can sum up the elements in an iterable.</p>
+<h3 id="creating-trees">
+  Creating Trees
+  <a class="anchor" href="#creating-trees">#</a>
+</h3>
+<p>A function that <strong>creates another tree</strong> based off of an existing tree is often recursive.</p>
+<p>Let&rsquo;s recall how a tree is built:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">t <span style="color:#f92672">=</span> tree(<span style="color:#ae81ff">3</span>, <span style="color:#75715e"># Root Node</span>
+            <span style="color:#75715e"># Branches:</span>
+            [tree(<span style="color:#ae81ff">2</span>, [tree(<span style="color:#ae81ff">1</span>)], <span style="color:#75715e"># Left Branch</span>
+            tree(<span style="color:#ae81ff">4</span>))] <span style="color:#75715e"># Right Branch</span>
+        )
+</code></pre></div><p>Let&rsquo;s try and make a function that doubles each node in a tree:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double</span>(t):
+    <span style="color:#e6db74">&#39;&#39;&#39;Returns a tree with same structure as t, but with each node doubled&#39;&#39;&#39;</span>
+    <span style="color:#66d9ef">if</span> is_leaf(t):
+        <span style="color:#66d9ef">return</span> tree(label(t<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>))
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> tree(label(t<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>), [double(b) <span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> branches(t)])
+</code></pre></div><p>Notice how we have repeated code? We can actually shorten the code to one line because of that (the base case here doesn&rsquo;t need to be made explicit, will explain why later)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">double</span>(t):
+    <span style="color:#e6db74">&#39;&#39;&#39;Returns a tree with same structure as t, but with each node doubled&#39;&#39;&#39;</span>
+    <span style="color:#66d9ef">return</span> tree(label(t<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>), [double(b) <span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> branches(t)])
+</code></pre></div><p>In the final code, we don&rsquo;t need a base case/recursive case structure that you would traditionally see for recursive questions, but even so, it&rsquo;s a good idea to think of it that way before condensing it down.</p>
+<p>The code above works because in the case of a leaf node, <code>[]</code> gets passed into <code>branches</code> within the <code>tree</code> constructor, which by default takes in an empty list if there are no branches. Thus, in the case of a leaf node, all that gets returned there is equivalent of saying <code>tree(label(t*2))</code>.</p>
+<h3 id="printing-trees">
+  Printing Trees
+  <a class="anchor" href="#printing-trees">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">print_tree</span>(t, indent <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>):
+    <span style="color:#e6db74">&#39;&#39;&#39;Prints the labels of t with depth based indent&#39;&#39;&#39;</span>
+    print(<span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">*</span> indent <span style="color:#f92672">+</span> str(label(t)))
+    <span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> branches(t):
+        print_tree(tree(b), indent <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</code></pre></div><p>Look at the example above and see how it works. <code>indent + 1</code> is important as it will indent the tree to the correct level.</p>
 </article>
  
       
@@ -508,6 +592,14 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#what-does-a-tree-look-like">What does a tree look like?</a></li>
     <li><a href="#tree-data-abstraction">Tree Data Abstraction</a></li>
+    <li><a href="#tree-processing">Tree Processing</a></li>
+    <li><a href="#example-questions">Example Questions</a>
+      <ul>
+        <li><a href="#counting-leaves">Counting Leaves</a></li>
+        <li><a href="#creating-trees">Creating Trees</a></li>
+        <li><a href="#printing-trees">Printing Trees</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
