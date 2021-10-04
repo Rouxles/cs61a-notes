@@ -103,7 +103,7 @@ All the statements above **mutate** the list that we have.
 
 In Python, doing `lst = lst + [1]` is different to `lst += [1]`.
 
-`+=` actually acts as `.extend([...])` rather than making a copy. As a result, doing `lst += [1]` mutates the original list, while `lst = lst + 1` does not mutate the original. Weird behaviour, sure, but this is very important to know.
+`+=` actually acts as `.extend([...])` rather than making a copy. As a result, doing `lst += [1]` mutates the original list, while `lst = lst + [1]` does not mutate the original. Weird behaviour, sure, but this is very important to know.
 
 ## Tuples
 

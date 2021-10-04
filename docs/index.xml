@@ -48,6 +48,15 @@ You can (and should!) visualize how Python programs works with PyTutor or execut
     </item>
     
     <item>
+      <title>Iterables</title>
+      <link>https://cs61a.rouxl.es/docs/week-7/content/iterables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-7/content/iterables/</guid>
+      <description>Iterables#</description>
+    </item>
+    
+    <item>
       <title>Recursion</title>
       <link>https://cs61a.rouxl.es/docs/week-4/content/recursion/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
