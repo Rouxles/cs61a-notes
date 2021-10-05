@@ -7,12 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://cs61a.rouxl.es/docs/week-7/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Iterables</title>
-      <link>https://cs61a.rouxl.es/docs/week-7/content/iterables/</link>
+      <title>Iterators</title>
+      <link>https://cs61a.rouxl.es/docs/week-7/content/iterators/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cs61a.rouxl.es/docs/week-7/content/iterables/</guid>
-      <description>Iterables#</description>
+      <guid>https://cs61a.rouxl.es/docs/week-7/content/iterators/</guid>
+      <description>Iterators#What is an Iterator#An iterator is an object that provides sequential access to values in an iterable one by one.
+While you may not see the use of them at the moment, the benefits of using them will be explained a bit later in these sets of notes.
+ iter(iterable) returns an iterator over the elements of iterable. next(&amp;lt;iter&amp;gt;) returns the next element in an iterator.</description>
     </item>
     
   </channel>
