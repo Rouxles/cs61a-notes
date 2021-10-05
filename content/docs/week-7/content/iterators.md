@@ -139,7 +139,7 @@ This behaviour implies that iterators are **mutable**. One an iterator moves for
 
 # Useful Built-in Functions
 
-## Functions that return Iterables
+## Functions that return iterables
 
 Function|Description
 :--|:--
@@ -147,7 +147,7 @@ Function|Description
 `tuple(iterator)`|Returns a tuple of all items in `iterator` starting on the current pointer location.
 `sorted(iterator)`|Returns a **sorted** list of all items in `iterator` starting on the current pointer location.
 
-## Functions that return Iterators
+## Functions that return iterators
 
 These are slightly more complicated, so examples will be given for each of the following below:
 
