@@ -151,4 +151,66 @@ Function|Description
 
 These are slightly more complicated, so examples will be given for each of the following below:
 
+`reversed(sequence)`: Iterates over item in `sequence` in **reverse** order. Returns an `iterator`.
 
+```python
+lst = [1, 2, 3]
+
+print(list(reversed(lst))) # [3, 2, 1]
+
+# list() needs to be called because reversed returns an iterator
+
+for item in reversed(lst):
+    print(item)
+
+# 3
+# 2
+# 1
+```
+
+`zip(*iterables)`: Iterates over *co-indexed* tuples with elements from each `iterable`. Stops at the shortest list.
+
+```python
+lst1 = [1, 2, 3]
+lst2 = [4, 5, 6]
+
+for t in zip(lst1, lst2):
+    print(t)
+
+# (1, 4)
+# (2, 5)
+# (3, 6)
+
+for x, y in zip(lst1, lst2)
+print(x + y)
+
+# 5
+# 7
+# 9
+```
+
+## Map and Filter
+
+For `map` and `filter` specifically, you can simply use list comprehensions — they're shorter and far more 'Pythonic'. However, knowing the notation for these two functions can help you recognize them in other languages.
+
+`map(function, iterable)`: 
+
+```python
+lst = [1, 2, 3]
+mapped_lst = map(lambda x: x*2, lst)
+print(list(mapped_lst)) # [2, 4, 6]
+
+# Which is the same thing as
+[x*2 for x in lst]
+```
+
+`filter(function, iterable)`:
+
+```python
+lst = [1, 2, 3]
+mapped_lst = map(lambda x: x % 2 == 1, lst)
+print(list(mapped_lst)) # [1, 3]
+
+# Which is the same thing as
+[x for x in lst if x % 2 == 1]
+```
