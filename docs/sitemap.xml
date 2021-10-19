@@ -8,11 +8,19 @@
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-3/content/design/</loc>
   </url><url>
+    <loc>https://cs61a.rouxl.es/docs/week-9/content/efficiency/</loc>
+  </url><url>
+    <loc>https://cs61a.rouxl.es/docs/week-8/content/inheritance/</loc>
+  </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-1/content/introduction/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-7/content/iterators/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-4/content/recursion/</loc>
+  </url><url>
+    <loc>https://cs61a.rouxl.es/docs/week-8/content/recursive-data/</loc>
+  </url><url>
+    <loc>https://cs61a.rouxl.es/docs/week-8/content/representation/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-4/content/tree-recursion/</loc>
   </url><url>
@@ -32,7 +40,13 @@
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-7/</loc>
   </url><url>
+    <loc>https://cs61a.rouxl.es/docs/week-8/</loc>
+  </url><url>
+    <loc>https://cs61a.rouxl.es/docs/week-9/</loc>
+  </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-3/content/decorators/</loc>
+  </url><url>
+    <loc>https://cs61a.rouxl.es/docs/week-7/content/generators/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/</loc>
   </url><url>
@@ -43,6 +57,8 @@
     <loc>https://cs61a.rouxl.es/docs/week-5/content/data-abstraction/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-2/content/environment/</loc>
+  </url><url>
+    <loc>https://cs61a.rouxl.es/docs/week-7/content/objects/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/categories/</loc>
   </url><url>

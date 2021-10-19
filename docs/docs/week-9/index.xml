@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 9 on CS61A-Notes</title>
+    <link>https://cs61a.rouxl.es/docs/week-9/</link>
+    <description>Recent content in Week 9 on CS61A-Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://cs61a.rouxl.es/docs/week-9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Efficiency</title>
+      <link>https://cs61a.rouxl.es/docs/week-9/content/efficiency/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-9/content/efficiency/</guid>
+      <description>Efficiency#</description>
+    </item>
+    
+  </channel>
+</rss>

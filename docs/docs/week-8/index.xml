@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Week 8 on CS61A-Notes</title>
+    <link>https://cs61a.rouxl.es/docs/week-8/</link>
+    <description>Recent content in Week 8 on CS61A-Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://cs61a.rouxl.es/docs/week-8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Inheritance</title>
+      <link>https://cs61a.rouxl.es/docs/week-8/content/inheritance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-8/content/inheritance/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recursive Data</title>
+      <link>https://cs61a.rouxl.es/docs/week-8/content/recursive-data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-8/content/recursive-data/</guid>
+      <description>Recursive Data#Linked Lists#Link Class#Tree Class#</description>
+    </item>
+    
+    <item>
+      <title>Representation</title>
+      <link>https://cs61a.rouxl.es/docs/week-8/content/representation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-8/content/representation/</guid>
+      <description>Representation#</description>
+    </item>
+    
+  </channel>
+</rss>
