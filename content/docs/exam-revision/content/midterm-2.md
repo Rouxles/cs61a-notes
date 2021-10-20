@@ -1,6 +1,7 @@
 ---
-title: "Recursive Data"
-weight: 3
+title: "Midterm 2"
+weight: 2
+draft: True
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false
@@ -8,11 +9,3 @@ weight: 3
 # bookComments: false
 # bookSearchExclude: false
 ---
-
-# Recursive Data
-
-## Linked Lists
-
-## Link Class
-
-## Tree Class

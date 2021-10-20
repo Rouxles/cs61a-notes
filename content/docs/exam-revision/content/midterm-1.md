@@ -1,6 +1,7 @@
 ---
-title: "Recursive Data"
-weight: 3
+title: "Midterm 1"
+weight: 1
+draft: True
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false
@@ -9,10 +10,6 @@ weight: 3
 # bookSearchExclude: false
 ---
 
-# Recursive Data
+# Midterm 1
 
-## Linked Lists
-
-## Link Class
-
-## Tree Class
+Welcome to your first CS61A Midterm!
