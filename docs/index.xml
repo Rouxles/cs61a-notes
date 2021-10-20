@@ -51,7 +51,8 @@ Abstraction by Parameterization#This is pretty much DRY (Don&amp;rsquo;t Repe
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cs61a.rouxl.es/docs/week-8/content/inheritance/</guid>
-      <description></description>
+      <description>Inheritance#Inheritance is a powerful tool that is very often used to reduce redundant code. If you have more specific versions of a larger class, inheritance can be extremely useful. Using our Animal class from the Objects notes, we can use all its general attributes, but then add more specific classes.
+class Animal: default_food = [] def __init__(self, name, energy = 100): self.name = name self.food = self.default_food[:] self.</description>
     </item>
     
     <item>

@@ -148,6 +148,10 @@ class Animal:
          self.energy += 10
 ```
 
+{{<hint info>}}
+This does the same thing as calling `Animal.feed(my_cat, "Tuna")` if you want to see where the `self` variable comes from
+{{</hint>}}
+
 In this case, `my_cat` gets **implicitly** passed in as `self`, so the first argument in `my_cat.feed("Tuna")` (`Tuna`) will get passed in to `feed` as `food`.
 
 As a result, we will update our instance variables following the instructions in the function, where `self` refers to the instance we made in the image above.
