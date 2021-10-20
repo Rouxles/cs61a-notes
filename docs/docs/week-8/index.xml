@@ -17,21 +17,23 @@ class Animal: default_food = [] def __init__(self, name, energy = 100): self.nam
     </item>
     
     <item>
+      <title>Representation</title>
+      <link>https://cs61a.rouxl.es/docs/week-8/content/representation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-8/content/representation/</guid>
+      <description>String Interpolation#This is not part of representation, but is instead an extremely useful tool to make writing strings with multiple variables far cleaner. You may have already seen me use string interpolation earlier on in the course.
+In Python, the cleanest way to use string interpolation is with an f-string, where the letter f is appended before quotation marks.
+f&amp;#34;&amp;#34; You can see the syntax highlighting sees the f in a different colour!</description>
+    </item>
+    
+    <item>
       <title>Recursive Data</title>
       <link>https://cs61a.rouxl.es/docs/week-8/content/recursive-data/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cs61a.rouxl.es/docs/week-8/content/recursive-data/</guid>
       <description>Recursive Data#Linked Lists#Link Class#Tree Class#</description>
-    </item>
-    
-    <item>
-      <title>Representation</title>
-      <link>https://cs61a.rouxl.es/docs/week-8/content/representation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/week-8/content/representation/</guid>
-      <description>Representation#</description>
     </item>
     
   </channel>
