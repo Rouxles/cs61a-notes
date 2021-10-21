@@ -115,3 +115,41 @@ Similar thing can apply for space efficiency - same rules apply, just for storag
 
 ## Memoization
 
+Memoization is a strategy used to reduce redundant computation by 'remembering' the status of previous function calls.
+
+![](https://i.imgur.com/6B75Hc6.png)
+
+By storing the results of every computation we've gone through so far, we do not need to recalculate `fib(2)` on the right branch. 
+
+By making a memoization higher-order function, we can use a function decorator to make all of our function calls 'cache' its results.
+
+```python
+def memo(fn):
+    cache = {}
+    def memoizer(n):
+        if n not in cache:
+            cache[n] = fn(n)
+        return cache[n]
+    return memoizer
+```
+
+This way, when we call our new Fibonacci function, we grow in linear time rather than exponential time in terms of time complexity (but space complexity is obviously larger to the point of being `O(n)`)
+
+```python
+def memo(fn):
+    cache = {}
+    def memoizer(n):
+        if n not in cache:
+            cache[n] = fn(n)
+        return cache[n]
+    return memoizer
+
+@memo # basically does the same as saying fib = memo(fib), which makes it such that fib now points to the memoizer function
+def fib(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fib(n-2) + fib(n-1)
+
+# Now calling fib(n) will be a lot more efficient
+```

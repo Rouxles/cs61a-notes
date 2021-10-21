@@ -19,7 +19,7 @@ However, CS 61A still wants you to understand how to calculate efficiency in a b
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.c4371c7df4e7396ab540cd146f698df38ebc13ccad1fc6ef2df66d029719433e.js" integrity="sha256-xDccffTnOWq1QM0Ub2mN8468E8ytH8bvLfZtApcZQz4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.cc3b8e038f65d60a2ec7346551b501f080bd3201e6e63a31c5dfd946eac0bffc.js" integrity="sha256-zDuOA49l1gouxzRlUbUB8IC9MgHm5joxxd/ZRurAv/w=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -760,7 +760,35 @@ lst2 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>,
   Memoization
   <a class="anchor" href="#memoization">#</a>
 </h2>
-</article>
+<p>Memoization is a strategy used to reduce redundant computation by &lsquo;remembering&rsquo; the status of previous function calls.</p>
+<p><img src="https://i.imgur.com/6B75Hc6.png" alt="" /></p>
+<p>By storing the results of every computation we&rsquo;ve gone through so far, we do not need to recalculate <code>fib(2)</code> on the right branch.</p>
+<p>By making a memoization higher-order function, we can use a function decorator to make all of our function calls &lsquo;cache&rsquo; its results.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">memo</span>(fn):
+    cache <span style="color:#f92672">=</span> {}
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">memoizer</span>(n):
+        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> cache:
+            cache[n] <span style="color:#f92672">=</span> fn(n)
+        <span style="color:#66d9ef">return</span> cache[n]
+    <span style="color:#66d9ef">return</span> memoizer
+</code></pre></div><p>This way, when we call our new Fibonacci function, we grow in linear time rather than exponential time in terms of time complexity (but space complexity is obviously larger to the point of being <code>O(n)</code>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">memo</span>(fn):
+    cache <span style="color:#f92672">=</span> {}
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">memoizer</span>(n):
+        <span style="color:#66d9ef">if</span> n <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> cache:
+            cache[n] <span style="color:#f92672">=</span> fn(n)
+        <span style="color:#66d9ef">return</span> cache[n]
+    <span style="color:#66d9ef">return</span> memoizer
+
+<span style="color:#a6e22e">@memo</span> <span style="color:#75715e"># basically does the same as saying fib = memo(fib), which makes it such that fib now points to the memoizer function</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fib</span>(n):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+        <span style="color:#66d9ef">return</span> n
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> fib(n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>) <span style="color:#f92672">+</span> fib(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+
+<span style="color:#75715e"># Now calling fib(n) will be a lot more efficient</span>
+</code></pre></div></article>
  
       
 
