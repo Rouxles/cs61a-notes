@@ -4,9 +4,11 @@
   
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Efficiency#">
+<meta name="description" content="Efficiency#The efficiency of an algorithm is very important. While it isn&rsquo;t too important in CS 61A due to the (relatively) small data set and number of computations needed, in big sets of data or some extremely computer taxing computations, efficiency makes a world of a difference in terms of actually being able to make computations.
+However, CS 61A still wants you to understand how to calculate efficiency in a broad sense.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Efficiency" />
-<meta property="og:description" content="Efficiency#" />
+<meta property="og:description" content="Efficiency#The efficiency of an algorithm is very important. While it isn&rsquo;t too important in CS 61A due to the (relatively) small data set and number of computations needed, in big sets of data or some extremely computer taxing computations, efficiency makes a world of a difference in terms of actually being able to make computations.
+However, CS 61A still wants you to understand how to calculate efficiency in a broad sense." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cs61a.rouxl.es/docs/week-9/content/efficiency/" /><meta property="article:section" content="docs" />
 
@@ -17,7 +19,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.9fc52060f5fd0983b17a93621c64544ac78c3fd741b97f72595e0a0f564cb1c1.js" integrity="sha256-n8UgYPX9CYOxepNiHGRUSseMP9dBuX9yWV4KD1ZMscE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.c4371c7df4e7396ab540cd146f698df38ebc13ccad1fc6ef2df66d029719433e.js" integrity="sha256-xDccffTnOWq1QM0Ub2mN8468E8ytH8bvLfZtApcZQz4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -534,7 +536,20 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#orders-of-growth">Orders of Growth</a>
+      <ul>
+        <li><a href="#adding-to-the-front-of-a-linked-list">Adding to the front of a linked list</a></li>
+        <li><a href="#fast-exponentiation">Fast Exponentiation</a></li>
+        <li><a href="#finding-value-in-a-linked-list">Finding value in a linked list</a></li>
+        <li><a href="#nested-for-loop-over-a-5x5-array">Nested For Loop over a 5x5 array.</a></li>
+        <li><a href="#recursive-fibonacci">Recursive Fibonacci</a></li>
+      </ul>
+    </li>
+    <li><a href="#memoization">Memoization</a></li>
+  </ul>
+</nav>
 
 
 
@@ -549,6 +564,202 @@ https://github.com/alex-shpak/hugo-book
   Efficiency
   <a class="anchor" href="#efficiency">#</a>
 </h1>
+<p>The efficiency of an algorithm is very important. While it isn&rsquo;t too important in CS 61A due to the (relatively) small data set and number of computations needed, in big sets of data or some extremely computer taxing computations, efficiency makes a world of a difference in terms of actually being able to make computations.</p>
+<p>However, CS 61A still wants you to understand how to calculate efficiency in a broad sense.</p>
+<h2 id="orders-of-growth">
+  Orders of Growth
+  <a class="anchor" href="#orders-of-growth">#</a>
+</h2>
+<p>Here are some common orders of growth:</p>
+<p>Order of growth|Description
+Constant Growth|Regardless of the input size, it will take the same amount of time.
+Logarithmic Growth|The number of steps increases proportionately to the logarithm of the input size (pretty good to aim for)
+Linear Growth|The number of steps increases in direct proportion to the input size
+Quadratic Growth|The number of steps increases in proportion to the square of the input size
+Exponential Growth|The number of steps increases faster than a polynomial function can</p>
+<p>One way to tell the order of growth is to create a table of results comparing the input size with the number of operations. From there, we can extrapolate and see what the order of growth actually is.</p>
+<h3 id="adding-to-the-front-of-a-linked-list">
+  Adding to the front of a linked list
+  <a class="anchor" href="#adding-to-the-front-of-a-linked-list">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Input Size</th>
+<th style="text-align:left">Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">100</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">1000</td>
+<td style="text-align:left">1</td>
+</tr>
+</tbody>
+</table>
+<p>If we look at this table, we can see that adding to the front of a linked list can be done in constant time (always the same number of operations depending on the input size). This is often referred to as <code>O(1)</code>.</p>
+<h3 id="fast-exponentiation">
+  Fast Exponentiation
+  <a class="anchor" href="#fast-exponentiation">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exp_fast</span>(b, n):
+    <span style="color:#66d9ef">if</span> n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">elif</span> n <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">return</span> square(exp_fast(b, n<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>))
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> b <span style="color:#f92672">*</span> exp_fast(b, n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) 
+
+square <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> x: x <span style="color:#f92672">*</span> x
+</code></pre></div><p>This function finds what <code>b ** n</code> is. You don&rsquo;t really need to care about how it&rsquo;s implemented (other than the fact that it is implemented)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Input Size</th>
+<th style="text-align:left">Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">5</td>
+</tr>
+<tr>
+<td style="text-align:left">16</td>
+<td style="text-align:left">6</td>
+</tr>
+<tr>
+<td style="text-align:left">1024</td>
+<td style="text-align:left">6</td>
+</tr>
+</tbody>
+</table>
+<p>In general, you can see that as the input size goes up, the number of operations increases in a <strong>logarithmic</strong> manner (where the number of operations doesn&rsquo;t really increase too much). This is a pretty good thing to strive for if possible because most of the time constant time is very hard to achieve.</p>
+<h3 id="finding-value-in-a-linked-list">
+  Finding value in a linked list
+  <a class="anchor" href="#finding-value-in-a-linked-list">#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Input Size</th>
+<th style="text-align:left">Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">10</td>
+</tr>
+<tr>
+<td style="text-align:left">100</td>
+<td style="text-align:left">100</td>
+</tr>
+<tr>
+<td style="text-align:left">1000</td>
+<td style="text-align:left">1000</td>
+</tr>
+</tbody>
+</table>
+<p>Pretty simple here - increases in linear (<code>O(n)</code>)time.</p>
+<h3 id="nested-for-loop-over-a-5x5-array">
+  Nested For Loop over a 5x5 array.
+  <a class="anchor" href="#nested-for-loop-over-a-5x5-array">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lst1 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+lst2 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]
+
+<span style="color:#66d9ef">for</span> one <span style="color:#f92672">in</span> lst1:
+    <span style="color:#66d9ef">for</span> two <span style="color:#f92672">in</span> lst2:
+        print((one, two))
+</code></pre></div><table>
+<thead>
+<tr>
+<th style="text-align:left">Input Size</th>
+<th style="text-align:left">Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">100</td>
+</tr>
+<tr>
+<td style="text-align:left">100</td>
+<td style="text-align:left">10000</td>
+</tr>
+<tr>
+<td style="text-align:left">1000</td>
+<td style="text-align:left">1000000</td>
+</tr>
+</tbody>
+</table>
+<p>Somewhat similarly obvious - this increases in quadratic time (<code>O(n^2)</code>)</p>
+<h3 id="recursive-fibonacci">
+  Recursive Fibonacci
+  <a class="anchor" href="#recursive-fibonacci">#</a>
+</h3>
+<p>Remember our recursive solution for calculating fibonacci numbers? Let&rsquo;s see the efficiency of that.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Input Size</th>
+<th style="text-align:left">Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">41</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">67</td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left">21891</td>
+</tr>
+</tbody>
+</table>
+<p>This increases even faster than quadratic time. It grows in <strong>exponential time</strong> (<code>O(2^n)</code>)</p>
+<hr>
+<p>Similar thing can apply for space efficiency - same rules apply, just for storage/memory needed rather than the approximate number of operations.</p>
+<h2 id="memoization">
+  Memoization
+  <a class="anchor" href="#memoization">#</a>
+</h2>
 </article>
  
       
@@ -588,7 +799,20 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#orders-of-growth">Orders of Growth</a>
+      <ul>
+        <li><a href="#adding-to-the-front-of-a-linked-list">Adding to the front of a linked list</a></li>
+        <li><a href="#fast-exponentiation">Fast Exponentiation</a></li>
+        <li><a href="#finding-value-in-a-linked-list">Finding value in a linked list</a></li>
+        <li><a href="#nested-for-loop-over-a-5x5-array">Nested For Loop over a 5x5 array.</a></li>
+        <li><a href="#recursive-fibonacci">Recursive Fibonacci</a></li>
+      </ul>
+    </li>
+    <li><a href="#memoization">Memoization</a></li>
+  </ul>
+</nav>
 
 
  

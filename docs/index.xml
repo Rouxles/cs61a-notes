@@ -42,7 +42,8 @@ Abstraction by Parameterization#This is pretty much DRY (Don&amp;rsquo;t Repe
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cs61a.rouxl.es/docs/week-9/content/efficiency/</guid>
-      <description>Efficiency#</description>
+      <description>Efficiency#The efficiency of an algorithm is very important. While it isn&amp;rsquo;t too important in CS 61A due to the (relatively) small data set and number of computations needed, in big sets of data or some extremely computer taxing computations, efficiency makes a world of a difference in terms of actually being able to make computations.
+However, CS 61A still wants you to understand how to calculate efficiency in a broad sense.</description>
     </item>
     
     <item>
