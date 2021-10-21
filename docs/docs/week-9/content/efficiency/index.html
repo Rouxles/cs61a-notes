@@ -19,7 +19,7 @@ However, CS 61A still wants you to understand how to calculate efficiency in a b
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.edfd21c9c78fbff02dded18492cfc45f5f3fcbd437892314cf24b014aa177342.js" integrity="sha256-7f0hycePv/At3tGEks/EX18/y9Q3iSMUzySwFKoXc0I=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.4b8fc7b142086f2169442a55b52c7c7456e9a9dd3427c7b74755db9afcbb970d.js" integrity="sha256-S4/HsUIIbyFpRCpVtSx8dFbpqd00J8e3R1Xbmvy7lw0=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -688,9 +688,9 @@ square <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lst1 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
 lst2 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]
 
-<span style="color:#66d9ef">for</span> one <span style="color:#f92672">in</span> lst1:
-    <span style="color:#66d9ef">for</span> two <span style="color:#f92672">in</span> lst2:
-        print((one, two))
+<span style="color:#66d9ef">for</span> one <span style="color:#f92672">in</span> lst1: <span style="color:#75715e"># takes 5 operations</span>
+    <span style="color:#66d9ef">for</span> two <span style="color:#f92672">in</span> lst2: <span style="color:#75715e"># 5 operations for cycles = 25 operations in total</span>
+        print((one, two)) 
 </code></pre></div><table>
 <thead>
 <tr>
@@ -704,16 +704,16 @@ lst2 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>,
 <td style="text-align:left">1</td>
 </tr>
 <tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">25</td>
+</tr>
+<tr>
 <td style="text-align:left">10</td>
 <td style="text-align:left">100</td>
 </tr>
 <tr>
-<td style="text-align:left">100</td>
-<td style="text-align:left">10000</td>
-</tr>
-<tr>
-<td style="text-align:left">1000</td>
-<td style="text-align:left">1000000</td>
+<td style="text-align:left">20</td>
+<td style="text-align:left">400</td>
 </tr>
 </tbody>
 </table>

@@ -81,17 +81,17 @@ Pretty simple here - increases in linear (`O(n)`)time.
 lst1 = [1, 2, 3, 4, 5]
 lst2 = [2, 3, 4, 5, 6]
 
-for one in lst1:
-    for two in lst2:
-        print((one, two))
+for one in lst1: # takes 5 operations
+    for two in lst2: # 5 operations for cycles = 25 operations in total
+        print((one, two)) 
 ```
 
 Input Size|Operations
 :--|:--
 1|1
+5|25
 10|100
-100|10000
-1000|1000000
+20|400
 
 Somewhat similarly obvious - this increases in quadratic time (`O(n^2)`)
 
