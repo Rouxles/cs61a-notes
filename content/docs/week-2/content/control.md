@@ -39,12 +39,11 @@ In this example, every input will always map to the same output as the function 
 ben = 1
 
 def with_side_effects(x):
-    global ben # Python usually doesn't like changing global variables so this statement is needed here
-    ben += 1 # Does the same thing as ben = ben + 1
     return x*ben
 
+with_side_effects(2) # >>> 2
+ben = 2
 with_side_effects(2) # >>> 4
-with_side_effects(2) # >>> 6
 ```
 
 While this example is not going to be used in a practical setting, it serves as a good example of what a side effect is. As you can see, even though we called the function `with_side_effects` twice with the same input, the output was different, which goes against the definition of a mathematical function. As a result, there is a side effect in that function.
