@@ -1,6 +1,6 @@
 baseURL = 'https://cs61a.rouxl.es/'
 languageCode = 'en-us'
-title = 'CS61A-Notes'
+title = 'CS61A Notes'
 theme = "book"
 publishDir = "docs"
 googleAnalyticsID = "G-QB72X4S5RZ" 
