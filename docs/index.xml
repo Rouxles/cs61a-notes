@@ -47,6 +47,16 @@ However, CS 61A still wants you to understand how to calculate efficiency in a b
     </item>
     
     <item>
+      <title>General Tips</title>
+      <link>https://cs61a.rouxl.es/docs/succeed/content/general-tips/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/succeed/content/general-tips/</guid>
+      <description>General Tips#No Prior Coding Experience#If you haven&amp;rsquo;t coded before starting this course, you can still succeed, but it will be quite significantly harder. CS61A is not an easy course at all (even for those with a lot of programming experience), so it&amp;rsquo;s very important to make sure that you understand how to think computationally.
+To do this, make sure to go to office hours regularly if you ever feel unsure about homework/lab problems.</description>
+    </item>
+    
+    <item>
       <title>Inheritance</title>
       <link>https://cs61a.rouxl.es/docs/week-8/content/inheritance/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

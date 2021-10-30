@@ -1,6 +1,6 @@
 ---
 title: "Midterm 2"
-weight: 2
+weight: 3
 draft: True
 # bookFlatSection: false
 # bookToc: true
@@ -9,3 +9,8 @@ draft: True
 # bookComments: false
 # bookSearchExclude: false
 ---
+
+# Midterm 2
+
+### Getting comfortable taking the recursive leap of faith
+

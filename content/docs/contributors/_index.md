@@ -1,6 +1,6 @@
 ---
 title: "Contributors"
-weight: 3
+weight: 10
 bookFlatSection: true
 draft: false
 bookToc: false
