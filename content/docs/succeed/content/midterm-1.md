@@ -33,7 +33,9 @@ The next few sections will talk about what's more important to focus on as well 
 
 *Please* spend time and read the questions. The questions + doctests give off so much information in these midterms to the point where it's a pretty terrible idea to just start solving the questions without doing anything beforehand.
 
-When looking at questions, I tend to read the small description first and try to understand what the question is asking, then look at the doctests to see if my understanding matches what the doctests say. Afterwards, I look at the inputs the functions take, and mark down (next to the letters) what to expect and shift my mindset accordingly. Only after I have all this information is when I begin trying to think of what to fill in.
+When looking at questions, I tend to read the small description first and try to understand what the question is asking, then look at the doctests to see if my understanding matches what the doctests say. Afterwards, I look at the inputs the functions take, and mark down (next to the letters) what to expect and shift my mindset accordingly. Afterwards, I'll look at the code template (if there is one) and see what they give - whether it be temporary variables or certain lines (and indentations) and then try to understand what the possible things are to put in the question itself. Only after I have all this information is when I begin filling in the details of the question.
+
+#### Example: Fall 2021 `3a`
 
 ### Environment Diagrams
 
@@ -45,5 +47,12 @@ A good thing about getting very comfortable with environment diagrams is that th
 
 The next most important part for midterm 1 is understanding how to deal with higher order functions (HOFs). HOF questions are the ones that can get the most complicated in MT1, and this can be made even more complicated with `lambda` functions.
 
+#### Example: Fall 2021 `3d`
 
+### Practice Practice Practice
 
+The most important thing about CS61A is practice. You'll get used to the concepts more when you practice more questions.
+
+---
+
+You got this!
