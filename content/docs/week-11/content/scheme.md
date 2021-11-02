@@ -194,6 +194,8 @@ This is shorthand for the `quote` form:
 (list (quote a) b) ; (a 2)
 ```
 
+The `quote` symbol basically says don't touch anything typed afterwards - which is why `'(1 2)` will output a scheme list (because it's represented that way normally)
+
 ## Function Returns
 
 There is no Scheme equivalent to `return`. In fact, the last statement in the body is what gets returned. This is similar to `lambda` functions in Python where the body is what gets returned, except in this case, the body can span multiple lines.
