@@ -100,6 +100,15 @@ For example, a recursive function to sum the digits in a number can be written a
     </item>
     
     <item>
+      <title>Scheme</title>
+      <link>https://cs61a.rouxl.es/docs/week-11/content/scheme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-11/content/scheme/</guid>
+      <description>Scheme#Scheme is another programming language that CS61A can test. The reason why this is taught is not only because you make an interpreter for Scheme as your final CS61A project (where you write code in Python to essentially execute scheme code in Python - it&amp;rsquo;s really cool), but also because it&amp;rsquo;s essentially a practical way of showing that you&amp;rsquo;re able to quickly pick up other languages after you get comfortable with one.</description>
+    </item>
+    
+    <item>
       <title>Tree Recursion</title>
       <link>https://cs61a.rouxl.es/docs/week-4/content/tree-recursion/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

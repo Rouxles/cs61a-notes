@@ -18,5 +18,5 @@ Welcome to your first CS61A Midterm! Please start revising early - it's a lot be
 
 ## Getting comfortable taking the recursive leap of faith
 
-This is 
+Getting used to this is one way to make recursive problems a lot easier to solve.
 
