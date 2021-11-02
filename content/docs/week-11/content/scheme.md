@@ -199,3 +199,70 @@ The `quote` symbol basically says don't touch anything typed afterwards - which 
 ## Function Returns
 
 There is no Scheme equivalent to `return`. In fact, the last statement in the body is what gets returned. This is similar to `lambda` functions in Python where the body is what gets returned, except in this case, the body can span multiple lines.
+
+## Higher Order Functions
+
+Say we wanted to make our own higher-order function that first takes in 1 argument as a number, then multiplies it with the value from the inner function.
+
+In Python, we would write it like this:
+
+```python
+# with lambda
+lambda x: lambda y: x * y
+
+# with def statements
+def make_mul(x):
+  def helper(y):
+    return x * y
+  return helper
+```
+
+In Scheme, it pretty much looks the exact same:
+
+```scheme
+; with lambdas
+(lambda (x) (lambda (y) (* x y)))
+
+; with define statements
+(define (make_mul x)
+  (define (helper y)
+    (* x y)
+  )
+  helper ; this line over here is basically the same thing as saying return helper in Python
+)
+```
+
+It's probably a lot nicer to use lambdas rather than named functions just because you don't need to call the helper function in the end (similar to python where we don't need to say `return helper` but can just use the lambda for that).
+
+{{<hint info>}}
+The reason why we can't just define our function and then call it is because of the behaviour below:
+
+```scheme
+> (define (test x) (+ x x))
+test
+> test
+(lambda (x) (+ x x))
+```
+
+As you can see, when we define a function, it returns the name of the function (as a 'string'). Only after we call the function will we get a function representation of it.
+
+Let's try to extend that to a higher-order function.
+
+```scheme
+> (define (test x)(define (ben y) (* x y)))
+test
+> (test 3)
+ben
+```
+
+As you can see from the return value of calling `(test 3)`, we get a 'string' rather than the lambda function. This makes it such that we can't call it directly. However, if we put 
+
+```scheme
+> (define (test x)(define (ben y) (* x y))ben)
+test
+> (test 3)
+(lambda (y) (* x y))
+```
+
+Now we are able to call this function directly.
+{{</hint>}}

@@ -17,7 +17,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.ec810e7421c675b072da025528acbbc3f2c1181aa7cc7736a507254dc44843d3.js" integrity="sha256-7IEOdCHGdbBy2gJVKKy7w/LBGBqnzHc2pQclTcRIQ9M=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.624f1da6d743cfd4bc0ddd6b2fafee9c8627433a369b6fc5f71cb664c4e0aec6.js" integrity="sha256-Yk8dptdDz9S8Dd1rL6/unIYnQzo2m2/F9xy2ZMTgrsY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -664,6 +664,7 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#symbolic-programming">Symbolic Programming</a></li>
     <li><a href="#function-returns">Function Returns</a></li>
+    <li><a href="#higher-order-functions">Higher Order Functions</a></li>
   </ul>
 </nav>
 
@@ -831,6 +832,53 @@ ll<span style="color:#f92672">.</span>rest <span style="color:#75715e"># Link(2)
   <a class="anchor" href="#function-returns">#</a>
 </h2>
 <p>There is no Scheme equivalent to <code>return</code>. In fact, the last statement in the body is what gets returned. This is similar to <code>lambda</code> functions in Python where the body is what gets returned, except in this case, the body can span multiple lines.</p>
+<h2 id="higher-order-functions">
+  Higher Order Functions
+  <a class="anchor" href="#higher-order-functions">#</a>
+</h2>
+<p>Say we wanted to make our own higher-order function that first takes in 1 argument as a number, then multiplies it with the value from the inner function.</p>
+<p>In Python, we would write it like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># with lambda</span>
+<span style="color:#66d9ef">lambda</span> x: <span style="color:#66d9ef">lambda</span> y: x <span style="color:#f92672">*</span> y
+
+<span style="color:#75715e"># with def statements</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_mul</span>(x):
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">helper</span>(y):
+    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">*</span> y
+  <span style="color:#66d9ef">return</span> helper
+</code></pre></div><p>In Scheme, it pretty much looks the exact same:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scheme" data-lang="scheme"><span style="color:#75715e">; with lambdas</span>
+(<span style="color:#66d9ef">lambda </span>(<span style="color:#a6e22e">x</span>) (<span style="color:#66d9ef">lambda </span>(<span style="color:#a6e22e">y</span>) (* x y)))
+
+<span style="color:#75715e">; with define statements</span>
+(<span style="color:#66d9ef">define </span>(<span style="color:#a6e22e">make_mul</span> x)
+  (<span style="color:#66d9ef">define </span>(<span style="color:#a6e22e">helper</span> y)
+    (* x y)
+  )
+  helper <span style="color:#75715e">; this line over here is basically the same thing as saying return helper in Python</span>
+)
+</code></pre></div><p>It&rsquo;s probably a lot nicer to use lambdas rather than named functions just because you don&rsquo;t need to call the helper function in the end (similar to python where we don&rsquo;t need to say <code>return helper</code> but can just use the lambda for that).</p>
+<blockquote class="book-hint info">
+  <p>The reason why we can&rsquo;t just define our function and then call it is because of the behaviour below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scheme" data-lang="scheme">&gt; (<span style="color:#66d9ef">define </span>(<span style="color:#a6e22e">test</span> x) (+ x x))
+test
+&gt; test
+(<span style="color:#66d9ef">lambda </span>(<span style="color:#a6e22e">x</span>) (+ x x))
+</code></pre></div><p>As you can see, when we define a function, it returns the name of the function (as a &lsquo;string&rsquo;). Only after we call the function will we get a function representation of it.</p>
+<p>Let&rsquo;s try to extend that to a higher-order function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scheme" data-lang="scheme">&gt; (<span style="color:#66d9ef">define </span>(<span style="color:#a6e22e">test</span> x)(<span style="color:#66d9ef">define </span>(<span style="color:#a6e22e">ben</span> y) (* x y)))
+test
+&gt; (<span style="color:#a6e22e">test</span> <span style="color:#ae81ff">3</span>)
+ben
+</code></pre></div><p>As you can see from the return value of calling <code>(test 3)</code>, we get a &lsquo;string&rsquo; rather than the lambda function. This makes it such that we can&rsquo;t call it directly. However, if we put</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scheme" data-lang="scheme">&gt; (<span style="color:#66d9ef">define </span>(<span style="color:#a6e22e">test</span> x)(<span style="color:#66d9ef">define </span>(<span style="color:#a6e22e">ben</span> y) (* x y))ben)
+test
+&gt; (<span style="color:#a6e22e">test</span> <span style="color:#ae81ff">3</span>)
+(<span style="color:#66d9ef">lambda </span>(<span style="color:#a6e22e">y</span>) (* x y))
+</code></pre></div><p>Now we are able to call this function directly.</p>
+
+</blockquote>
+
 </article>
  
       
@@ -889,6 +937,7 @@ ll<span style="color:#f92672">.</span>rest <span style="color:#75715e"># Link(2)
     </li>
     <li><a href="#symbolic-programming">Symbolic Programming</a></li>
     <li><a href="#function-returns">Function Returns</a></li>
+    <li><a href="#higher-order-functions">Higher Order Functions</a></li>
   </ul>
 </nav>
 
