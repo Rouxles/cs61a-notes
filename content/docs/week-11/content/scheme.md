@@ -193,3 +193,7 @@ This is shorthand for the `quote` form:
 ```scheme
 (list (quote a) b) ; (a 2)
 ```
+
+## Function Returns
+
+There is no Scheme equivalent to `return`. In fact, the last statement in the body is what gets returned. This is similar to `lambda` functions in Python where the body is what gets returned, except in this case, the body can span multiple lines.
