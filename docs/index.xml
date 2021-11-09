@@ -67,6 +67,15 @@ class Animal: default_food = [] def __init__(self, name, energy = 100): self.nam
     </item>
     
     <item>
+      <title>Interpreters</title>
+      <link>https://cs61a.rouxl.es/docs/week-12/content/interpreters/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-12/content/interpreters/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Introduction to the Basics of Python</title>
       <link>https://cs61a.rouxl.es/docs/week-1/content/introduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -158,6 +167,16 @@ The way you define a generator function is through the yield keyword (instead of
       
       <guid>https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/</guid>
       <description>Higher Order Functions#Designing Functions#Describing Functions#   Aspect Example     The domain of a function is the expected range of inputs (similarly to a domain in mathematics) x is a string.   The range of a function is the set of output values that could be returned Function square returns a non-negative number.   The behavior of a (pure) function is the relationship between the input and the output Function square returns the square of an input x.</description>
+    </item>
+    
+    <item>
+      <title>Macros &#43; Exceptions</title>
+      <link>https://cs61a.rouxl.es/docs/week-11/content/macros-and-exceptions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-11/content/macros-and-exceptions/</guid>
+      <description>Macros#In Scheme, everything is a list. For example, (quotient 1 2) can also be seen as a Scheme list with the elements quotient, 1, and 2. What the &#39; operator lets us do in Scheme is create a list without evaluating certain options, then delay the evaluation until you need it later. For example:
+&amp;gt;&amp;gt;&amp;gt; (define lst (list &amp;#39;quotient 1 2)) lst &amp;gt;&amp;gt;&amp;gt; lst (quotient 1 2) &amp;gt;&amp;gt;&amp;gt; (eval lst) 0.</description>
     </item>
     
     <item>
