@@ -1,7 +1,6 @@
 ---
 title: "Tail Calls"
 weight: 2
-draft: true
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false
@@ -86,8 +85,8 @@ Linear recursive functions (aka not tree recursive functions) can pretty often b
         (length (cdr s))) ) )
 ```
 
-{{<details title="Answer" open=false>}}
-No because the `if` statement is not in a tail context (the last recursive call in the function is `+ 1`)
+{{< details title="Answer" open=false >}}
+because the `if` statement is not in a tail context (the last recursive call in the function is `+ 1`)
 {{</details>}}
 
 ```scheme
@@ -100,7 +99,7 @@ No because the `if` statement is not in a tail context (the last recursive call 
         (contains (cdr s) v))))
 ```
 
-{{<details title="Answer" open=false>}}
+{{< details title="Answer" open=false >}}
 Yes because the `if` statements are all in tail contexts
 {{</details>}}
 
@@ -148,5 +147,4 @@ trampoline(recursive_factorial, 3) # 6
 Because our `recursive_factorial` function returns lambda values, we are able to exit out of these functions, allowing for our code to not run under a stack overflow.
 
 In the Scheme interpreter, you won't make thunks with lambda functions but instead with classes, and then check whether they're still callable using `isinstance`. The concept is still very similar though - try and see if you can apply it to the question.
-
 

@@ -25,5 +25,16 @@
 &amp;gt;&amp;gt;&amp;gt; (define lst (list &amp;#39;quotient 1 2)) lst &amp;gt;&amp;gt;&amp;gt; lst (quotient 1 2) &amp;gt;&amp;gt;&amp;gt; (eval lst) 0.</description>
     </item>
     
+    <item>
+      <title>Calculator</title>
+      <link>https://cs61a.rouxl.es/docs/week-11/content/calculator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-11/content/calculator/</guid>
+      <description>Calculator Language#Compiled vs Interpreted#High Level Languages (basically languages with a lot of abstraction from machine code - essentially 1s and 0s) are typically either compiled or interpreted.
+Compiling#When a program is compiled, the source code is directly translated to machine code right from the start - this code can then be distributed and run repeatedly.
+Interpreted#When a program is interpreted, the source code is run directly without first compiling it.</description>
+    </item>
+    
   </channel>
 </rss>

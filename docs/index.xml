@@ -7,6 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://cs61a.rouxl.es/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Bnf</title>
+      <link>https://cs61a.rouxl.es/docs/week-13/content/bnf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-13/content/bnf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Containers</title>
       <link>https://cs61a.rouxl.es/docs/week-5/content/containers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -72,7 +81,8 @@ class Animal: default_food = [] def __init__(self, name, energy = 100): self.nam
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cs61a.rouxl.es/docs/week-12/content/interpreters/</guid>
-      <description></description>
+      <description>Interpreting Scheme#Interpreters keep going through an evaluate/apply cycle.
+Eval# Base Case  Primitive Values   Recursive Case  Evaluate(operator, operands) of call expressions Apply(procedure, arguments)    Apply# Base Case  Built in procedures   Recursive Case  User defined procedures    Scheme specific traits#Nearly everything in Scheme is a list (as mentioned countless times); additionally, nearly everything in scheme is a call expression where the operator is evaluated, then the operands are all evaluated, then these operands are applied to the operator.</description>
     </item>
     
     <item>
@@ -115,6 +125,15 @@ For example, a recursive function to sum the digits in a number can be written a
       
       <guid>https://cs61a.rouxl.es/docs/week-11/content/scheme/</guid>
       <description>Scheme#Scheme is another programming language that CS61A can test. The reason why this is taught is not only because you make an interpreter for Scheme as your final CS61A project (where you write code in Python to essentially execute scheme code in Python - it&amp;rsquo;s really cool), but also because it&amp;rsquo;s essentially a practical way of showing that you&amp;rsquo;re able to quickly pick up other languages after you get comfortable with one.</description>
+    </item>
+    
+    <item>
+      <title>SQL</title>
+      <link>https://cs61a.rouxl.es/docs/week-13/content/sql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-13/content/sql/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -224,6 +243,27 @@ What this implies is that assigning a variable to another list will not create a
     </item>
     
     <item>
+      <title>Tail Calls</title>
+      <link>https://cs61a.rouxl.es/docs/week-12/content/tail-calls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-12/content/tail-calls/</guid>
+      <description>Tail Calls#Recursion Efficiency#Let&amp;rsquo;s take a look at a recursive and iterative implementation of a factorial function and see what the efficiency of it is.
+# Recursive def recursive_factorial(n): if n == 1 or n == 0: return 1 else: return n * factorial(n - 1) # Iterative def iterative_factorial(n): total = n while n &amp;gt; 0: n -= 1 total *= n return total Both of these solutions take up O(n) time, but the iterative solution reuses the variables we have, while the recursive solution needs to keep opening up frames - in fact it opens up frames an O(n) number of times, causing this to have some space efficiency issues.</description>
+    </item>
+    
+    <item>
+      <title>Calculator</title>
+      <link>https://cs61a.rouxl.es/docs/week-11/content/calculator/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-11/content/calculator/</guid>
+      <description>Calculator Language#Compiled vs Interpreted#High Level Languages (basically languages with a lot of abstraction from machine code - essentially 1s and 0s) are typically either compiled or interpreted.
+Compiling#When a program is compiled, the source code is directly translated to machine code right from the start - this code can then be distributed and run repeatedly.
+Interpreted#When a program is interpreted, the source code is run directly without first compiling it.</description>
+    </item>
+    
+    <item>
       <title>Data Abstraction &#43; Dictionaries</title>
       <link>https://cs61a.rouxl.es/docs/week-5/content/data-abstraction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -263,6 +303,16 @@ OOP is particularly useful when you have many similar things that can be further
       
       <guid>https://cs61a.rouxl.es/docs/week-8/content/recursive-data/</guid>
       <description>Recursive Data#Linked Lists#Python lists are implemented in a way that makes inserting and deleting from the front of a list very inefficient. This is because Python implemented a list such that the first element of the list is always at the same memory location and elements in a list are located right next to each other, so when something is inserted to the start, everything gets pushed forward by one space in memory to make space for an element.</description>
+    </item>
+    
+    <item>
+      <title>RegEx</title>
+      <link>https://cs61a.rouxl.es/docs/week-12/content/regex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/week-12/content/regex/</guid>
+      <description>RegEx (Regular Expression)#Declarative Languages vs Imperative Languages#RegEx is a declarative language, while Python is an Imperative language. What&amp;rsquo;s the difference?
+ Imperative languages  A program is a description of computational instructions The interpreter/compiler carries out the execution as you tell it to - you (essentially) know how everything is implemented yourself   Declarative languages  A program is a statement of the desired result The interpreter will use its own algorithms to figure out how to generate the result it wants.</description>
     </item>
     
   </channel>

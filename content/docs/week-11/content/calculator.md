@@ -1,7 +1,6 @@
 ---
 title: "Calculator"
 weight: 3
-draft: true
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false

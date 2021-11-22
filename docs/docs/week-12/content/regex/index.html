@@ -4,17 +4,17 @@
   
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Interpreting Scheme#Interpreters keep going through an evaluate/apply cycle.
-Eval# Base Case  Primitive Values   Recursive Case  Evaluate(operator, operands) of call expressions Apply(procedure, arguments)    Apply# Base Case  Built in procedures   Recursive Case  User defined procedures    Scheme specific traits#Nearly everything in Scheme is a list (as mentioned countless times); additionally, nearly everything in scheme is a call expression where the operator is evaluated, then the operands are all evaluated, then these operands are applied to the operator.">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Interpreters" />
-<meta property="og:description" content="Interpreting Scheme#Interpreters keep going through an evaluate/apply cycle.
-Eval# Base Case  Primitive Values   Recursive Case  Evaluate(operator, operands) of call expressions Apply(procedure, arguments)    Apply# Base Case  Built in procedures   Recursive Case  User defined procedures    Scheme specific traits#Nearly everything in Scheme is a list (as mentioned countless times); additionally, nearly everything in scheme is a call expression where the operator is evaluated, then the operands are all evaluated, then these operands are applied to the operator." />
+<meta name="description" content="RegEx (Regular Expression)#Declarative Languages vs Imperative Languages#RegEx is a declarative language, while Python is an Imperative language. What&rsquo;s the difference?
+ Imperative languages  A program is a description of computational instructions The interpreter/compiler carries out the execution as you tell it to - you (essentially) know how everything is implemented yourself   Declarative languages  A program is a statement of the desired result The interpreter will use its own algorithms to figure out how to generate the result it wants.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="RegEx" />
+<meta property="og:description" content="RegEx (Regular Expression)#Declarative Languages vs Imperative Languages#RegEx is a declarative language, while Python is an Imperative language. What&rsquo;s the difference?
+ Imperative languages  A program is a description of computational instructions The interpreter/compiler carries out the execution as you tell it to - you (essentially) know how everything is implemented yourself   Declarative languages  A program is a statement of the desired result The interpreter will use its own algorithms to figure out how to generate the result it wants." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cs61a.rouxl.es/docs/week-12/content/interpreters/" /><meta property="article:section" content="docs" />
+<meta property="og:url" content="https://cs61a.rouxl.es/docs/week-12/content/regex/" /><meta property="article:section" content="docs" />
 
 
 
-<title>Interpreters | CS61A Notes</title>
+<title>RegEx | CS61A Notes</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.53a5dbabc20bef689642d11498e1d272a687a7fcab9f3044da32a395789d5002.css" integrity="sha256-U6Xbq8IL72iWQtEUmOHScqaHp/yrnzBE2jKjlXidUAI=" crossorigin="anonymous">
@@ -581,7 +581,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cs61a.rouxl.es/docs/week-12/content/interpreters/" class=" active">Interpreters</a>
+    <a href="https://cs61a.rouxl.es/docs/week-12/content/interpreters/" class="">Interpreters</a>
   
 
         </li>
@@ -607,7 +607,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cs61a.rouxl.es/docs/week-12/content/regex/" class="">RegEx</a>
+    <a href="https://cs61a.rouxl.es/docs/week-12/content/regex/" class=" active">RegEx</a>
   
 
         </li>
@@ -738,7 +738,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Interpreters</strong>
+  <strong>RegEx</strong>
 
   <label for="toc-control">
     
@@ -754,19 +754,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#eval">Eval</a></li>
-    <li><a href="#apply">Apply</a></li>
-    <li><a href="#scheme-specific-traits">Scheme specific traits</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#evaluating-combinations">Evaluating combinations</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#frames">Frames</a></li>
-    <li><a href="#define-expressions">Define Expressions</a></li>
-    <li><a href="#applying-user-defined-procedures">Applying User-Defined Procedures</a></li>
+    <li><a href="#declarative-languages-vs-imperative-languages">Declarative Languages vs Imperative Languages</a></li>
+    <li><a href="#domain-specific">Domain-specific</a></li>
   </ul>
 </nav>
 
@@ -779,90 +768,34 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="interpreting-scheme">
-  Interpreting Scheme
-  <a class="anchor" href="#interpreting-scheme">#</a>
+  <article class="markdown"><h1 id="regex-regular-expression">
+  RegEx (Regular Expression)
+  <a class="anchor" href="#regex-regular-expression">#</a>
 </h1>
-<p>Interpreters keep going through an evaluate/apply cycle.</p>
-<h2 id="eval">
-  Eval
-  <a class="anchor" href="#eval">#</a>
+<h2 id="declarative-languages-vs-imperative-languages">
+  Declarative Languages vs Imperative Languages
+  <a class="anchor" href="#declarative-languages-vs-imperative-languages">#</a>
 </h2>
+<p>RegEx is a declarative language, while Python is an Imperative language. What&rsquo;s the difference?</p>
 <ul>
-<li>Base Case
+<li>Imperative languages
 <ul>
-<li>Primitive Values</li>
+<li>A program is a description of computational instructions</li>
+<li>The interpreter/compiler carries out the execution as you tell it to - you (essentially) know how everything is implemented yourself</li>
 </ul>
 </li>
-<li>Recursive Case
+<li>Declarative languages
 <ul>
-<li>Evaluate(operator, operands) of call expressions</li>
-<li>Apply(procedure, arguments)</li>
-</ul>
-</li>
-</ul>
-<h2 id="apply">
-  Apply
-  <a class="anchor" href="#apply">#</a>
-</h2>
-<ul>
-<li>Base Case
-<ul>
-<li>Built in procedures</li>
-</ul>
-</li>
-<li>Recursive Case
-<ul>
-<li>User defined procedures</li>
+<li>A program is a statement of the desired result</li>
+<li>The interpreter will use its own algorithms to figure out how to generate the result it wants.</li>
 </ul>
 </li>
 </ul>
-<h2 id="scheme-specific-traits">
-  Scheme specific traits
-  <a class="anchor" href="#scheme-specific-traits">#</a>
+<h2 id="domain-specific">
+  Domain-specific
+  <a class="anchor" href="#domain-specific">#</a>
 </h2>
-<p>Nearly everything in Scheme is a list (as mentioned countless times); additionally, nearly everything in scheme is a call expression where the operator is evaluated, then the operands are all evaluated, then these operands are applied to the operator.</p>
-<p>However, there are <strong>special forms</strong> that don&rsquo;t follow this evaluation procedure, which means that we need to create our own ruleset for these special forms.</p>
-<h1 id="evaluation">
-  Evaluation
-  <a class="anchor" href="#evaluation">#</a>
-</h1>
-<p>Our <code>scheme_eval</code> function will choose its execution behaviour based on the expression form given to it:</p>
-<ul>
-<li>If a primitive is given (booleans, numbers, nil, etc), that primitive is just returned as a value itself</li>
-<li>If there&rsquo;s a symbol in the expression, try to look up the value in the frame.</li>
-<li>All other <em>legal</em> expressions are represented as Scheme lists (this could be normal call expressions or special forms) - these are called combinations</li>
-</ul>
-<h2 id="evaluating-combinations">
-  Evaluating combinations
-  <a class="anchor" href="#evaluating-combinations">#</a>
-</h2>
-<p>We could have combinations that are call expressions and combinations that are special forms. How do we tell the difference between them such that we can choose how to evaluate them?</p>
-<p>Let&rsquo;s try to look at examples to try and see the difference:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scheme" data-lang="scheme">(+ <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span>)
-(<span style="color:#66d9ef">define </span>x (+ <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span>))
-(* <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span>)
-(<span style="color:#66d9ef">if </span><span style="color:#66d9ef">#f</span> (/ <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span>) <span style="color:#ae81ff">0</span>)
-</code></pre></div><p>Notice how the first &lsquo;token&rsquo; can be used to tell whether something is a call expression or a special form. If the first token (after the bracket) matches that of a <em>known</em> special form, we use a different evaluation procedure, else we just do the normal scheme special from evaluation procedure.</p>
-<h1 id="symbols-and-functions">
-  Symbols and Functions
-  <a class="anchor" href="#symbols-and-functions">#</a>
-</h1>
-<h2 id="frames">
-  Frames
-  <a class="anchor" href="#frames">#</a>
-</h2>
-<p>Similarly to Python, Scheme variable looks at frames to find the values bound to symbols. In our interpreter, we will represent frames as <code>Frame</code> class instances. Each <code>Frame</code> object will have a <code>lookup</code> and <code>define</code> method. In this version we will not hold return values, but some other implementations may do that.</p>
-<h2 id="define-expressions">
-  Define Expressions
-  <a class="anchor" href="#define-expressions">#</a>
-</h2>
-<p>Define would bind a symbol to a value to the first frame of the current environment that the code is in. If we need to define a procedure, what happens is that a lambda function is created, then that lambda function is the bound to the name.</p>
-<h2 id="applying-user-defined-procedures">
-  Applying User-Defined Procedures
-  <a class="anchor" href="#applying-user-defined-procedures">#</a>
-</h2>
-<p>When applying user-defined procedures, we need to create a new frame where the arguments of the functions are defined, and then makes it such that the parent of the frame is just the <code>env</code> attribute of the procedure (you will see this in the Scheme Project code)</p>
+<p>Most of the time, declarative languages are domain specific, meaning that</p>
 </article>
  
       
@@ -904,19 +837,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#eval">Eval</a></li>
-    <li><a href="#apply">Apply</a></li>
-    <li><a href="#scheme-specific-traits">Scheme specific traits</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#evaluating-combinations">Evaluating combinations</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#frames">Frames</a></li>
-    <li><a href="#define-expressions">Define Expressions</a></li>
-    <li><a href="#applying-user-defined-procedures">Applying User-Defined Procedures</a></li>
+    <li><a href="#declarative-languages-vs-imperative-languages">Declarative Languages vs Imperative Languages</a></li>
+    <li><a href="#domain-specific">Domain-specific</a></li>
   </ul>
 </nav>
 
