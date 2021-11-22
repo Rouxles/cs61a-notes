@@ -2,8 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://cs61a.rouxl.es/docs/week-13/content/bnf/</loc>
-  </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-5/content/containers/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-2/content/control/</loc>
@@ -25,8 +23,6 @@
     <loc>https://cs61a.rouxl.es/docs/week-4/content/recursion/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-11/content/scheme/</loc>
-  </url><url>
-    <loc>https://cs61a.rouxl.es/docs/week-13/content/sql/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-4/content/tree-recursion/</loc>
   </url><url>
@@ -87,8 +83,6 @@
     <loc>https://cs61a.rouxl.es/docs/week-7/content/objects/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/week-8/content/recursive-data/</loc>
-  </url><url>
-    <loc>https://cs61a.rouxl.es/docs/week-12/content/regex/</loc>
   </url><url>
     <loc>https://cs61a.rouxl.es/docs/contributors/</loc>
   </url><url>

@@ -7,15 +7,6 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://cs61a.rouxl.es/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Bnf</title>
-      <link>https://cs61a.rouxl.es/docs/week-13/content/bnf/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/week-13/content/bnf/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Containers</title>
       <link>https://cs61a.rouxl.es/docs/week-5/content/containers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -125,15 +116,6 @@ For example, a recursive function to sum the digits in a number can be written a
       
       <guid>https://cs61a.rouxl.es/docs/week-11/content/scheme/</guid>
       <description>Scheme#Scheme is another programming language that CS61A can test. The reason why this is taught is not only because you make an interpreter for Scheme as your final CS61A project (where you write code in Python to essentially execute scheme code in Python - it&amp;rsquo;s really cool), but also because it&amp;rsquo;s essentially a practical way of showing that you&amp;rsquo;re able to quickly pick up other languages after you get comfortable with one.</description>
-    </item>
-    
-    <item>
-      <title>SQL</title>
-      <link>https://cs61a.rouxl.es/docs/week-13/content/sql/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/week-13/content/sql/</guid>
-      <description></description>
     </item>
     
     <item>
@@ -303,16 +285,6 @@ OOP is particularly useful when you have many similar things that can be further
       
       <guid>https://cs61a.rouxl.es/docs/week-8/content/recursive-data/</guid>
       <description>Recursive Data#Linked Lists#Python lists are implemented in a way that makes inserting and deleting from the front of a list very inefficient. This is because Python implemented a list such that the first element of the list is always at the same memory location and elements in a list are located right next to each other, so when something is inserted to the start, everything gets pushed forward by one space in memory to make space for an element.</description>
-    </item>
-    
-    <item>
-      <title>RegEx</title>
-      <link>https://cs61a.rouxl.es/docs/week-12/content/regex/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/week-12/content/regex/</guid>
-      <description>RegEx (Regular Expression)#Declarative Languages vs Imperative Languages#RegEx is a declarative language, while Python is an Imperative language. What&amp;rsquo;s the difference?
- Imperative languages  A program is a description of computational instructions The interpreter/compiler carries out the execution as you tell it to - you (essentially) know how everything is implemented yourself   Declarative languages  A program is a statement of the desired result The interpreter will use its own algorithms to figure out how to generate the result it wants.</description>
     </item>
     
   </channel>

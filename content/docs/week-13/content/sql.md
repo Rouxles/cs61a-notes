@@ -1,6 +1,7 @@
 ---
 title: "SQL"
 weight: 1
+draft: true
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false
@@ -8,3 +9,4 @@ weight: 1
 # bookComments: false
 # bookSearchExclude: false
 ---
+

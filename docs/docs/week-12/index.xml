@@ -26,15 +26,5 @@ Eval# Base Case  Primitive Values   Recursive Case  Evaluate(operator, operan
 # Recursive def recursive_factorial(n): if n == 1 or n == 0: return 1 else: return n * factorial(n - 1) # Iterative def iterative_factorial(n): total = n while n &amp;gt; 0: n -= 1 total *= n return total Both of these solutions take up O(n) time, but the iterative solution reuses the variables we have, while the recursive solution needs to keep opening up frames - in fact it opens up frames an O(n) number of times, causing this to have some space efficiency issues.</description>
     </item>
     
-    <item>
-      <title>RegEx</title>
-      <link>https://cs61a.rouxl.es/docs/week-12/content/regex/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/week-12/content/regex/</guid>
-      <description>RegEx (Regular Expression)#Declarative Languages vs Imperative Languages#RegEx is a declarative language, while Python is an Imperative language. What&amp;rsquo;s the difference?
- Imperative languages  A program is a description of computational instructions The interpreter/compiler carries out the execution as you tell it to - you (essentially) know how everything is implemented yourself   Declarative languages  A program is a statement of the desired result The interpreter will use its own algorithms to figure out how to generate the result it wants.</description>
-    </item>
-    
   </channel>
 </rss>
