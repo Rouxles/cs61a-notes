@@ -37,17 +37,43 @@ When looking at questions, I tend to read the small description first and try to
 
 #### Example: Fall 2021 `3a`
 
+- [Question](https://cs61a.org/exam/fa21/mt1/61a-fa21-mt1.pdf)
+- [Video Link to Solution](https://www.youtube.com/watch?v=lWmRer4dBnM)
+
+This question in particular is very useful to practice making sure that you know exactly what the behaviour of the function is intended to be. This can be done both by looking at the description of the question itself or looking at the doctests (given that there are enough of them to really showcase the edge cases of the functions).
+
+In this question, you have a small note saying that we want to return the first element in the sequence if *more than one element has the same smallest `measure` value*, and this is reflected in the 5th doctest where they give an example of what to return when two numbers have the same `measure` value. 
+
 ### Environment Diagrams
 
 One incredibly important thing to get used to in this class is environment diagrams. I'd argue that they're the most important thing you want to know to succeed in this class is environment diagrams. While they aren't particularly useful outside CS61A, they're very helpful in terms of understanding what Python does under the hood, and also helps you navigate the waters of the confusing variable names in CS61A.
 
 A good thing about getting very comfortable with environment diagrams is that the questions cannot get complicated. When you see something in Python that seems weird at first, you will know exactly what to expect if you understand the rules of environment diagrams (there aren't a lot to remember; I'd also recommend avoiding rote learning these rules because they're super helpful to remember properly for future midterms).
 
+#### Example: Fall 2019 `pumbaa`
+
+- [Question](https://cs61a.org/exam/fa19/mt1/61a-fa19-mt1.pdf)
+- [Video Link to Solution](https://youtu.be/74JI8aGKHVg?t=1078)
+
+This was probably the hardest environment diagram question I had done to this point, so I'd **highly** recommend giving this a try and actually understanding how to do it, because this is the sort of question that makes other WWPD questions incredibly simple in comparison. If you want an approach on how to do this question, you can take a look at the video solution by course staff
+
 ### Understanding Lambda Expressions and Higher Order Functions
 
-The next most important part for midterm 1 is understanding how to deal with higher order functions (HOFs). HOF questions are the ones that can get the most complicated in MT1, and this can be made even more complicated with `lambda` functions.
+The next most important part for MT1 is understanding how to deal with higher order functions (HOFs). HOF questions are the ones that can get the most complicated (unless recursion has already been introduced by the time MT1 rolls around), and this can be made even more complicated with `lambda` functions in the mix.
+
+#### Example: Fall 2021 `3c`
+
+- [Question](https://cs61a.org/exam/fa21/mt1/61a-fa21-mt1.pdf)
+- [Video Link to Solution](https://www.youtube.com/watch?v=WeYircZodQc)
+
+This question looks pretty simple on the surface, and it kind of is as long as you really understand what the functions you coded earlier in the exam actually do. However, this can be a bit complicated because of the lambda function that needs to be used in part of the question. Try doing this for yourself and then seeing if the question makes sense - the process of coming with lambda functions is usually pretty similar to the process explained in the video.
 
 #### Example: Fall 2021 `3d`
+
+- [Question](https://cs61a.org/exam/fa21/mt1/61a-fa21-mt1.pdf)
+- [Video Link to Solution](https://www.youtube.com/watch?v=KFQr8HySUcs)
+
+This question can get pretty complicated, and much of it is because of the HOF-style thinking that you need. This way of thinking is pretty hard to explain in words, so if whatever I write here doesn't make too much sense, please watch the video that I'll attach alongside the solutions above, and hopefully that will make everything a bit more clear.
 
 ### Practice Practice Practice
 
