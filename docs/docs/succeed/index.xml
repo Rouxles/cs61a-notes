@@ -26,5 +26,24 @@ To do this, make sure to go to office hours regularly if you ever feel unsure ab
 Studying Tips#Most of the information in this section can be found on CS61A&amp;rsquo;s article on how to study.</description>
     </item>
     
+    <item>
+      <title>Midterm 2</title>
+      <link>https://cs61a.rouxl.es/docs/succeed/content/midterm-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/succeed/content/midterm-2/</guid>
+      <description>Midterm 2#This is (in my opinion) the hardest test that you&amp;rsquo;re going to take in this class simply because of the wide scope of content that you&amp;rsquo;re expected to know, despite much of the content (for example linked lists, trees, quite a bit of OOP) being fairly new. It certainly doesn&amp;rsquo;t help that much of the newer concepts heading into the second midterm tend to be more abstract and slightly difficult to grasp.</description>
+    </item>
+    
+    <item>
+      <title>Finals</title>
+      <link>https://cs61a.rouxl.es/docs/succeed/content/finals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/succeed/content/finals/</guid>
+      <description>Finals#This final consists of content that you learned through the entire semester. However, the broad scope of the exam also means that there&amp;rsquo;s the most content to practice for out of all the tests that you&amp;rsquo;ve done currently.
+Most of the content of this exam will be similar to midterm 2, with only a smaller portion of the additional points coming from the content learned after midterm 2 (for example, scheme, BNF, SQL, RegEx, or whatever combination of things you learned after the second midterm).</description>
+    </item>
+    
   </channel>
 </rss>

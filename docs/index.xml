@@ -268,6 +268,15 @@ PyTutor has a way of converting from code to environment diagrams, so please use
     </item>
     
     <item>
+      <title>Midterm 2</title>
+      <link>https://cs61a.rouxl.es/docs/succeed/content/midterm-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/succeed/content/midterm-2/</guid>
+      <description>Midterm 2#This is (in my opinion) the hardest test that you&amp;rsquo;re going to take in this class simply because of the wide scope of content that you&amp;rsquo;re expected to know, despite much of the content (for example linked lists, trees, quite a bit of OOP) being fairly new. It certainly doesn&amp;rsquo;t help that much of the newer concepts heading into the second midterm tend to be more abstract and slightly difficult to grasp.</description>
+    </item>
+    
+    <item>
       <title>Objects</title>
       <link>https://cs61a.rouxl.es/docs/week-7/content/objects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -285,6 +294,16 @@ OOP is particularly useful when you have many similar things that can be further
       
       <guid>https://cs61a.rouxl.es/docs/week-8/content/recursive-data/</guid>
       <description>Recursive Data#Linked Lists#Python lists are implemented in a way that makes inserting and deleting from the front of a list very inefficient. This is because Python implemented a list such that the first element of the list is always at the same memory location and elements in a list are located right next to each other, so when something is inserted to the start, everything gets pushed forward by one space in memory to make space for an element.</description>
+    </item>
+    
+    <item>
+      <title>Finals</title>
+      <link>https://cs61a.rouxl.es/docs/succeed/content/finals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cs61a.rouxl.es/docs/succeed/content/finals/</guid>
+      <description>Finals#This final consists of content that you learned through the entire semester. However, the broad scope of the exam also means that there&amp;rsquo;s the most content to practice for out of all the tests that you&amp;rsquo;ve done currently.
+Most of the content of this exam will be similar to midterm 2, with only a smaller portion of the additional points coming from the content learned after midterm 2 (for example, scheme, BNF, SQL, RegEx, or whatever combination of things you learned after the second midterm).</description>
     </item>
     
   </channel>

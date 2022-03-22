@@ -1,7 +1,6 @@
 ---
 title: "Finals"
 weight: 4
-draft: true
 # bookFlatSection: false
 # bookToc: true
 # bookHidden: false
@@ -28,3 +27,4 @@ One way that I dealt with revising for finals (your mileage may vary) was just s
 
 I think out of everything, spamming past exam questions (you don't even need to mock the papers in this class - I think time-wise just going through questions as fast as possible as long as you understand the solution) is the most time efficient thing to revise for finals.
 
+There's honestly not much to do outside of getting used to course content - most of the things from midterm 2 carries over to this exam, but there's also a few extra things that you need to know (which is basically Scheme - similar thing to Python except everything is in recursion, or stuff like RegEx and BNF which are pretty specialized, but those can just come with a bit of practice because the scope of RegEx and BNF questions is not nearly as large as anything else).
