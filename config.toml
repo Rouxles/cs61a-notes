@@ -4,7 +4,6 @@ title = 'CS61A Notes'
 theme = "book"
 publishDir = "docs"
 enableGitInfo = true
-googleAnalyticsID = "G-QB72X4S5RZ" 
 
 [params]
 
