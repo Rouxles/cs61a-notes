@@ -1,49 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>How To Succeed on CS61A Notes</title>
-    <link>https://cs61a.rouxl.es/docs/succeed/</link>
-    <description>Recent content in How To Succeed on CS61A Notes</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://cs61a.rouxl.es/docs/succeed/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>General Tips</title>
-      <link>https://cs61a.rouxl.es/docs/succeed/content/general-tips/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/succeed/content/general-tips/</guid>
-      <description>General Tips#No Prior Coding Experience#If you haven&amp;rsquo;t coded before starting this course, you can still succeed, but it will be quite significantly harder. CS61A is not an easy course at all (even for those with a lot of programming experience), so it&amp;rsquo;s very important to make sure that you understand how to think computationally.
-To do this, make sure to go to office hours regularly if you ever feel unsure about homework/lab problems.</description>
-    </item>
-    
-    <item>
-      <title>Midterm 1</title>
-      <link>https://cs61a.rouxl.es/docs/succeed/content/midterm-1/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/succeed/content/midterm-1/</guid>
-      <description>Midterm 1#Welcome to your first CS61A Midterm! Please start revising early - it&amp;rsquo;s a lot better spreading out your study over multiple days than to cram it all right before the exam. You&amp;rsquo;ll learn more and more importantly, remember more (even in long term memory), setting you up to succeed more in future exams.
-Studying Tips#Most of the information in this section can be found on CS61A&amp;rsquo;s article on how to study.</description>
-    </item>
-    
-    <item>
-      <title>Midterm 2</title>
-      <link>https://cs61a.rouxl.es/docs/succeed/content/midterm-2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/succeed/content/midterm-2/</guid>
-      <description>Midterm 2#This is (in my opinion) the hardest test that you&amp;rsquo;re going to take in this class simply because of the wide scope of content that you&amp;rsquo;re expected to know, despite much of the content (for example linked lists, trees, quite a bit of OOP) being fairly new. It certainly doesn&amp;rsquo;t help that much of the newer concepts heading into the second midterm tend to be more abstract and slightly difficult to grasp.</description>
-    </item>
-    
-    <item>
-      <title>Finals</title>
-      <link>https://cs61a.rouxl.es/docs/succeed/content/finals/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/succeed/content/finals/</guid>
-      <description>Finals#This final consists of content that you learned through the entire semester. However, the broad scope of the exam also means that there&amp;rsquo;s the most content to practice for out of all the tests that you&amp;rsquo;ve done currently.
-Most of the content of this exam will be similar to midterm 2, with only a smaller portion of the additional points coming from the content learned after midterm 2 (for example, scheme, BNF, SQL, RegEx, or whatever combination of things you learned after the second midterm).</description>
-    </item>
-    
-  </channel>
-</rss>

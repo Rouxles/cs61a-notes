@@ -1,21 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Week 1 on CS61A Notes</title>
-    <link>https://cs61a.rouxl.es/docs/week-1/</link>
-    <description>Recent content in Week 1 on CS61A Notes</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://cs61a.rouxl.es/docs/week-1/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Introduction to the Basics of Python</title>
-      <link>https://cs61a.rouxl.es/docs/week-1/content/introduction/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/week-1/content/introduction/</guid>
-      <description>The first week of CS61A is pretty simple - get used to your coding environment and a few of the basics of Python.
-Lab 0#While this is optional, it&amp;rsquo;s probably best to do it just to get used to the very basics of Python as well as ok.py, the autograder used in CS61A.
-You can (and should!) visualize how Python programs works with PyTutor or execute programs with code.</description>
-    </item>
-    
-  </channel>
-</rss>

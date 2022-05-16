@@ -1,0 +1,398 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Objects #  Object Oriented Programming (OOP) #  OOP is a method for organizing programs. It includes
+ Data Abstraction Bundling together related programs/information/behaviour  Each object can have its own local state (meaning its own variables), and also knows how to manage its own state.
+OOP is particularly useful when you have many similar things that can be further generalized to avoid repeating redundant code. For example, you could have an Animal object, with other sub-classes of the Animal (for example, Turtle, Cat, Bear, etc.">
+<meta name=theme-color content="#FFFFFF"><meta property="og:title" content="Objects">
+<meta property="og:description" content="Objects #  Object Oriented Programming (OOP) #  OOP is a method for organizing programs. It includes
+ Data Abstraction Bundling together related programs/information/behaviour  Each object can have its own local state (meaning its own variables), and also knows how to manage its own state.
+OOP is particularly useful when you have many similar things that can be further generalized to avoid repeating redundant code. For example, you could have an Animal object, with other sub-classes of the Animal (for example, Turtle, Cat, Bear, etc.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cs61a.rouxl.es/docs/week-7/content/objects/"><meta property="article:section" content="docs">
+<meta property="article:modified_time" content="2021-10-19T21:14:27-07:00">
+<title>Objects | CS61A Notes</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.87312a22c120b2e99e4dbec51f671dd6b1cb0bed3b12a909c39a0aa981eb5a8f.css integrity="sha256-hzEqIsEgsumeTb7FH2cd1rHLC+07EqkJw5oKqYHrWo8=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.c2d11d7c24225ce7af16420167bab5ee5e860d2060ab2c12fd510c1b76c47bb5.js integrity="sha256-wtEdfCQiXOevFkIBZ7q17l6GDSBgqywS/VEMG3bEe7U=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>CS61A Notes</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li class=book-section-flat>
+<span>Week 1</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-1/content/introduction/>Introduction to the Basics of Python</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 2</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/control/>Control</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/>Higher Order Functions</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/environment/>Environment Diagrams</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 3</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-3/content/design/>Design</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-3/content/decorators/>Decorators</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 4</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-4/content/recursion/>Recursion</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-4/content/tree-recursion/>Tree Recursion</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 5</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/containers/>Containers</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/sequences/>Sequences</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/data-abstraction/>Data Abstraction + Dictionaries</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 6</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-6/content/trees/>Trees</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-6/content/mutability/>Mutability</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 7</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/iterators/>Iterators</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/generators/>Generators</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/objects/ class=active>Objects</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 8</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/inheritance/>Inheritance</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/representation/>Representation</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/recursive-data/>Recursive Data</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 9</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-9/content/efficiency/>Efficiency</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/week-10/>Week 10</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 11</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/scheme/>Scheme</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/macros-and-exceptions/>Macros + Exceptions</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/calculator/>Calculator</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 12</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-12/content/interpreters/>Interpreters</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-12/content/tail-calls/>Tail Calls</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/week-13/>Week 13</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>How To Succeed</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/general-tips/>General Tips</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/midterm-1/>Midterm 1</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/midterm-2/>Midterm 2</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/finals/>Finals</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/contributors/>Contributors</a>
+<ul>
+</ul>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Objects</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#object-oriented-programming-oop>Object Oriented Programming (OOP)</a></li>
+<li><a href=#terminology>Terminology</a></li>
+<li><a href=#example>Example</a>
+<ul>
+<li><a href=#object-construction>Object Construction</a></li>
+<li><a href=#instance-variables>Instance Variables</a></li>
+<li><a href=#method-invocation>Method Invocation</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h1 id=objects>
+Objects
+<a class=anchor href=#objects>#</a>
+</h1>
+<h2 id=object-oriented-programming-oop>
+Object Oriented Programming (OOP)
+<a class=anchor href=#object-oriented-programming-oop>#</a>
+</h2>
+<p>OOP is a method for organizing programs. It includes</p>
+<ul>
+<li>Data Abstraction</li>
+<li>Bundling together related programs/information/behaviour</li>
+</ul>
+<p>Each <strong>object</strong> can have its own local <strong>state</strong> (meaning its own variables), and also knows how to manage its own state.</p>
+<p>OOP is particularly useful when you have many similar things that can be further generalized to avoid repeating redundant code. For example, you could have an <code>Animal</code> object, with other sub-classes of the <code>Animal</code> (for example, <code>Turtle</code>, <code>Cat</code>, <code>Bear</code>, etc.) - this (inheritance) will be covered in the next page.</p>
+<h2 id=terminology>
+Terminology
+<a class=anchor href=#terminology>#</a>
+</h2>
+<ul>
+<li>A <strong>class</strong> is a template for creating your own data type (for example, an Elephant class)</li>
+<li>An <strong>instance</strong> of a class is called an <strong>object</strong> (in this context, an instance would be one elephant in the Elephant class)</li>
+<li>Each <strong>object</strong> has its own variables called <strong>instance variables</strong> that describe its current state</li>
+<li>Each <strong>object</strong> can also have its own functions called <strong>methods</strong></li>
+<li>Each <strong>class</strong> can have its own variables called <strong>class variables</strong> that contain information about the class itself</li>
+</ul>
+<h2 id=example>
+Example
+<a class=anchor href=#example>#</a>
+</h2>
+<p>Let&rsquo;s make an Animal class.</p>
+<p>I want each of my animals to have instance variables for food and happiness as well as methods (equivalent to functions) to have animals play with each other.</p>
+<p>In Python, whenever we want to create an instance of a class, we just assign a variable to a call to the class:</p>
+<p>The example below won&rsquo;t necessarily make sense for now, but I&rsquo;ll break it down later into smaller parts that will each be explained.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Animal</span>:
+    default_food <span style=color:#f92672>=</span> []
+    <span style=color:#66d9ef>def</span> __init__(self, name, energy <span style=color:#f92672>=</span> <span style=color:#ae81ff>100</span>):
+        self<span style=color:#f92672>.</span>name <span style=color:#f92672>=</span> name
+        self<span style=color:#f92672>.</span>food <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>default_food[:]
+        self<span style=color:#f92672>.</span>energy <span style=color:#f92672>=</span> energy
+        self<span style=color:#f92672>.</span>times_fed <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>feed</span>(self, food):
+        self<span style=color:#f92672>.</span>food <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>food <span style=color:#f92672>+</span> [food]
+        self<span style=color:#f92672>.</span>times_fed <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+        self<span style=color:#f92672>.</span>energy <span style=color:#f92672>+=</span> <span style=color:#ae81ff>10</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>play</span>(self):
+        <span style=color:#66d9ef>if</span> energy <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>20</span>:
+            <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;Not Enough Energy&#34;</span>
+        self<span style=color:#f92672>.</span>energy <span style=color:#f92672>-=</span> <span style=color:#ae81ff>20</span>
+        self<span style=color:#f92672>.</span>is_happy <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span> <span style=color:#75715e># Creates new instance variable</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>self<span style=color:#f92672>.</span>name<span style=color:#e6db74>}</span><span style=color:#e6db74> has </span><span style=color:#e6db74>{</span>self<span style=color:#f92672>.</span>energy<span style=color:#e6db74>}</span><span style=color:#e6db74> energy.&#34;</span>
+
+my_cat <span style=color:#f92672>=</span> Animal(<span style=color:#e6db74>&#34;Sochi&#34;</span>)
+my_cat<span style=color:#f92672>.</span>feed(<span style=color:#e6db74>&#34;Tuna&#34;</span>)
+</code></pre></div><h3 id=object-construction>
+Object Construction
+<a class=anchor href=#object-construction>#</a>
+</h3>
+<p>In this case, <code>Animal(&lt;args>)</code> is called the <strong>constructor</strong>.</p>
+<p>When our constructor (<code>my_cat = Animal("Sochi")</code>) is called, it does the following:</p>
+<ol>
+<li>Create a new instance of the <code>Animal</code> class</li>
+<li>Call the <code>__init__</code> method of the class with the new instance as the first argument (passed in as <code>self</code>), along with any additional arguments in the call expression.
+<ul>
+<li>In this case, the new instance becomes <code>self</code>, and afterwards, is assigned to <code>my_cat</code>. This will hopefully make more sense after you see the diagram a bit below.</li>
+<li>The Pythonic term for a variable wrapped in double underscores is called a <strong>dunder</strong> method.</li>
+</ul>
+</li>
+</ol>
+<h3 id=instance-variables>
+Instance Variables
+<a class=anchor href=#instance-variables>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Animal</span>:
+    default_food <span style=color:#f92672>=</span> []
+    <span style=color:#66d9ef>def</span> __init__(self, name, energy <span style=color:#f92672>=</span> <span style=color:#ae81ff>100</span>):
+        self<span style=color:#f92672>.</span>name <span style=color:#f92672>=</span> name
+        self<span style=color:#f92672>.</span>food <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>default_food[:]
+        self<span style=color:#f92672>.</span>energy <span style=color:#f92672>=</span> energy
+        self<span style=color:#f92672>.</span>times_fed <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</code></pre></div><p><strong>Instance Variables</strong> are variables that each <strong>instance</strong> of an object (most likely) has, which describes the <strong>state</strong> of the object. These instance variables can be modified using each of the object&rsquo;s methods. Additionally, new instance variables can be assigned outside the constructor.</p>
+<p>Dot notation here (for example with <code>self.name</code>) allows you to access all attributes of an object (including both instance variables and instance methods). The left-hand side does not need to be <code>self</code> - it can be anything that evaluates to an object instance (more on this later).</p>
+<p>In this case, <strong>self</strong> refers to the instance being passed in - not every animal is the same, so <code>self</code> shouldn&rsquo;t refer to the same animal. This might be more clear with the next example.</p>
+<h4 id=mutating-instance-variables>
+Mutating Instance Variables
+<a class=anchor href=#mutating-instance-variables>#</a>
+</h4>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Animal</span>:
+    default_food <span style=color:#f92672>=</span> []
+    <span style=color:#66d9ef>def</span> __init__(self, name, energy <span style=color:#f92672>=</span> <span style=color:#ae81ff>100</span>):
+        self<span style=color:#f92672>.</span>name <span style=color:#f92672>=</span> name
+        self<span style=color:#f92672>.</span>food <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>default_food[:]
+        self<span style=color:#f92672>.</span>energy <span style=color:#f92672>=</span> energy
+        self<span style=color:#f92672>.</span>times_fed <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+
+my_cat <span style=color:#f92672>=</span> Animal(<span style=color:#e6db74>&#34;Sochi&#34;</span>)
+</code></pre></div><p>First, let me draw a representation of the Animal class that we&rsquo;re referring to in the code block above. This is <strong>not</strong> the official Python Tutor environment diagram for a representation of classes, but this notation is a very clear way to see the <strong>lookup order</strong> of certain variables.</p>
+<p><img src=https://i.imgur.com/mA2YUZR.png alt="Class Animal"></p>
+<blockquote class="book-hint info">
+I haven&rsquo;t put every single method in the class
+</blockquote>
+<p>Afterwards, when we call <code>my_cat = Animal("Sochi")</code>, we create a new instance of the class. I will denote a new instance with a circle rather than a rectangle, label the newly created instance with <code>my_cat</code> (the name of the variable assigned to it), then an arrow will be drawn to the class that this instance refers to. This will be even more important when we look at inheritance in objects.</p>
+<p><img src=https://i.imgur.com/bvKwZS8.png alt="With instance"></p>
+<p>Now, we can see that our variable <code>my_cat</code> has instance variables <code>name, food, energy, times_fed</code>, which can be mutated by either mutating <code>my_cat</code> or using methods, which we will show later.</p>
+<p>You might be wondering where <code>self.food</code> comes from. In this case, <code>self.default_food[:]</code> will look for <code>default_food</code> in its own instance, which it can&rsquo;t find because nothing is defined, so it will then look at the &lsquo;frame&rsquo; above, or in this case, the class itself for <code>default_food</code>, which it does contain. As a result, that value is used for <code>self.food</code>. You can think of this as variable lookup with different frames.</p>
+<p>To mutate our instance, we can use <code>my_cat</code> to do so.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>my_cat<span style=color:#f92672>.</span>energy <span style=color:#f92672>+=</span> <span style=color:#ae81ff>10</span>
+</code></pre></div><p>Running the following line of code will look for whatever <code>my_cat</code> is pointing to, which in this case, is the instance, then find <code>energy</code> and update that.</p>
+<p><img src=https://i.imgur.com/4FccVEA.png alt="Updated Instance"></p>
+<p>This is sort of like list mutation: you can access an element in the instance by using <strong>dot notation</strong>, then update it through assignment.</p>
+<h3 id=method-invocation>
+Method Invocation
+<a class=anchor href=#method-invocation>#</a>
+</h3>
+<p>Calling <code>my_cat.feed("Tuna")</code> will invoke the following function:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Animal</span>:
+     <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>feed</span>(self, food):
+         self<span style=color:#f92672>.</span>food <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>food <span style=color:#f92672>+</span> [food]
+         self<span style=color:#f92672>.</span>times_fed <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+         self<span style=color:#f92672>.</span>energy <span style=color:#f92672>+=</span> <span style=color:#ae81ff>10</span>
+</code></pre></div><blockquote class="book-hint info">
+This does the same thing as calling <code>Animal.feed(my_cat, "Tuna")</code> if you want to see where the <code>self</code> variable comes from
+</blockquote>
+<p>In this case, <code>my_cat</code> gets <strong>implicitly</strong> passed in as <code>self</code>, so the first argument in <code>my_cat.feed("Tuna")</code> (<code>Tuna</code>) will get passed in to <code>feed</code> as <code>food</code>.</p>
+<p>As a result, we will update our instance variables following the instructions in the function, where <code>self</code> refers to the instance we made in the image above.</p>
+<p><img src=https://i.imgur.com/To8ruMM.png alt="Even more updated instance"></p>
+<blockquote class="book-hint info">
+Notice how we have only updated the <strong>instance</strong> variables but not the <strong>class</strong> variables related to the (located in the rectangle). The new methods in the <code>Animal</code> class were already defined before, I added them in the image above for clarity reasons - (it shows where the function comes from)
+</blockquote>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div><a class="flex align-center" href=https://github.com/Rouxles/cs61a-notes//commit/487580172e73dc02d01b1657d828e606ff5fea99 title="Last modified by Antonio Kam | October 20, 2021" target=_blank rel=noopener>
+<img src=/svg/calendar.svg class=book-icon alt=Calendar>
+<span>October 20, 2021</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#object-oriented-programming-oop>Object Oriented Programming (OOP)</a></li>
+<li><a href=#terminology>Terminology</a></li>
+<li><a href=#example>Example</a>
+<ul>
+<li><a href=#object-construction>Object Construction</a></li>
+<li><a href=#instance-variables>Instance Variables</a></li>
+<li><a href=#method-invocation>Method Invocation</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

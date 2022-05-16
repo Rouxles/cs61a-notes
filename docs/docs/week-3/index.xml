@@ -1,31 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Week 3 on CS61A Notes</title>
-    <link>https://cs61a.rouxl.es/docs/week-3/</link>
-    <description>Recent content in Week 3 on CS61A Notes</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://cs61a.rouxl.es/docs/week-3/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Design</title>
-      <link>https://cs61a.rouxl.es/docs/week-3/content/design/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/week-3/content/design/</guid>
-      <description>Design#Abstraction#Abstraction (in a CS context) is broadly understood as extracting relevant information from other sources in order to simplify the codebase.
-Abstraction by Parameterization#This is pretty much DRY (Don&amp;rsquo;t Repeat Yourself). Instead of hard-coding code that have similar structure, you could write a function that takes in parameters (arguments) which can be used to do the same thing. (Taken from CS61A Fall 2021 Design Slides)</description>
-    </item>
-    
-    <item>
-      <title>Decorators</title>
-      <link>https://cs61a.rouxl.es/docs/week-3/content/decorators/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/week-3/content/decorators/</guid>
-      <description>Decorators#Python decorators allow you to wrap functions inside one another easily. These may not be seen that often in the CS61A course, but in general, are pretty good to know due to the simplicity that it has as well as the common usage of it in web frameworks such as Flask, or in larger codebases.
-Example Usage#Let&amp;rsquo;s take this trace function for example:
-It returns a function that takes a single argument which traces the inputs and outputs of each function.</description>
-    </item>
-    
-  </channel>
-</rss>

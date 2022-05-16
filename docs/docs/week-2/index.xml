@@ -1,38 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Week 2 on CS61A Notes</title>
-    <link>https://cs61a.rouxl.es/docs/week-2/</link>
-    <description>Recent content in Week 2 on CS61A Notes</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://cs61a.rouxl.es/docs/week-2/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Control</title>
-      <link>https://cs61a.rouxl.es/docs/week-2/content/control/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/week-2/content/control/</guid>
-      <description>Control# Side Effects#Side effects occur in functions when the function alters the global environment in some form. This could be in the form of altering a variable in the global scope, or using a print statement inside a function. One easy way to tell if a function contains side effects is that if a function acts like a mathematical function, it has no side effects.</description>
-    </item>
-    
-    <item>
-      <title>Higher Order Functions</title>
-      <link>https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/</guid>
-      <description>Higher Order Functions#Designing Functions#Describing Functions#   Aspect Example     The domain of a function is the expected range of inputs (similarly to a domain in mathematics) x is a string.   The range of a function is the set of output values that could be returned Function square returns a non-negative number.   The behavior of a (pure) function is the relationship between the input and the output Function square returns the square of an input x.</description>
-    </item>
-    
-    <item>
-      <title>Environment Diagrams</title>
-      <link>https://cs61a.rouxl.es/docs/week-2/content/environment/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cs61a.rouxl.es/docs/week-2/content/environment/</guid>
-      <description>Environment Diagrams#Environment Diagrams are a good way to visualize how Python deals with its execution, and can also help you to visualize how more complicated pieces of code (e.g. Higher Order Functions) work.
-PyTutor has a way of converting from code to environment diagrams, so please use that as a resource! The diagrams below are not going to match those from PyTutor exactly due to Markdown constraints, but I will try to emulate them as well as possible.</description>
-    </item>
-    
-  </channel>
-</rss>

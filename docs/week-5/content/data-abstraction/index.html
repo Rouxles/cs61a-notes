@@ -1,0 +1,430 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Data Abstraction #  Many values in programs are compound values — a value composed of multiple values (for example coordinates, dates, or geographic positions)
+By using a data abstraction, you can manipulate compound values as units without needing to worry about the way that values are stored.
+Pair Abstraction #  For data that is stored in pairs, we can manipulate these values using a pair data abstraction:
+couple = pair(&#34;a&#34;, &#34;b&#34;) a = first(couple) b = second(couple) By implementing pair() (our constructor), first(), and second() (the selectors), you can access these elements without needing to worry about how the data is stored.">
+<meta name=theme-color content="#FFFFFF"><meta property="og:title" content="Data Abstraction + Dictionaries">
+<meta property="og:description" content="Data Abstraction #  Many values in programs are compound values — a value composed of multiple values (for example coordinates, dates, or geographic positions)
+By using a data abstraction, you can manipulate compound values as units without needing to worry about the way that values are stored.
+Pair Abstraction #  For data that is stored in pairs, we can manipulate these values using a pair data abstraction:
+couple = pair(&#34;a&#34;, &#34;b&#34;) a = first(couple) b = second(couple) By implementing pair() (our constructor), first(), and second() (the selectors), you can access these elements without needing to worry about how the data is stored.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cs61a.rouxl.es/docs/week-5/content/data-abstraction/"><meta property="article:section" content="docs">
+<meta property="article:modified_time" content="2021-09-30T13:37:05-07:00">
+<title>Data Abstraction + Dictionaries | CS61A Notes</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.87312a22c120b2e99e4dbec51f671dd6b1cb0bed3b12a909c39a0aa981eb5a8f.css integrity="sha256-hzEqIsEgsumeTb7FH2cd1rHLC+07EqkJw5oKqYHrWo8=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.c2d11d7c24225ce7af16420167bab5ee5e860d2060ab2c12fd510c1b76c47bb5.js integrity="sha256-wtEdfCQiXOevFkIBZ7q17l6GDSBgqywS/VEMG3bEe7U=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>CS61A Notes</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li class=book-section-flat>
+<span>Week 1</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-1/content/introduction/>Introduction to the Basics of Python</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 2</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/control/>Control</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/>Higher Order Functions</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/environment/>Environment Diagrams</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 3</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-3/content/design/>Design</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-3/content/decorators/>Decorators</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 4</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-4/content/recursion/>Recursion</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-4/content/tree-recursion/>Tree Recursion</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 5</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/containers/>Containers</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/sequences/>Sequences</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/data-abstraction/ class=active>Data Abstraction + Dictionaries</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 6</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-6/content/trees/>Trees</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-6/content/mutability/>Mutability</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 7</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/iterators/>Iterators</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/generators/>Generators</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/objects/>Objects</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 8</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/inheritance/>Inheritance</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/representation/>Representation</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/recursive-data/>Recursive Data</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 9</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-9/content/efficiency/>Efficiency</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/week-10/>Week 10</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 11</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/scheme/>Scheme</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/macros-and-exceptions/>Macros + Exceptions</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/calculator/>Calculator</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 12</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-12/content/interpreters/>Interpreters</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-12/content/tail-calls/>Tail Calls</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/week-13/>Week 13</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>How To Succeed</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/general-tips/>General Tips</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/midterm-1/>Midterm 1</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/midterm-2/>Midterm 2</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/finals/>Finals</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/contributors/>Contributors</a>
+<ul>
+</ul>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Data Abstraction + Dictionaries</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#pair-abstraction>Pair Abstraction</a>
+<ul>
+<li><a href=#rational-numbers>Rational Numbers</a></li>
+</ul>
+</li>
+<li><a href=#layers-of-abstraction>Layers of Abstraction</a>
+<ul>
+<li><a href=#abstraction-barriers>Abstraction Barriers</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><a href=#queries>Queries</a></li>
+<li><a href=#rules>Rules</a></li>
+<li><a href=#iteration>Iteration</a></li>
+<li><a href=#dictionary-comprehensions>Dictionary Comprehensions</a></li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h1 id=data-abstraction>
+Data Abstraction
+<a class=anchor href=#data-abstraction>#</a>
+</h1>
+<p>Many values in programs are compound values — a value composed of multiple values (for example coordinates, dates, or geographic positions)</p>
+<p>By using a <strong>data abstraction</strong>, you can manipulate compound values as units <strong>without needing to worry about the way that values are stored</strong>.</p>
+<h2 id=pair-abstraction>
+Pair Abstraction
+<a class=anchor href=#pair-abstraction>#</a>
+</h2>
+<p>For data that is stored in pairs, we can manipulate these values using a <code>pair</code> data abstraction:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>couple <span style=color:#f92672>=</span> pair(<span style=color:#e6db74>&#34;a&#34;</span>, <span style=color:#e6db74>&#34;b&#34;</span>)
+a <span style=color:#f92672>=</span> first(couple)
+b <span style=color:#f92672>=</span> second(couple)
+</code></pre></div><p>By implementing <code>pair()</code> (our constructor), <code>first()</code>, and <code>second()</code> (the selectors), you can access these elements without needing to worry about how the data is stored. The only time that people need to worry about how the data is stored is when implementing the functions themselves. <strong>One</strong> example (implying that there are multiple ways) of implementing these functions can be seen below:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>couple <span style=color:#f92672>=</span> <span style=color:#66d9ef>lambda</span> a, b: [a, b]
+first <span style=color:#f92672>=</span> <span style=color:#66d9ef>lambda</span> lst: lst[<span style=color:#ae81ff>0</span>]
+second <span style=color:#f92672>=</span> <span style=color:#66d9ef>lambda</span> lst: lst[<span style=color:#ae81ff>1</span>] 
+</code></pre></div><h3 id=rational-numbers>
+Rational Numbers
+<a class=anchor href=#rational-numbers>#</a>
+</h3>
+<p>One reasonable data abstraction to do is to implement rational numbers as a data abstraction. By storing the numerator and denominator separately, we can get precise values of certain fractions such as <code>1/3</code>.</p>
+<p>For example:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>half <span style=color:#f92672>=</span> rational(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>)
+top <span style=color:#f92672>=</span> numerator(half) <span style=color:#75715e># 1</span>
+bottom <span style=color:#f92672>=</span> denominator(half) <span style=color:#75715e># 2</span>
+</code></pre></div><p>We have the structure for a denominator&mldr; cool I guess? But at its current state, we can&rsquo;t do anything with the numbers in terms of multiplying/adding/printing them in the way that we expect. As a result, we can write more functions to help us do that using functions.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>mul_rational</span>(x, y):
+    <span style=color:#66d9ef>return</span> rational(
+        numerator(x) <span style=color:#f92672>*</span> numerator(y),
+        denominator(x) <span style=color:#f92672>*</span> denominator(y)
+    )
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>add_rational</span>(x, y):
+    nx, dx <span style=color:#f92672>=</span> numerator(x), denominator(x)
+    ny, dy <span style=color:#f92672>=</span> numerator(y), denominator(y)
+    <span style=color:#66d9ef>return</span> rational(
+        nx <span style=color:#f92672>*</span> dy <span style=color:#f92672>+</span> ny <span style=color:#f92672>*</span> dx, 
+        dx <span style=color:#f92672>*</span> dy
+    )
+</code></pre></div><p>Notice how at this point we <strong>still do not know how <code>rational()</code> is implemented</strong>.</p>
+<h4 id=implementation>
+Implementation
+<a class=anchor href=#implementation>#</a>
+</h4>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>rational</span>(n, d):
+    <span style=color:#66d9ef>return</span> [n, d]
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>numerator</span>(rational):
+    <span style=color:#66d9ef>return</span> rational[<span style=color:#ae81ff>0</span>]
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>denominator</span>(rational):
+    <span style=color:#66d9ef>return</span> rational[<span style=color:#ae81ff>1</span>]
+</code></pre></div><p>However, <code>rational(n, d)</code> doesn&rsquo;t fully simplify the fractions, so to solve that, we can divide both <code>n</code> and <code>d</code> by the greatest common denominator:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>rational</span>(n, d):
+    g <span style=color:#f92672>=</span> gcd(n, d)
+    <span style=color:#66d9ef>return</span> [n <span style=color:#f92672>//</span> g, d <span style=color:#f92672>//</span> g]
+</code></pre></div><h2 id=layers-of-abstraction>
+Layers of Abstraction
+<a class=anchor href=#layers-of-abstraction>#</a>
+</h2>
+<p>You might be wondering, what&rsquo;s the point of data abstraction?</p>
+<p>One reason is that some things are a lot harder to code/understand (in terms of legibility) without using data abstraction in Python (for example coding a tree), but the main reason is for simplicity and extensibility.</p>
+<p>What data abstraction does is allow changing the implementation of the function itself without actually needing to manually change all the instances of it. In addition, with a good data abstraction, the programmer will not need to know how the data is implemented, but just needs to use the constructors and selectors to do the job for them.</p>
+<h3 id=abstraction-barriers>
+Abstraction Barriers
+<a class=anchor href=#abstraction-barriers>#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Layer</th>
+<th style=text-align:left>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>Representation/Implementation</td>
+<td style=text-align:left><code>[x, y]</code>, <code>[0]</code>, <code>[1]</code></td>
+</tr>
+<tr>
+<td style=text-align:left>Data Abstraction 1</td>
+<td style=text-align:left><code>make_rational</code>, <code>numerator</code>, <code>denominator</code></td>
+</tr>
+<tr>
+<td style=text-align:left>Data Abstraction 2</td>
+<td style=text-align:left><code>mul_rational</code>, <code>add_rational</code></td>
+</tr>
+<tr>
+<td style=text-align:left>User Programs</td>
+<td style=text-align:left>Could be anything using the layer above</td>
+</tr>
+</tbody>
+</table>
+<p>Each layer would only need to use the layer above it, meaning that when users use the data abstractions, they do not need to care about how it&rsquo;s implemented.</p>
+<p>However, this requires that the abstraction barriers are not violated. For example, if you were to do:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>add_rational([<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>], [<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>])
+</code></pre></div><p>You would be violating the abstraction barrier. This would not work if the implementation of <code>rational</code> were changed for instance. As a result, make sure to use both the <strong>constructors</strong> and the <strong>selectors</strong> instead of assuming what the implementation is.</p>
+<h1 id=dictionaries>
+Dictionaries
+<a class=anchor href=#dictionaries>#</a>
+</h1>
+<p>A <strong>dictionary</strong> is another way to store multiple pieces of data, however, it is stored differently to that of lists, and is also accessed slightly differently.</p>
+<p>Each element in a dictionary stores a <code>key</code> and a <code>value</code> as a pair, with each element separated by a <code>,</code> (similarly to lists) which looks like the following below:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>my_fruits <span style=color:#f92672>=</span> {<span style=color:#e6db74>&#34;apples&#34;</span>: <span style=color:#ae81ff>2</span>, <span style=color:#e6db74>&#34;bananas&#34;</span>: <span style=color:#ae81ff>25</span>}
+</code></pre></div><p>If we had the following dictionary, we could call <code>my_fruits["apples]</code> to get the value of <code>apples</code>, which in this case would return <code>2</code>. If we wanted to edit the amount of apples we had, we would then assign a value to the index: <code>myfruits["apples"] = 3</code> would <strong>mutate</strong> our dictionary that we have.</p>
+<h2 id=queries>
+Queries
+<a class=anchor href=#queries>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#e6db74>&#34;apples&#34;</span> <span style=color:#f92672>in</span> my_fruits <span style=color:#75715e># able to search for keys</span>
+<span style=color:#66d9ef>True</span>
+<span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>in</span> my_fruits <span style=color:#75715e># not able to search for values</span>
+<span style=color:#66d9ef>False</span>
+<span style=color:#f92672>&gt;&gt;&gt;</span> len(my_fruits)
+<span style=color:#ae81ff>2</span>
+</code></pre></div><h2 id=rules>
+Rules
+<a class=anchor href=#rules>#</a>
+</h2>
+<p><code>keys</code> cannot be a <code>list</code> or a <code>dictionary</code> (or any mutable type). However, <code>values</code> can be of any types (including dictionaries).</p>
+<p>There can only be one value mapped to every <code>key</code> (similarly to mathematical functions)</p>
+<h2 id=iteration>
+Iteration
+<a class=anchor href=#iteration>#</a>
+</h2>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>for</span> fruit <span style=color:#f92672>in</span> my_fruits:
+    print(fruit, my_fruits[fruit])
+    <span style=color:#75715e># apples 2</span>
+    <span style=color:#75715e># bananas 25</span>
+</code></pre></div><blockquote class="book-hint info">
+Notice that <code>fruit</code> iterates through the <code>keys</code> and not the <code>values</code>!
+</blockquote>
+<h2 id=dictionary-comprehensions>
+Dictionary Comprehensions
+<a class=anchor href=#dictionary-comprehensions>#</a>
+</h2>
+<p>Very similar to list comprehensions, but it uses <code>{}</code> instead of <code>[]</code>; in the form of <code>{&lt;key>: &lt;value> for x in &lt;iter>}</code>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>{x: x<span style=color:#f92672>*</span>x <span style=color:#66d9ef>for</span> x <span style=color:#f92672>in</span> [<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>]}
+<span style=color:#75715e># would return a dictionary of </span>
+{
+    <span style=color:#ae81ff>1</span>: <span style=color:#ae81ff>1</span>,
+    <span style=color:#ae81ff>2</span>: <span style=color:#ae81ff>4</span>,
+    <span style=color:#ae81ff>3</span>: <span style=color:#ae81ff>9</span>,
+    <span style=color:#ae81ff>4</span>: <span style=color:#ae81ff>16</span>
+}
+</code></pre></div></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div><a class="flex align-center" href=https://github.com/Rouxles/cs61a-notes//commit/1edf1579ad06bdd14a140d9e0e143797cb1500d3 title="Last modified by Antonio Kam | September 30, 2021" target=_blank rel=noopener>
+<img src=/svg/calendar.svg class=book-icon alt=Calendar>
+<span>September 30, 2021</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#pair-abstraction>Pair Abstraction</a>
+<ul>
+<li><a href=#rational-numbers>Rational Numbers</a></li>
+</ul>
+</li>
+<li><a href=#layers-of-abstraction>Layers of Abstraction</a>
+<ul>
+<li><a href=#abstraction-barriers>Abstraction Barriers</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><a href=#queries>Queries</a></li>
+<li><a href=#rules>Rules</a></li>
+<li><a href=#iteration>Iteration</a></li>
+<li><a href=#dictionary-comprehensions>Dictionary Comprehensions</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

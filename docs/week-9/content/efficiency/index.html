@@ -1,0 +1,495 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Efficiency #  The efficiency of an algorithm is very important. While it isn&rsquo;t too important in CS 61A due to the (relatively) small data set and number of computations needed, in big sets of data or some extremely computer taxing computations, efficiency makes a world of a difference in terms of actually being able to make computations.
+However, CS 61A still wants you to understand how to calculate efficiency in a broad sense.">
+<meta name=theme-color content="#FFFFFF"><meta property="og:title" content="Efficiency">
+<meta property="og:description" content="Efficiency #  The efficiency of an algorithm is very important. While it isn&rsquo;t too important in CS 61A due to the (relatively) small data set and number of computations needed, in big sets of data or some extremely computer taxing computations, efficiency makes a world of a difference in terms of actually being able to make computations.
+However, CS 61A still wants you to understand how to calculate efficiency in a broad sense.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cs61a.rouxl.es/docs/week-9/content/efficiency/"><meta property="article:section" content="docs">
+<meta property="article:modified_time" content="2021-10-21T10:06:51-07:00">
+<title>Efficiency | CS61A Notes</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.87312a22c120b2e99e4dbec51f671dd6b1cb0bed3b12a909c39a0aa981eb5a8f.css integrity="sha256-hzEqIsEgsumeTb7FH2cd1rHLC+07EqkJw5oKqYHrWo8=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.c2d11d7c24225ce7af16420167bab5ee5e860d2060ab2c12fd510c1b76c47bb5.js integrity="sha256-wtEdfCQiXOevFkIBZ7q17l6GDSBgqywS/VEMG3bEe7U=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>CS61A Notes</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li class=book-section-flat>
+<span>Week 1</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-1/content/introduction/>Introduction to the Basics of Python</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 2</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/control/>Control</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/>Higher Order Functions</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/environment/>Environment Diagrams</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 3</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-3/content/design/>Design</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-3/content/decorators/>Decorators</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 4</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-4/content/recursion/>Recursion</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-4/content/tree-recursion/>Tree Recursion</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 5</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/containers/>Containers</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/sequences/>Sequences</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/data-abstraction/>Data Abstraction + Dictionaries</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 6</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-6/content/trees/>Trees</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-6/content/mutability/>Mutability</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 7</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/iterators/>Iterators</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/generators/>Generators</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/objects/>Objects</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 8</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/inheritance/>Inheritance</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/representation/>Representation</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/recursive-data/>Recursive Data</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 9</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-9/content/efficiency/ class=active>Efficiency</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/week-10/>Week 10</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 11</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/scheme/>Scheme</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/macros-and-exceptions/>Macros + Exceptions</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/calculator/>Calculator</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 12</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-12/content/interpreters/>Interpreters</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-12/content/tail-calls/>Tail Calls</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/week-13/>Week 13</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>How To Succeed</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/general-tips/>General Tips</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/midterm-1/>Midterm 1</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/midterm-2/>Midterm 2</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/finals/>Finals</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/contributors/>Contributors</a>
+<ul>
+</ul>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Efficiency</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#orders-of-growth>Orders of Growth</a>
+<ul>
+<li><a href=#adding-to-the-front-of-a-linked-list>Adding to the front of a linked list</a></li>
+<li><a href=#fast-exponentiation>Fast Exponentiation</a></li>
+<li><a href=#finding-value-in-a-linked-list>Finding value in a linked list</a></li>
+<li><a href=#nested-for-loop-over-a-5x5-array>Nested For Loop over a 5x5 array.</a></li>
+<li><a href=#recursive-fibonacci>Recursive Fibonacci</a></li>
+</ul>
+</li>
+<li><a href=#memoization>Memoization</a></li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h1 id=efficiency>
+Efficiency
+<a class=anchor href=#efficiency>#</a>
+</h1>
+<p>The efficiency of an algorithm is very important. While it isn&rsquo;t too important in CS 61A due to the (relatively) small data set and number of computations needed, in big sets of data or some extremely computer taxing computations, efficiency makes a world of a difference in terms of actually being able to make computations.</p>
+<p>However, CS 61A still wants you to understand how to calculate efficiency in a broad sense.</p>
+<h2 id=orders-of-growth>
+Orders of Growth
+<a class=anchor href=#orders-of-growth>#</a>
+</h2>
+<p>Here are some common orders of growth:</p>
+<p>Order of growth|Description
+Constant Growth|Regardless of the input size, it will take the same amount of time.
+Logarithmic Growth|The number of steps increases proportionately to the logarithm of the input size (pretty good to aim for)
+Linear Growth|The number of steps increases in direct proportion to the input size
+Quadratic Growth|The number of steps increases in proportion to the square of the input size
+Exponential Growth|The number of steps increases faster than a polynomial function can</p>
+<p>One way to tell the order of growth is to create a table of results comparing the input size with the number of operations. From there, we can extrapolate and see what the order of growth actually is.</p>
+<h3 id=adding-to-the-front-of-a-linked-list>
+Adding to the front of a linked list
+<a class=anchor href=#adding-to-the-front-of-a-linked-list>#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Input Size</th>
+<th style=text-align:left>Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>1</td>
+<td style=text-align:left>1</td>
+</tr>
+<tr>
+<td style=text-align:left>10</td>
+<td style=text-align:left>1</td>
+</tr>
+<tr>
+<td style=text-align:left>100</td>
+<td style=text-align:left>1</td>
+</tr>
+<tr>
+<td style=text-align:left>1000</td>
+<td style=text-align:left>1</td>
+</tr>
+</tbody>
+</table>
+<p>If we look at this table, we can see that adding to the front of a linked list can be done in constant time (always the same number of operations depending on the input size). This is often referred to as <code>O(1)</code>.</p>
+<h3 id=fast-exponentiation>
+Fast Exponentiation
+<a class=anchor href=#fast-exponentiation>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>exp_fast</span>(b, n):
+    <span style=color:#66d9ef>if</span> n <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>
+    <span style=color:#66d9ef>elif</span> n <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+        <span style=color:#66d9ef>return</span> square(exp_fast(b, n<span style=color:#f92672>//</span><span style=color:#ae81ff>2</span>))
+    <span style=color:#66d9ef>else</span>:
+        <span style=color:#66d9ef>return</span> b <span style=color:#f92672>*</span> exp_fast(b, n<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) 
+
+square <span style=color:#f92672>=</span> <span style=color:#66d9ef>lambda</span> x: x <span style=color:#f92672>*</span> x
+</code></pre></div><p>This function finds what <code>b ** n</code> is. You don&rsquo;t really need to care about how it&rsquo;s implemented (other than the fact that it is implemented)</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Input Size</th>
+<th style=text-align:left>Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>0</td>
+<td style=text-align:left>1</td>
+</tr>
+<tr>
+<td style=text-align:left>8</td>
+<td style=text-align:left>5</td>
+</tr>
+<tr>
+<td style=text-align:left>16</td>
+<td style=text-align:left>6</td>
+</tr>
+<tr>
+<td style=text-align:left>1024</td>
+<td style=text-align:left>6</td>
+</tr>
+</tbody>
+</table>
+<p>In general, you can see that as the input size goes up, the number of operations increases in a <strong>logarithmic</strong> manner (where the number of operations doesn&rsquo;t really increase too much). This is a pretty good thing to strive for if possible because most of the time constant time is very hard to achieve.</p>
+<h3 id=finding-value-in-a-linked-list>
+Finding value in a linked list
+<a class=anchor href=#finding-value-in-a-linked-list>#</a>
+</h3>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Input Size</th>
+<th style=text-align:left>Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>1</td>
+<td style=text-align:left>1</td>
+</tr>
+<tr>
+<td style=text-align:left>10</td>
+<td style=text-align:left>10</td>
+</tr>
+<tr>
+<td style=text-align:left>100</td>
+<td style=text-align:left>100</td>
+</tr>
+<tr>
+<td style=text-align:left>1000</td>
+<td style=text-align:left>1000</td>
+</tr>
+</tbody>
+</table>
+<p>Pretty simple here - increases in linear (<code>O(n)</code>)time.</p>
+<h3 id=nested-for-loop-over-a-5x5-array>
+Nested For Loop over a 5x5 array.
+<a class=anchor href=#nested-for-loop-over-a-5x5-array>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>lst1 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>]
+lst2 <span style=color:#f92672>=</span> [<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>]
+
+<span style=color:#66d9ef>for</span> one <span style=color:#f92672>in</span> lst1: <span style=color:#75715e># takes 5 operations</span>
+    <span style=color:#66d9ef>for</span> two <span style=color:#f92672>in</span> lst2: <span style=color:#75715e># 5 operations for cycles = 25 operations in total</span>
+        print((one, two)) 
+</code></pre></div><table>
+<thead>
+<tr>
+<th style=text-align:left>Input Size</th>
+<th style=text-align:left>Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>1</td>
+<td style=text-align:left>1</td>
+</tr>
+<tr>
+<td style=text-align:left>5</td>
+<td style=text-align:left>25</td>
+</tr>
+<tr>
+<td style=text-align:left>10</td>
+<td style=text-align:left>100</td>
+</tr>
+<tr>
+<td style=text-align:left>20</td>
+<td style=text-align:left>400</td>
+</tr>
+</tbody>
+</table>
+<p>Somewhat similarly obvious - this increases in quadratic time (<code>O(n^2)</code>)</p>
+<h3 id=recursive-fibonacci>
+Recursive Fibonacci
+<a class=anchor href=#recursive-fibonacci>#</a>
+</h3>
+<p>Remember our recursive solution for calculating fibonacci numbers? Let&rsquo;s see the efficiency of that.</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Input Size</th>
+<th style=text-align:left>Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>1</td>
+<td style=text-align:left>1</td>
+</tr>
+<tr>
+<td style=text-align:left>2</td>
+<td style=text-align:left>3</td>
+</tr>
+<tr>
+<td style=text-align:left>7</td>
+<td style=text-align:left>41</td>
+</tr>
+<tr>
+<td style=text-align:left>8</td>
+<td style=text-align:left>67</td>
+</tr>
+<tr>
+<td style=text-align:left>20</td>
+<td style=text-align:left>21891</td>
+</tr>
+</tbody>
+</table>
+<p>This increases even faster than quadratic time. It grows in <strong>exponential time</strong> (<code>O(2^n)</code>)</p>
+<hr>
+<p>Similar thing can apply for space efficiency - same rules apply, just for storage/memory needed rather than the approximate number of operations.</p>
+<h2 id=memoization>
+Memoization
+<a class=anchor href=#memoization>#</a>
+</h2>
+<p>Memoization is a strategy used to reduce redundant computation by &lsquo;remembering&rsquo; the status of previous function calls.</p>
+<p><img src=https://i.imgur.com/6B75Hc6.png alt></p>
+<p>By storing the results of every computation we&rsquo;ve gone through so far, we do not need to recalculate <code>fib(2)</code> on the right branch.</p>
+<p>By making a memoization higher-order function, we can use a function decorator to make all of our function calls &lsquo;cache&rsquo; its results.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>memo</span>(fn):
+    cache <span style=color:#f92672>=</span> {}
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>memoizer</span>(n):
+        <span style=color:#66d9ef>if</span> n <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> cache:
+            cache[n] <span style=color:#f92672>=</span> fn(n)
+        <span style=color:#66d9ef>return</span> cache[n]
+    <span style=color:#66d9ef>return</span> memoizer
+</code></pre></div><p>This way, when we call our new Fibonacci function, we grow in linear time rather than exponential time in terms of time complexity (but space complexity is obviously larger to the point of being <code>O(n)</code>)</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>memo</span>(fn):
+    cache <span style=color:#f92672>=</span> {}
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>memoizer</span>(n):
+        <span style=color:#66d9ef>if</span> n <span style=color:#f92672>not</span> <span style=color:#f92672>in</span> cache:
+            cache[n] <span style=color:#f92672>=</span> fn(n)
+        <span style=color:#66d9ef>return</span> cache[n]
+    <span style=color:#66d9ef>return</span> memoizer
+
+<span style=color:#a6e22e>@memo</span> <span style=color:#75715e># basically does the same as saying fib = memo(fib), which makes it such that fib now points to the memoizer function</span>
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fib</span>(n):
+    <span style=color:#66d9ef>if</span> n <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>or</span> n <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>:
+        <span style=color:#66d9ef>return</span> n
+    <span style=color:#66d9ef>else</span>:
+        <span style=color:#66d9ef>return</span> fib(n<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>) <span style=color:#f92672>+</span> fib(n<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
+
+<span style=color:#75715e># Now calling fib(n) will be a lot more efficient</span>
+</code></pre></div></article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div><a class="flex align-center" href=https://github.com/Rouxles/cs61a-notes//commit/384f6dc53df95dae0d3923522be244bd7de6b207 title="Last modified by Antonio Kam | October 21, 2021" target=_blank rel=noopener>
+<img src=/svg/calendar.svg class=book-icon alt=Calendar>
+<span>October 21, 2021</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#orders-of-growth>Orders of Growth</a>
+<ul>
+<li><a href=#adding-to-the-front-of-a-linked-list>Adding to the front of a linked list</a></li>
+<li><a href=#fast-exponentiation>Fast Exponentiation</a></li>
+<li><a href=#finding-value-in-a-linked-list>Finding value in a linked list</a></li>
+<li><a href=#nested-for-loop-over-a-5x5-array>Nested For Loop over a 5x5 array.</a></li>
+<li><a href=#recursive-fibonacci>Recursive Fibonacci</a></li>
+</ul>
+</li>
+<li><a href=#memoization>Memoization</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

@@ -1,0 +1,481 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Scheme #  Scheme is another programming language that CS61A can test. The reason why this is taught is not only because you make an interpreter for Scheme as your final CS61A project (where you write code in Python to essentially execute scheme code in Python - it&rsquo;s really cool), but also because it&rsquo;s essentially a practical way of showing that you&rsquo;re able to quickly pick up other languages after you get comfortable with one.">
+<meta name=theme-color content="#FFFFFF"><meta property="og:title" content="Scheme">
+<meta property="og:description" content="Scheme #  Scheme is another programming language that CS61A can test. The reason why this is taught is not only because you make an interpreter for Scheme as your final CS61A project (where you write code in Python to essentially execute scheme code in Python - it&rsquo;s really cool), but also because it&rsquo;s essentially a practical way of showing that you&rsquo;re able to quickly pick up other languages after you get comfortable with one.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cs61a.rouxl.es/docs/week-11/content/scheme/"><meta property="article:section" content="docs">
+<meta property="article:modified_time" content="2021-11-02T10:43:19-07:00">
+<title>Scheme | CS61A Notes</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.87312a22c120b2e99e4dbec51f671dd6b1cb0bed3b12a909c39a0aa981eb5a8f.css integrity="sha256-hzEqIsEgsumeTb7FH2cd1rHLC+07EqkJw5oKqYHrWo8=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.c2d11d7c24225ce7af16420167bab5ee5e860d2060ab2c12fd510c1b76c47bb5.js integrity="sha256-wtEdfCQiXOevFkIBZ7q17l6GDSBgqywS/VEMG3bEe7U=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>CS61A Notes</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li class=book-section-flat>
+<span>Week 1</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-1/content/introduction/>Introduction to the Basics of Python</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 2</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/control/>Control</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/>Higher Order Functions</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/environment/>Environment Diagrams</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 3</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-3/content/design/>Design</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-3/content/decorators/>Decorators</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 4</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-4/content/recursion/>Recursion</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-4/content/tree-recursion/>Tree Recursion</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 5</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/containers/>Containers</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/sequences/>Sequences</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/data-abstraction/>Data Abstraction + Dictionaries</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 6</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-6/content/trees/>Trees</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-6/content/mutability/>Mutability</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 7</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/iterators/>Iterators</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/generators/>Generators</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/objects/>Objects</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 8</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/inheritance/>Inheritance</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/representation/>Representation</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/recursive-data/>Recursive Data</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 9</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-9/content/efficiency/>Efficiency</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/week-10/>Week 10</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 11</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/scheme/ class=active>Scheme</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/macros-and-exceptions/>Macros + Exceptions</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/calculator/>Calculator</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 12</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-12/content/interpreters/>Interpreters</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-12/content/tail-calls/>Tail Calls</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/week-13/>Week 13</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>How To Succeed</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/general-tips/>General Tips</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/midterm-1/>Midterm 1</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/midterm-2/>Midterm 2</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/finals/>Finals</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/contributors/>Contributors</a>
+<ul>
+</ul>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Scheme</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#scheme-expressions>Scheme Expressions</a></li>
+<li><a href=#special-forms>Special Forms</a>
+<ul>
+<li><a href=#define-form>Define Form</a></li>
+<li><a href=#if-expression>If Expression</a></li>
+<li><a href=#cond-expression>Cond Expression</a></li>
+<li><a href=#lambda-expressions>Lambda Expressions</a></li>
+<li><a href=#let><code>let</code></a></li>
+</ul>
+</li>
+<li><a href=#scheme-lists>Scheme Lists</a>
+<ul>
+<li><a href=#accessing-elements-in-our-list>Accessing elements in our List</a></li>
+</ul>
+</li>
+<li><a href=#symbolic-programming>Symbolic Programming</a></li>
+<li><a href=#function-returns>Function Returns</a></li>
+<li><a href=#higher-order-functions>Higher Order Functions</a></li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h1 id=scheme>
+Scheme
+<a class=anchor href=#scheme>#</a>
+</h1>
+<p>Scheme is another programming language that CS61A can test. The reason why this is taught is not only because you make an interpreter for Scheme as your final CS61A project (where you write code in Python to essentially execute scheme code in Python - it&rsquo;s really cool), but also because it&rsquo;s essentially a practical way of showing that you&rsquo;re able to quickly pick up other languages after you get comfortable with one.</p>
+<p>Scheme isn&rsquo;t really used that often in actual codebases, but it&rsquo;s a pretty good method of teaching <strong>functional programming</strong> due to the restrictions it has in comparison to Python. (For example, Scheme doesn&rsquo;t allow you to do any sort of iteration, and also lists can only be of the Linked list form, meaning that many of the programming problems are solved using recursion)</p>
+<h2 id=scheme-expressions>
+Scheme Expressions
+<a class=anchor href=#scheme-expressions>#</a>
+</h2>
+<p>Nearly everything in Scheme is executed the same - basically everything boils down to <strong>call expressions</strong>, even basic operations like <code>+</code> and <code>/</code>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(+ <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span>) <span style=color:#75715e>; 3</span>
+(/ <span style=color:#ae81ff>4</span> <span style=color:#ae81ff>2</span>) <span style=color:#75715e>; 2</span>
+(quotient <span style=color:#ae81ff>5</span> <span style=color:#ae81ff>2</span>) <span style=color:#75715e>; 2</span>
+(modulo <span style=color:#ae81ff>5</span> <span style=color:#ae81ff>2</span>) <span style=color:#75715e>; 1</span>
+</code></pre></div><p>A Python equivalent for the first line would be the following:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>from</span> operator <span style=color:#f92672>import</span> add
+add(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>) <span style=color:#75715e># which is the same as 1 + 2</span>
+</code></pre></div><p>Notice how there&rsquo;s consistent syntax? When you want to call something, you just wrap it in a set of parentheses, then you supply your operators and operands in the same order as call expressions in Python. The execution order of this call expression matches that of Python - it first looks at the operator and sees whether it can be a function, then evaluates the operands from left to right and after that is done, passes it into the operator.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(/ (+ <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>2</span>) <span style=color:#ae81ff>2</span>) <span style=color:#75715e>; 2</span>
+</code></pre></div><p>You can also nest expressions in expressions.</p>
+<h2 id=special-forms>
+Special Forms
+<a class=anchor href=#special-forms>#</a>
+</h2>
+<p>Everything in Scheme that doesn&rsquo;t behave the same way as a call expression is a <strong>special form</strong>.</p>
+<ul>
+<li><code>if</code> expression
+<ul>
+<li><code>(if &lt;condition> &lt;true-block> [&lt;false-block>])</code></li>
+<li>This will check whether <code>&lt;condition></code> is truthy (more on this later, it behaves differently to Python), then will execute <code>&lt;true-block></code> if it is, else will execute <code>&lt;false-block></code> if it&rsquo;s provided.</li>
+</ul>
+</li>
+<li><code>and</code>/<code>or</code>
+<ul>
+<li><code>(and &lt;e1> &lt;e2> ... &lt;en>)</code></li>
+<li><code>(or &lt;e1> &lt;e2> ... &lt;en>)</code></li>
+<li>Behaves pretty much the same as Python <code>and</code>/<code>or</code> other than the truthy values.</li>
+</ul>
+</li>
+<li><code>define</code> - assignment in scheme
+<ul>
+<li><code>(define &lt;symbol> &lt;expression>)</code>
+<ul>
+<li>Assignment in Scheme (assigning an expression to a symbol)</li>
+</ul>
+</li>
+<li><code>(define (&lt;symbol> &lt;parameters>) &lt;body>)</code>
+<ul>
+<li>Assignment in Scheme but for functions instead (this is shorthand for making a lambda function then assigning that to a symbol - more on this later)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id=define-form>
+Define Form
+<a class=anchor href=#define-form>#</a>
+</h3>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(<span style=color:#66d9ef>define </span>x <span style=color:#ae81ff>2</span>) <span style=color:#75715e>; x</span>
+x <span style=color:#75715e>; 2</span>
+</code></pre></div><p>The code above will evaluate the expression <code>2</code>, then binds that value to the name <code>x</code>. This name has to be a valid scheme symbol (so it can&rsquo;t be integers for instance).</p>
+<h4 id=define-prodedure>
+Define Prodedure
+<a class=anchor href=#define-prodedure>#</a>
+</h4>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(<span style=color:#66d9ef>define </span>(<span style=color:#a6e22e>square</span> x) (* x x))
+</code></pre></div><p>The code above will make a <code>lambda</code> function that takes in a parameter <code>x</code> and when called, will multiply <code>x</code> by itself. This code is equivalent to the following:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(<span style=color:#66d9ef>define </span>square (<span style=color:#66d9ef>lambda </span>(<span style=color:#a6e22e>x</span>) (* x x)))
+</code></pre></div><h3 id=if-expression>
+If Expression
+<a class=anchor href=#if-expression>#</a>
+</h3>
+<p>In Scheme, everything that isn&rsquo;t <code>#f</code> (which is the Scheme equivalent of <code>False</code>) is a <em>truthy</em> value. <strong>This is different to Python&rsquo;s behaviour - remember to keep this in mind when you&rsquo;re writing in scheme</strong></p>
+<p>Example: Code that returns the length of non-empty lists, else returns 0 for empty lists.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(<span style=color:#66d9ef>define </span>lst (list <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span>))
+
+(<span style=color:#66d9ef>if </span>(null? lst) <span style=color:#ae81ff>0</span> (length lst)) <span style=color:#75715e>; null? and length are built-in procedures</span>
+</code></pre></div><p>You can find all these built in procedures on CS61A&rsquo;s official website.</p>
+<h3 id=cond-expression>
+Cond Expression
+<a class=anchor href=#cond-expression>#</a>
+</h3>
+<p>This special form allows for <code>if ... elif ... else</code> statements because the normal <code>if</code> expression that Scheme uses does not allow for multiple conditions. However, this <code>cond</code> expression allows for something similar to this to occur.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(<span style=color:#66d9ef>define </span>x <span style=color:#ae81ff>2</span>)
+
+(<span style=color:#a6e22e>cond</span>
+    ((&gt; x <span style=color:#ae81ff>2</span>) <span style=color:#e6db74>&#39;hi</span>)
+    ((&gt; x <span style=color:#ae81ff>50</span>) <span style=color:#e6db74>&#39;ben</span>)
+    (<span style=color:#66d9ef>else </span><span style=color:#e6db74>&#39;not</span> hi)
+) <span style=color:#75715e>; not hi</span>
+</code></pre></div><h3 id=lambda-expressions>
+Lambda Expressions
+<a class=anchor href=#lambda-expressions>#</a>
+</h3>
+<p><code>lambda</code> expressions evaluate to anonymous procedures (when not in a <code>define</code> expression). They are written <code>(lambda ([param] ...) &lt;body>)</code>. These lambdas can also be call expressions.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(<span style=color:#66d9ef>lambda </span>(<span style=color:#a6e22e>x</span>) (* x <span style=color:#ae81ff>2</span>))
+((<span style=color:#66d9ef>lambda </span>(<span style=color:#a6e22e>x</span>) (* x <span style=color:#ae81ff>2</span>)) <span style=color:#ae81ff>4</span>) <span style=color:#75715e>; 8</span>
+</code></pre></div><h3 id=let>
+<code>let</code>
+<a class=anchor href=#let>#</a>
+</h3>
+<p><code>let</code> in Scheme is pretty similar to <code>define</code> other than the scope that the variable is in. In essence, <code>define</code> when used will make a variable accessible in the global frame, but <code>let</code> will only make a variable that&rsquo;s accessible in the function&rsquo;s frame (Python&rsquo;s default behvaiour).</p>
+<h2 id=scheme-lists>
+Scheme Lists
+<a class=anchor href=#scheme-lists>#</a>
+</h2>
+<p>All lists in Scheme are linked lists, similar to the <code>Link</code> class we were using earlier on in Python.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>Link(<span style=color:#ae81ff>1</span>, Link(<span style=color:#ae81ff>2</span>))
+</code></pre></div><p>The Scheme equivalent to the linked list we made above is</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(cons <span style=color:#ae81ff>1</span> (cons <span style=color:#ae81ff>2</span> nil))
+</code></pre></div><p>where <code>nil</code> is our <code>Link.empty</code>. This <code>nil</code> is required in Scheme when we use the <code>cons</code> expression.</p>
+<p>You can also define lists in the following manner:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(<span style=color:#66d9ef>define </span>lst_one (list <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span>))
+lst_one <span style=color:#75715e>; (1 2 3)</span>
+(<span style=color:#66d9ef>define </span>lst_two (list <span style=color:#ae81ff>1</span> (list <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span>) <span style=color:#ae81ff>4</span>))
+lst_two <span style=color:#75715e>; (1 (2 3) 4)</span>
+(<span style=color:#66d9ef>define </span>lst_three <span style=color:#f92672>&#39;</span>(<span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span>))
+lst_three <span style=color:#75715e>; (1 2 3)</span>
+(<span style=color:#66d9ef>define </span>lst_four <span style=color:#f92672>&#39;</span>(<span style=color:#ae81ff>1</span> (list <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span>) <span style=color:#ae81ff>4</span>))
+lst_four <span style=color:#75715e>; (1 (list 2 3) 4) - notice how this one doesn&#39;t evaluate anything</span>
+</code></pre></div><h3 id=accessing-elements-in-our-list>
+Accessing elements in our List
+<a class=anchor href=#accessing-elements-in-our-list>#</a>
+</h3>
+<p>In Python:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>ll <span style=color:#f92672>=</span> Link(<span style=color:#ae81ff>1</span>, Link(<span style=color:#ae81ff>2</span>))
+ll<span style=color:#f92672>.</span>first <span style=color:#75715e># 1</span>
+ll<span style=color:#f92672>.</span>rest <span style=color:#75715e># Link(2)</span>
+</code></pre></div><p>Scheme Equivalent:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(<span style=color:#66d9ef>define </span>lst (list <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>2</span> <span style=color:#ae81ff>3</span>))
+
+(car lst) <span style=color:#75715e>; 1</span>
+(cdr lst) <span style=color:#75715e>; (2 3)</span>
+</code></pre></div><p>Names are weird - but you have to remember them. There is a historical reason for these chosen names, but I won&rsquo;t cover them here because I don&rsquo;t think it&rsquo;s particularly too important to know at the moment. If you&rsquo;re interested, take a look at <a href=https://en.wikipedia.org/wiki/CAR_and_CDR>this link</a>.</p>
+<h2 id=symbolic-programming>
+Symbolic Programming
+<a class=anchor href=#symbolic-programming>#</a>
+</h2>
+<p>Usually, symbols refer to values:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(<span style=color:#66d9ef>define </span>a <span style=color:#ae81ff>1</span>)
+(<span style=color:#66d9ef>define </span>b <span style=color:#ae81ff>2</span>)
+(list a b) <span style=color:#75715e>; (1 2)</span>
+</code></pre></div><p>However, we can use quotation to refer to the symbols directly:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(<span style=color:#66d9ef>define </span>a <span style=color:#ae81ff>1</span>)
+(<span style=color:#66d9ef>define </span>b <span style=color:#ae81ff>2</span>)
+(list <span style=color:#e6db74>&#39;a</span> b) <span style=color:#75715e>; (a 2)</span>
+</code></pre></div><p>This is shorthand for the <code>quote</code> form:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>(list (<span style=color:#66d9ef>quote </span>a) b) <span style=color:#75715e>; (a 2)</span>
+</code></pre></div><p>The <code>quote</code> symbol basically says don&rsquo;t touch anything typed afterwards - which is why <code>'(1 2)</code> will output a scheme list (because it&rsquo;s represented that way normally)</p>
+<h2 id=function-returns>
+Function Returns
+<a class=anchor href=#function-returns>#</a>
+</h2>
+<p>There is no Scheme equivalent to <code>return</code>. In fact, the last statement in the body is what gets returned. This is similar to <code>lambda</code> functions in Python where the body is what gets returned, except in this case, the body can span multiple lines.</p>
+<h2 id=higher-order-functions>
+Higher Order Functions
+<a class=anchor href=#higher-order-functions>#</a>
+</h2>
+<p>Say we wanted to make our own higher-order function that first takes in 1 argument as a number, then multiplies it with the value from the inner function.</p>
+<p>In Python, we would write it like this:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># with lambda</span>
+<span style=color:#66d9ef>lambda</span> x: <span style=color:#66d9ef>lambda</span> y: x <span style=color:#f92672>*</span> y
+
+<span style=color:#75715e># with def statements</span>
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>make_mul</span>(x):
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>helper</span>(y):
+    <span style=color:#66d9ef>return</span> x <span style=color:#f92672>*</span> y
+  <span style=color:#66d9ef>return</span> helper
+</code></pre></div><p>In Scheme, it pretty much looks the exact same:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme><span style=color:#75715e>; with lambdas</span>
+(<span style=color:#66d9ef>lambda </span>(<span style=color:#a6e22e>x</span>) (<span style=color:#66d9ef>lambda </span>(<span style=color:#a6e22e>y</span>) (* x y)))
+
+<span style=color:#75715e>; with define statements</span>
+(<span style=color:#66d9ef>define </span>(<span style=color:#a6e22e>make_mul</span> x)
+  (<span style=color:#66d9ef>define </span>(<span style=color:#a6e22e>helper</span> y)
+    (* x y)
+  )
+  helper <span style=color:#75715e>; this line over here is basically the same thing as saying return helper in Python</span>
+)
+</code></pre></div><p>It&rsquo;s probably a lot nicer to use lambdas rather than named functions just because you don&rsquo;t need to call the helper function in the end (similar to python where we don&rsquo;t need to say <code>return helper</code> but can just use the lambda for that).</p>
+<blockquote class="book-hint info">
+<p>The reason why we can&rsquo;t just define our function and then call it is because of the behaviour below:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>&gt; (<span style=color:#66d9ef>define </span>(<span style=color:#a6e22e>test</span> x) (+ x x))
+test
+&gt; test
+(<span style=color:#66d9ef>lambda </span>(<span style=color:#a6e22e>x</span>) (+ x x))
+</code></pre></div><p>As you can see, when we define a function, it returns the name of the function (as a &lsquo;string&rsquo;). Only after we call the function will we get a function representation of it.</p>
+<p>Let&rsquo;s try to extend that to a higher-order function.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>&gt; (<span style=color:#66d9ef>define </span>(<span style=color:#a6e22e>test</span> x)(<span style=color:#66d9ef>define </span>(<span style=color:#a6e22e>ben</span> y) (* x y)))
+test
+&gt; (<span style=color:#a6e22e>test</span> <span style=color:#ae81ff>3</span>)
+ben
+</code></pre></div><p>As you can see from the return value of calling <code>(test 3)</code>, we get a &lsquo;string&rsquo; rather than the lambda function. This makes it such that we can&rsquo;t call it directly. However, if we put</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-scheme data-lang=scheme>&gt; (<span style=color:#66d9ef>define </span>(<span style=color:#a6e22e>test</span> x)(<span style=color:#66d9ef>define </span>(<span style=color:#a6e22e>ben</span> y) (* x y))ben)
+test
+&gt; (<span style=color:#a6e22e>test</span> <span style=color:#ae81ff>3</span>)
+(<span style=color:#66d9ef>lambda </span>(<span style=color:#a6e22e>y</span>) (* x y))
+</code></pre></div><p>Now we are able to call this function directly.</p>
+</blockquote>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div><a class="flex align-center" href=https://github.com/Rouxles/cs61a-notes//commit/d8ad31d2e102bb1317f4d25671a62fa2dff9193c title="Last modified by Antonio Kam | November 2, 2021" target=_blank rel=noopener>
+<img src=/svg/calendar.svg class=book-icon alt=Calendar>
+<span>November 2, 2021</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#scheme-expressions>Scheme Expressions</a></li>
+<li><a href=#special-forms>Special Forms</a>
+<ul>
+<li><a href=#define-form>Define Form</a></li>
+<li><a href=#if-expression>If Expression</a></li>
+<li><a href=#cond-expression>Cond Expression</a></li>
+<li><a href=#lambda-expressions>Lambda Expressions</a></li>
+<li><a href=#let><code>let</code></a></li>
+</ul>
+</li>
+<li><a href=#scheme-lists>Scheme Lists</a>
+<ul>
+<li><a href=#accessing-elements-in-our-list>Accessing elements in our List</a></li>
+</ul>
+</li>
+<li><a href=#symbolic-programming>Symbolic Programming</a></li>
+<li><a href=#function-returns>Function Returns</a></li>
+<li><a href=#higher-order-functions>Higher Order Functions</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>

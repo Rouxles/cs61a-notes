@@ -1,0 +1,336 @@
+<!doctype html><html lang=en dir=ltr>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=description content="Inheritance #  Inheritance is a powerful tool that is very often used to reduce redundant code. If you have more specific versions of a larger class, inheritance can be extremely useful. Using our Animal class from the Objects notes, we can use all its general attributes, but then add more specific classes.
+class Animal: default_food = [] def __init__(self, name, energy = 100): self.name = name self.food = self.default_food[:] self.">
+<meta name=theme-color content="#FFFFFF"><meta property="og:title" content="Inheritance">
+<meta property="og:description" content="Inheritance #  Inheritance is a powerful tool that is very often used to reduce redundant code. If you have more specific versions of a larger class, inheritance can be extremely useful. Using our Animal class from the Objects notes, we can use all its general attributes, but then add more specific classes.
+class Animal: default_food = [] def __init__(self, name, energy = 100): self.name = name self.food = self.default_food[:] self.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://cs61a.rouxl.es/docs/week-8/content/inheritance/"><meta property="article:section" content="docs">
+<meta property="article:modified_time" content="2021-10-19T21:14:27-07:00">
+<title>Inheritance | CS61A Notes</title>
+<link rel=manifest href=/manifest.json>
+<link rel=icon href=/favicon.png type=image/x-icon>
+<link rel=stylesheet href=/book.min.87312a22c120b2e99e4dbec51f671dd6b1cb0bed3b12a909c39a0aa981eb5a8f.css integrity="sha256-hzEqIsEgsumeTb7FH2cd1rHLC+07EqkJw5oKqYHrWo8=" crossorigin=anonymous>
+<script defer src=/flexsearch.min.js></script>
+<script defer src=/en.search.min.c2d11d7c24225ce7af16420167bab5ee5e860d2060ab2c12fd510c1b76c47bb5.js integrity="sha256-wtEdfCQiXOevFkIBZ7q17l6GDSBgqywS/VEMG3bEe7U=" crossorigin=anonymous></script>
+</head>
+<body dir=ltr>
+<input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control>
+<main class="container flex">
+<aside class=book-menu>
+<div class=book-menu-content>
+<nav>
+<h2 class=book-brand>
+<a class="flex align-center" href=/><span>CS61A Notes</span>
+</a>
+</h2>
+<div class=book-search>
+<input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/>
+<div class="book-search-spinner hidden"></div>
+<ul id=book-search-results></ul>
+</div>
+<ul>
+<li class=book-section-flat>
+<span>Week 1</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-1/content/introduction/>Introduction to the Basics of Python</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 2</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/control/>Control</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/higher-order-functions/>Higher Order Functions</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-2/content/environment/>Environment Diagrams</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 3</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-3/content/design/>Design</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-3/content/decorators/>Decorators</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 4</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-4/content/recursion/>Recursion</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-4/content/tree-recursion/>Tree Recursion</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 5</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/containers/>Containers</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/sequences/>Sequences</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-5/content/data-abstraction/>Data Abstraction + Dictionaries</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 6</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-6/content/trees/>Trees</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-6/content/mutability/>Mutability</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 7</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/iterators/>Iterators</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/generators/>Generators</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-7/content/objects/>Objects</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 8</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/inheritance/ class=active>Inheritance</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/representation/>Representation</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-8/content/recursive-data/>Recursive Data</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 9</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-9/content/efficiency/>Efficiency</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/week-10/>Week 10</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 11</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/scheme/>Scheme</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/macros-and-exceptions/>Macros + Exceptions</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-11/content/calculator/>Calculator</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>Week 12</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-12/content/interpreters/>Interpreters</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/week-12/content/tail-calls/>Tail Calls</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/week-13/>Week 13</a>
+<ul>
+</ul>
+</li>
+<li class=book-section-flat>
+<span>How To Succeed</span>
+<ul>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/general-tips/>General Tips</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/midterm-1/>Midterm 1</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/midterm-2/>Midterm 2</a>
+</li>
+<li>
+<a href=https://cs61a.rouxl.es/docs/succeed/content/finals/>Finals</a>
+</li>
+</ul>
+</li>
+<li class=book-section-flat>
+<a href=https://cs61a.rouxl.es/docs/contributors/>Contributors</a>
+<ul>
+</ul>
+</li>
+</ul>
+</nav>
+<script>(function(){var a=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class=book-page>
+<header class=book-header>
+<div class="flex align-center justify-between">
+<label for=menu-control>
+<img src=/svg/menu.svg class=book-icon alt=Menu>
+</label>
+<strong>Inheritance</strong>
+<label for=toc-control>
+<img src=/svg/toc.svg class=book-icon alt="Table of Contents">
+</label>
+</div>
+<aside class="hidden clearfix">
+<nav id=TableOfContents>
+<ul>
+<li><a href=#the-super-function>The <code>super()</code> Function</a></li>
+<li><a href=#use-cases>Use Cases</a></li>
+</ul>
+</nav>
+</aside>
+</header>
+<article class=markdown><h1 id=inheritance>
+Inheritance
+<a class=anchor href=#inheritance>#</a>
+</h1>
+<p>Inheritance is a powerful tool that is very often used to reduce redundant code. If you have more specific versions of a larger class, inheritance can be extremely useful. Using our <code>Animal</code> class from the <strong>Objects</strong> notes, we can use all its general attributes, but then add more specific classes.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Animal</span>:
+    default_food <span style=color:#f92672>=</span> []
+    <span style=color:#66d9ef>def</span> __init__(self, name, energy <span style=color:#f92672>=</span> <span style=color:#ae81ff>100</span>):
+        self<span style=color:#f92672>.</span>name <span style=color:#f92672>=</span> name
+        self<span style=color:#f92672>.</span>food <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>default_food[:]
+        self<span style=color:#f92672>.</span>energy <span style=color:#f92672>=</span> energy
+        self<span style=color:#f92672>.</span>times_fed <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>feed</span>(self, food):
+        self<span style=color:#f92672>.</span>food <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>food <span style=color:#f92672>+</span> [food]
+        self<span style=color:#f92672>.</span>times_fed <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+        self<span style=color:#f92672>.</span>energy <span style=color:#f92672>+=</span> <span style=color:#ae81ff>10</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>play</span>(self):
+        <span style=color:#66d9ef>if</span> energy <span style=color:#f92672>&lt;=</span> <span style=color:#ae81ff>20</span>:
+            <span style=color:#66d9ef>return</span> <span style=color:#e6db74>&#34;Not Enough Energy&#34;</span>
+        self<span style=color:#f92672>.</span>energy <span style=color:#f92672>-=</span> <span style=color:#ae81ff>20</span>
+        self<span style=color:#f92672>.</span>is_happy <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span> <span style=color:#75715e># Creates new instance variable</span>
+        <span style=color:#66d9ef>return</span> <span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>{</span>self<span style=color:#f92672>.</span>name<span style=color:#e6db74>}</span><span style=color:#e6db74> has </span><span style=color:#e6db74>{</span>self<span style=color:#f92672>.</span>energy<span style=color:#e6db74>}</span><span style=color:#e6db74> energy.&#34;</span>
+
+my_cat <span style=color:#f92672>=</span> Animal(<span style=color:#e6db74>&#34;Sochi&#34;</span>)
+my_cat<span style=color:#f92672>.</span>feed(<span style=color:#e6db74>&#34;Tuna&#34;</span>)
+</code></pre></div><p>Instead of making <code>my_cat</code> an instance of the <code>Animal</code> class, we could instead create a <code>Cat</code> class that <strong>inherits</strong> from the <code>Animal</code> class - meaning that it contains the same class, methods, and instance variables as the <code>Animal</code> class (which can then be overridden).</p>
+<p>The syntax for creating a class inherited from another class is shown below:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Cat</span>(Animal):
+    <span style=color:#66d9ef>pass</span>
+</code></pre></div><p>Right now, this will create a new <code>Cat</code> class pointing towards the <code>Animal</code> class we&rsquo;ve already created, meaning that it can also access the class attributes/variables alongside the methods of the <code>Animal</code> class.</p>
+<p><img src=https://i.imgur.com/hmO4kIL.png alt="Example of inheritance"></p>
+<p>In the image above, we can see the <code>Cat</code> class we created pointing towards the <code>Animal</code> class, meaning that in terms of our lookup order, we first look to see if something exists in the instance, then <code>Cat</code>, then <code>Animal</code>.</p>
+<p>For example, let&rsquo;s edit our <code>Cat</code> class a bit, so it has a use, then create an instance:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Cat</span>(Animal):
+    default_food <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;Tuna&#34;</span>]
+
+sochi <span style=color:#f92672>=</span> Cat(<span style=color:#e6db74>&#34;Sochi&#34;</span>)
+</code></pre></div><p>When <code>sochi = Cat("Sochi")</code> is called, it first looks for an <code>__init__</code> method in its own class (<code>Cat</code>), which doesn&rsquo;t exist, so it looks up to its parent (<code>Animal</code>) for an <code>__init__</code>, which is found, so that <code>__init__</code> method is used. If there is no <code>__init__</code> method in the lookup, that method will simply not be called.</p>
+<p>As a result of that, we get the following diagram (in this case, the <code>__init__</code> method is called from class <code>Animal</code> as that is the highest level where an <code>__init__</code> is defined.):</p>
+<p><img src=https://i.imgur.com/qBP8sJP.png alt></p>
+<blockquote class="book-hint info">
+When looking for <code>self.default_food[:]</code>, <code>default_food</code> from the <code>Cat</code> class is taken, because the created instance first looks to see if there is a <code>default_food</code> already located in the instance (it doesn&rsquo;t), then looks to where the arrow is pointing, which is the <code>Cat</code> class, then looks for <code>default_food</code>, which is then found.
+</blockquote>
+<hr>
+<p>Our current version of the <code>Cat</code> class doesn&rsquo;t really do much. We can <strong>override</strong> our default methods by simply redefining them in our new class. The lookup order will make it such that only our newly defined method will be called.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Cat</span>(Animal):
+    default_food <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;Tuna&#34;</span>]
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>feed</span>(self, food):
+        self<span style=color:#f92672>.</span>food <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>food <span style=color:#f92672>+</span> [food]
+        self<span style=color:#f92672>.</span>times_fed <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+        self<span style=color:#f92672>.</span>energy <span style=color:#f92672>+=</span> <span style=color:#ae81ff>10000</span>
+</code></pre></div><p><img src=https://i.imgur.com/1mDi8gW.png alt></p>
+<p>Now our current diagram looks like this. If we call <code>sochi.feed("apple")</code>, it will look at the <code>feed</code> method defined in <code>Cat</code> and then call it because it exists in that class.</p>
+<h2 id=the-super-function>
+The <code>super()</code> Function
+<a class=anchor href=#the-super-function>#</a>
+</h2>
+<p>The <code>super()</code> function, at least in the scope of CS 61A, looks at its parent class.</p>
+<p>This could be useful if you wanted to use a method of the parent class but add a few extra details. The <code>super()</code> function automatically passes in <code>self</code>.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Cat</span>(Animal):
+    default_food <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#34;Tuna&#34;</span>]
+
+    <span style=color:#66d9ef>def</span> __init__(self, name, energy <span style=color:#f92672>=</span> <span style=color:#ae81ff>100</span>):
+        super()<span style=color:#f92672>.</span>__init__(name, energy) <span style=color:#75715e># will automatically define instance variables from the Animal class</span>
+        self<span style=color:#f92672>.</span>is_very_cute <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
+
+    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>feed</span>(self, food):
+        self<span style=color:#f92672>.</span>food <span style=color:#f92672>=</span> self<span style=color:#f92672>.</span>food <span style=color:#f92672>+</span> [food]
+        self<span style=color:#f92672>.</span>times_fed <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+        self<span style=color:#f92672>.</span>energy <span style=color:#f92672>+=</span> <span style=color:#ae81ff>10000</span>
+</code></pre></div><p>Now, looking at our diagrams, we have the following:</p>
+<p><img src=https://i.imgur.com/xHtCpmI.png alt></p>
+<p>If we then create an instance of our newly created <code>Cat</code> class, we will do the following:</p>
+<p>First, create our instance and find whether an <code>__init__</code> exists</p>
+<p><img src=https://i.imgur.com/SWftHKc.png alt></p>
+<p>Then, if it does exist, we execute it.</p>
+<p><img src=https://i.imgur.com/jPgsVWi.png alt></p>
+<h2 id=use-cases>
+Use Cases
+<a class=anchor href=#use-cases>#</a>
+</h2>
+<p>Explicit examples will not be given here because they should not be necessary. You can imagine the world of possibilities that you can do with classes and inheritance! Try thinking of how you would make a card game using OOP. Doing that will reduce A LOT of redundant code and make writing this card game easy. In fact, you might see this sort of thing show up in lab questions (alongside the Ants project).</p>
+</article>
+<footer class=book-footer>
+<div class="flex flex-wrap justify-between">
+<div><a class="flex align-center" href=https://github.com/Rouxles/cs61a-notes//commit/487580172e73dc02d01b1657d828e606ff5fea99 title="Last modified by Antonio Kam | October 20, 2021" target=_blank rel=noopener>
+<img src=/svg/calendar.svg class=book-icon alt=Calendar>
+<span>October 20, 2021</span>
+</a>
+</div>
+</div>
+<script>(function(){function a(c){const a=window.getSelection(),b=document.createRange();b.selectNodeContents(c),a.removeAllRanges(),a.addRange(b)}document.querySelectorAll("pre code").forEach(b=>{b.addEventListener("click",function(c){a(b.parentElement),navigator.clipboard&&navigator.clipboard.writeText(b.parentElement.textContent)})})})()</script>
+</footer>
+<div class=book-comments>
+</div>
+<label for=menu-control class="hidden book-menu-overlay"></label>
+</div>
+<aside class=book-toc>
+<div class=book-toc-content>
+<nav id=TableOfContents>
+<ul>
+<li><a href=#the-super-function>The <code>super()</code> Function</a></li>
+<li><a href=#use-cases>Use Cases</a></li>
+</ul>
+</nav>
+</div>
+</aside>
+</main>
+</body>
+</html>
